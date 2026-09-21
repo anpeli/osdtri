@@ -100,7 +100,7 @@ const formatDate = (date) => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 3rem auto;
   padding: 0 2rem;
 }
@@ -113,7 +113,7 @@ const formatDate = (date) => {
 }
 
 .posts {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 4rem auto;
   padding: 0 2rem;
 }
@@ -135,7 +135,7 @@ const formatDate = (date) => {
 
 .post-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 

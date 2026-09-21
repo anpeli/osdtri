@@ -56,7 +56,7 @@ const currentYear = ref(new Date().getFullYear())
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -93,7 +93,7 @@ const currentYear = ref(new Date().getFullYear())
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 1.5rem 2rem;
   border-top: 1px solid #333;
