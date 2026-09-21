@@ -2,12 +2,14 @@ import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router
 import Home from '../views/Home.vue'
 import Events from '../views/Events.vue'
 import About from '../views/About.vue'
+import Membership from '../views/Membership.vue'
 import Contact from '../views/Contact.vue'
 
 const routes = [
   { path: '/', component: Home },
   { path: '/kalender', name: 'kalender', component: Events, alias: ['/events'] },
   { path: '/about', component: About },
+  { path: '/bli-medlem', component: Membership },
   { path: '/contact', component: Contact }
 ]
 

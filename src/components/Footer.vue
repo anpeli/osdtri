@@ -13,6 +13,7 @@
           <li><router-link to="/">Hem</router-link></li>
           <li><router-link to="/kalender">Kalender</router-link></li>
           <li><router-link to="/about">Om oss</router-link></li>
+          <li><router-link to="/bli-medlem">Bli medlem</router-link></li>
           <li><router-link to="/contact">Kontakt</router-link></li>
         </ul>
       </div>
