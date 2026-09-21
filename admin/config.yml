@@ -20,14 +20,20 @@ collections:
 
   - name: "events"
     label: "Events"
-    folder: "src/content/events"
-    create: true
-    fields:
-      - { name: "title", label: "Title" }
-      - { name: "date", label: "Date", widget: "datetime" }
-      - { name: "location", label: "Location" }
-      - { name: "description", label: "Description", widget: "markdown" }
-      - { name: "image", label: "Image", widget: "image" }
+    files:
+      - file: "src/content/events/2026.md"
+        label: "2026"
+        name: "2026"
+        fields:
+          - name: "events"
+            label: "Events"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Title" }
+              - { name: "date", label: "Date", widget: "datetime" }
+              - { name: "location", label: "Location" }
+              - { name: "description", label: "Description", widget: "markdown" }
+              - { name: "image", label: "Image", widget: "image", required: false }
 
   - name: "posts"
     label: "Posts"

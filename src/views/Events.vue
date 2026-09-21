@@ -26,10 +26,32 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import { marked } from 'marked'
+import { parse } from 'yaml'
 
-const events = ref([])
+const eventFiles = import.meta.glob('../content/events/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
+
+const parseEvents = (source, filePath) => {
+  const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+  if (!frontMatterMatch) return []
+
+  const metadata = parse(frontMatterMatch[1]) || {}
+
+  return (metadata.events || []).map((event, index) => ({
+    ...event,
+    id: `${filePath}-${index}`,
+    description: marked.parse(event.description || '', { breaks: true })
+  }))
+}
+
+const events = Object.entries(eventFiles)
+  .flatMap(([filePath, source]) => parseEvents(source, filePath))
+  .filter((event) => event.date && new Date(event.date) >= new Date())
+  .sort((first, second) => new Date(first.date) - new Date(second.date))
 
 const formatDate = (dateString) => {
   const date = new Date(dateString)
@@ -39,16 +61,6 @@ const formatDate = (dateString) => {
     day: 'numeric'
   })
 }
-
-onMounted(async () => {
-  try {
-    // Fetch from your CMS or API endpoint
-    const response = await axios.get('/api/events')
-    events.value = response.data
-  } catch (error) {
-    console.error('Error fetching events:', error)
-  }
-})
 </script>
 
 <style scoped>
