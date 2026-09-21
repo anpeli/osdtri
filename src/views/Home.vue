@@ -1,7 +1,6 @@
 <template>
   <section class="hero">
-    <h1>Välkommen till OSD Tri</h1>
-    <p>Östersunds triathlonklubb</p>
+    <h1>Välkommen till Östersund Triathlon</h1>
     <button @click="$router.push('/events')">Se Kommande Event</button>
   </section>
 
