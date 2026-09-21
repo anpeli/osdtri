@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <nav class="nav">
-      <div class="logo">OSD Tri</div>
+      <img class="logo" src="../resources/osdtri-jamtkraft.png" alt="OSD Tri" />
       <ul class="nav-links">
         <li><router-link to="/">Hem</router-link></li>
         <li><router-link to="/events">Event</router-link></li>
@@ -28,8 +28,9 @@
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+  display: block;
+  width: 180px;
+  height: auto;
 }
 
 .nav-links {
