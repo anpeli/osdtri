@@ -7,7 +7,7 @@
         type="button"
         :aria-expanded="menuOpen"
         aria-controls="main-menu"
-        aria-label="Öppna meny"
+        :aria-label="menuOpen ? 'Stäng meny' : 'Öppna meny'"
         @click="menuOpen = !menuOpen"
       >
         <span></span>
