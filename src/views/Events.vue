@@ -7,7 +7,12 @@
     </div>
 
     <div v-else class="event-list">
-      <div v-for="event in events" :key="event.id" class="event-card">
+      <div
+        v-for="event in events"
+        :key="event.id"
+        class="event-card"
+        :class="{ 'event-card--no-image': !event.image }"
+      >
         <img 
           v-if="event.image" 
           :src="event.image" 
@@ -85,6 +90,10 @@ const formatDate = (dateString) => {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.event-card--no-image {
+  grid-template-columns: 1fr;
 }
 
 .event-image {
