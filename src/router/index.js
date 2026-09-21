@@ -6,7 +6,7 @@ import Contact from '../views/Contact.vue'
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/events', component: Events },
+  { path: '/kalender', name: 'kalender', component: Events, alias: ['/events'] },
   { path: '/about', component: About },
   { path: '/contact', component: Contact }
 ]

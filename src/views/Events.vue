@@ -1,6 +1,6 @@
 <template>
   <div class="events-page">
-    <h1>Kommande Evenemang</h1>
+    <h1>Kommande händelser</h1>
     
     <div v-if="events.length === 0" class="no-events">
       <p>Inga evenemang schemalagda just nu.</p>

@@ -4,7 +4,7 @@
       <img class="logo" src="../resources/osdtri-jamtkraft.png" alt="OSD Tri" />
       <ul class="nav-links">
         <li><router-link to="/">Hem</router-link></li>
-        <li><router-link to="/events">Event</router-link></li>
+        <li><router-link to="/kalender">Kalender</router-link></li>
         <li><router-link to="/about">Om oss</router-link></li>
         <li><router-link to="/contact">Kontakt</router-link></li>
       </ul>

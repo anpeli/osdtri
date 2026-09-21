@@ -1,6 +1,6 @@
 <template>
   <div class="contact-page">
-    <h1>Kontakta Oss</h1>
+    <h1>Kontakta oss</h1>
     
     <div class="contact-info">
       <div class="info-item">
