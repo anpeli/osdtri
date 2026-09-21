@@ -1,0 +1,39 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    folder: "src/content/pages"
+    create: true
+    fields:
+      - { name: "title", label: "Title" }
+      - { name: "slug", label: "Slug" }
+      - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "events"
+    label: "Events"
+    folder: "src/content/events"
+    create: true
+    fields:
+      - { name: "title", label: "Title" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "location", label: "Location" }
+      - { name: "description", label: "Description", widget: "markdown" }
+      - { name: "image", label: "Image", widget: "image" }
+
+  - name: "settings"
+    label: "Site Settings"
+    editor: { preview: false }
+    files:
+      - file: "src/content/site.json"
+        label: "Site Config"
+        name: "site"
+        fields:
+          - { name: "siteName", label: "Site Name" }
+          - { name: "logoUrl", label: "Logo URL" }
+          - { name: "primaryColor", label: "Primary Color" }
