@@ -29,7 +29,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {{ currentYear }} OSD Triathlonklubb. Alla rättigheter förbehållna.</p>
+      <p>&copy; {{ currentYear }} Östersund Triathlon. Alla rättigheter förbehållna.</p>
       <div class="social-links">
         <a href="#" aria-label="Facebook">FB</a>
         <a href="#" aria-label="Instagram">IG</a>

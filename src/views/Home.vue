@@ -23,7 +23,7 @@
   <section class="posts">
     <div class="section-heading">
       <h2>Senaste inläggen</h2>
-      <p>Nyheter och berättelser från OSD Tri</p>
+      <p>Nyheter och berättelser från Östersund Triathlon</p>
     </div>
 
     <div v-if="posts.length" class="post-list">
