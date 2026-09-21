@@ -1,7 +1,7 @@
 ---
 title: "Klubbfesten 2019"
 date: "2019-09-03T12:00:00+02:00"
-author: "OSD Tri"
+author: "Styrelsen"
 ---
 
 Äntligen dags igen! Årets klubbfest blir hemma hos ordförande Stefan.
@@ -12,5 +12,3 @@ Skriv en kommentar med vad du tar med. Härligt välkomna, gamla som sprillans n
 
 - **Tid:** 11 oktober 2019 kl. 18
 - **Plats:** Spettstigen 7
-
-[Källa](http://osdtri.se/nyheter/klubbfesten2019)

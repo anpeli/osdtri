@@ -1,7 +1,7 @@
 ---
 title: "Klubbmästerskap 2019"
 date: "2019-05-28T12:00:00+02:00"
-author: "OSD Tri"
+author: "Styrelsen"
 ---
 
 Under en riktigt kul kväll, med många duktiga triathleter som tagit sig upp till Önsjön, avgjordes klubbmästerskapet den 22 augusti!
@@ -17,5 +17,3 @@ Tack för en riktigt rolig tävling alla! Detta och resten av säsongen kommer f
 ![Klubbmästerskapet](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1567502881373-IN0NXMJNMB46RUEXVSQE/IMG_4174.jpg?format=1000w)
 
 ![Klubbmästerskapet](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1567502804475-V8F78YZMESPJPFT8G5RS/IMG_4173.JPG?format=1000w)
-
-[Källa](http://osdtri.se/nyheter/Blog%20Post%20Title%20One-36awd)

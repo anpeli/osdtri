@@ -1,7 +1,7 @@
 ---
 title: "Årsmöte 2020"
 date: "2020-03-25T12:00:00+01:00"
-author: "OSD Tri"
+author: "Styrelsen"
 ---
 
 Skriv redan nu upp att årsmötet för 2020 kommer äga rum:
@@ -17,5 +17,3 @@ Vi jobbar också med ett designförslag på nya klubbdräkter. De kommer bli bå
 Kanske vill ditt företag synas på stans snyggaste dräkter? Hör av dig!
 
 /Styrelsen
-
-[Källa](http://osdtri.se/nyheter/rsmte-2020)

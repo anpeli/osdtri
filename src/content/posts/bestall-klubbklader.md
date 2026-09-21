@@ -1,7 +1,7 @@
 ---
 title: "Beställ klubbkläder!"
 date: "2021-07-10T12:00:00+02:00"
-author: "OSD Tri"
+author: "Styrelsen"
 ---
 
 Äntligen är beställningen av klubbkläder öppen!
@@ -19,5 +19,3 @@ Om det blir färre än fem av en viss typ av plagg, exempelvis tights, blir det 
 På tisdag 14/7 är det återigen träningstävling i Önsjön kl. 18:30. Vi tar med kläder från tidigare kollektioner som går att prova storleksmässigt.
 
 **Sista beställningsdag är söndag 18 juli.**
-
-[Källa](http://osdtri.se/nyheter/bestll-klubbklder-nu)

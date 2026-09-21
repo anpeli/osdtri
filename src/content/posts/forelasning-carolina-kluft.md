@@ -1,7 +1,7 @@
 ---
 title: "Föreläsning med Carolina Klüft den 31 augusti"
 date: "2021-08-18T12:00:00+02:00"
-author: "OSD Tri"
+author: "Styrelsen"
 ---
 
 RF-SISU Jämtland-Härjedalen bjuder in till kostnadsfri föreläsning med tema att behålla barn och unga inom idrotten.
@@ -19,5 +19,3 @@ Stort tack för er insats!
 
 Vänliga hälsningar,
 RF-SISU Jämtland-Härjedalen
-
-[Källa](http://osdtri.se/nyheter/frelsning-med-carolina-klft-den-31-augusti)

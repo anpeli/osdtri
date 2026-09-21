@@ -71,7 +71,7 @@ const parsePost = (source, id) => {
     date: metadata.date || '',
     author: metadata.author || '',
     image: metadata.image || '',
-    body: marked.parse(bodySource)
+    body: marked.parse(bodySource, { breaks: true })
   }
 }
 

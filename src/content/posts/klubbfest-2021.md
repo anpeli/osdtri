@@ -1,7 +1,7 @@
 ---
 title: "Klubbfest anno 2021!"
 date: "2021-09-20T12:00:00+02:00"
-author: "OSD Tri"
+author: "Styrelsen"
 ---
 
 Årets höjdpunkt, klubbfesten, närmar sig!
@@ -20,5 +20,3 @@ Skriv gärna en kommentar om vad du vill ta med så vi ser att vi får hela kost
 Varmt välkomna!
 
 /Styrelsen genom Åsa
-
-[Källa](http://osdtri.se/nyheter/klubbfest-anno-2021)

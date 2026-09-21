@@ -1,7 +1,7 @@
 ---
 title: "Årsmöte 2025 + Club social = sant"
 date: "2025-02-07T12:00:00+01:00"
-author: "OSD Tri"
+author: "Styrelsen"
 ---
 
 Kära triathleter!
@@ -25,5 +25,3 @@ Vi återkommer med plats och träningsform när det är spikat.
 Varmt välkomna!
 
 /Styrelsen
-
-[Källa](http://osdtri.se/nyheter/rsmte-2025-club-social-sant)
