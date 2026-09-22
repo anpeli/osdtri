@@ -4,6 +4,7 @@ backend:
   name: github
   repo: anpeli/osdtri
   branch: main
+  site_id: 1984609c-81bb-4602-91ee-3f2c0270e8aa
 
 media_folder: "public/assets/uploads"
 public_folder: "/assets/uploads"
