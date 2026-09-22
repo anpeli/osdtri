@@ -45,7 +45,12 @@
         ></textarea>
       </div>
 
-      <button type="submit">Skicka Meddelande</button>
+      <button type="submit" :disabled="isSubmitting">
+        {{ isSubmitting ? 'Skickar...' : 'Skicka Meddelande' }}
+      </button>
+      <p v-if="statusMessage" class="form-status" :class="statusType" role="status">
+        {{ statusMessage }}
+      </p>
     </form>
   </div>
 </template>
@@ -58,12 +63,44 @@ const formData = ref({
   email: '',
   message: ''
 })
+const isSubmitting = ref(false)
+const statusMessage = ref('')
+const statusType = ref('')
 
 const handleSubmit = async () => {
-  // Handle form submission (connect to backend/email service)
-  console.log('Form submitted:', formData.value)
-  alert('Tack för ditt meddelande!')
-  formData.value = { name: '', email: '', message: '' }
+  isSubmitting.value = true
+  statusMessage.value = ''
+
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/andreas.lindstrom@gmail.com', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formData.value.name,
+        email: formData.value.email,
+        message: formData.value.message,
+        _subject: 'Nytt meddelande från osdtri.se',
+        _replyto: formData.value.email,
+        _captcha: 'false'
+      })
+    })
+
+    if (!response.ok) {
+      throw new Error('The email service returned an error')
+    }
+
+    formData.value = { name: '', email: '', message: '' }
+    statusType.value = 'success'
+    statusMessage.value = 'Tack för ditt meddelande!'
+  } catch (error) {
+    statusType.value = 'error'
+    statusMessage.value = 'Meddelandet kunde inte skickas. Försök igen senare.'
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 
@@ -118,5 +155,22 @@ const handleSubmit = async () => {
 .form-group textarea:focus {
   outline: none;
   border-color: #6d4aff;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.form-status {
+  margin-top: 1rem;
+}
+
+.form-status.success {
+  color: #247a45;
+}
+
+.form-status.error {
+  color: #b42318;
 }
 </style>
