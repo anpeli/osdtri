@@ -4,13 +4,15 @@ import Events from '../views/Events.vue'
 import About from '../views/About.vue'
 import Membership from '../views/Membership.vue'
 import Contact from '../views/Contact.vue'
+import Training from '../views/Training.vue'
 
 const routes = [
   { path: '/', component: Home },
   { path: '/kalender', name: 'kalender', component: Events, alias: ['/events'] },
-  { path: '/about', component: About },
+  { path: '/om-oss', component: About },
   { path: '/bli-medlem', component: Membership },
-  { path: '/contact', component: Contact }
+  { path: '/kontakt', component: Contact },
+  { path: '/traning', component: Training }
 ]
 
 export default createRouter({

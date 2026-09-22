@@ -17,9 +17,10 @@
       <ul id="main-menu" class="nav-links" :class="{ 'nav-links--open': menuOpen }">
         <li><router-link to="/" @click="menuOpen = false">Hem</router-link></li>
         <li><router-link to="/kalender" @click="menuOpen = false">Kalender</router-link></li>
-        <li><router-link to="/about" @click="menuOpen = false">Om oss</router-link></li>
+        <li><router-link to="/om-oss" @click="menuOpen = false">Om oss</router-link></li>
+        <li><router-link to="/traning" @click="menuOpen = false">Träning</router-link></li>
         <li><router-link to="/bli-medlem" @click="menuOpen = false">Bli medlem</router-link></li>
-        <li><router-link to="/contact" @click="menuOpen = false">Kontakt</router-link></li>
+        <li><router-link to="/kontakt" @click="menuOpen = false">Kontakt</router-link></li>
       </ul>
     </nav>
   </header>
