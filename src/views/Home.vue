@@ -4,6 +4,22 @@
     <button @click="$router.push('/kalender')">Se kommande händelser</button>
   </section>
 
+  <section v-if="nextEvent" class="upcoming-event">
+    <div class="section-heading">
+      <h2>Nästa händelse</h2>
+      <p>Kom och träna tillsammans med Östersund Triathlon</p>
+    </div>
+
+    <article class="event-card">
+      <div class="event-content">
+        <p class="event-date">{{ formatDate(nextEvent.date) }}</p>
+        <h3>{{ nextEvent.title }}</h3>
+        <p class="event-location">{{ nextEvent.location }}</p>
+        <div class="event-description" v-html="nextEvent.description"></div>
+      </div>
+    </article>
+  </section>
+
   <section class="posts">
     <div class="section-heading">
       <h2>Senaste inläggen</h2>
@@ -28,6 +44,7 @@
 
 <script setup>
 import { marked } from 'marked'
+import { parse } from 'yaml'
 
 const postFiles = import.meta.glob('../content/posts/*.md', {
   eager: true,
@@ -64,6 +81,30 @@ const posts = Object.entries(postFiles)
   .map(([id, source]) => parsePost(source, id))
   .sort((first, second) => new Date(second.date) - new Date(first.date))
 
+const eventFiles = import.meta.glob('../content/events/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
+
+const parseEvents = (source, filePath) => {
+  const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?[\s\S]*$/)
+  if (!frontMatterMatch) return []
+
+  const metadata = parse(frontMatterMatch[1]) || {}
+
+  return (metadata.events || []).map((event, index) => ({
+    ...event,
+    id: `${filePath}-${index}`,
+    description: marked.parse(event.description || '', { breaks: true })
+  }))
+}
+
+const nextEvent = Object.entries(eventFiles)
+  .flatMap(([filePath, source]) => parseEvents(source, filePath))
+  .filter((event) => event.date && new Date(event.date) >= new Date())
+  .sort((first, second) => new Date(first.date) - new Date(second.date))[0]
+
 const formatDate = (date) => {
   if (!date) return ''
   return new Date(date).toLocaleDateString('sv-SE', {
@@ -85,6 +126,42 @@ const formatDate = (date) => {
   max-width: 800px;
   margin: 4rem auto;
   padding: 0 2rem;
+}
+
+.upcoming-event {
+  max-width: 800px;
+  margin: 4rem auto 0;
+  padding: 0 2rem;
+}
+
+.event-card {
+  overflow: hidden;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-content {
+  padding: 1.5rem;
+}
+
+.event-date,
+.event-location {
+  margin: 0 0 0.5rem;
+  color: #666;
+}
+
+.event-content h3 {
+  margin: 0 0 0.75rem;
+}
+
+.event-description {
+  color: #454545;
+  line-height: 1.6;
+}
+
+.event-description :deep(p:last-child) {
+  margin-bottom: 0;
 }
 
 .section-heading {
