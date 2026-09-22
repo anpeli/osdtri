@@ -2,8 +2,7 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section">
-        <h3>OSD Tri</h3>
-        <p>Östersunds Triathlonklubb</p>
+        <h3>Östersund Triathlon</h3>
         <p>Gemenskapen för triathleter i Östersund</p>
       </div>
 
