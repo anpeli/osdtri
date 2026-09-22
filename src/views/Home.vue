@@ -1,13 +1,15 @@
 <template>
   <section class="hero">
     <h1>Välkommen till Östersund Triathlon</h1>
-    <button @click="$router.push('/kalender')">Se kommande händelser</button>
   </section>
 
   <section v-if="nextEvent" class="upcoming-event">
     <div class="section-heading">
       <h2>Nästa händelse</h2>
-      <p>Kom och träna tillsammans med Östersund Triathlon</p>
+      <p>
+        Kom och träna tillsammans med Östersund Triathlon,
+        <router-link to="/kalender">se kalendern här.</router-link>
+      </p>
     </div>
 
     <article class="event-card">
@@ -23,7 +25,7 @@
   <section class="posts">
     <div class="section-heading">
       <h2>Senaste inläggen</h2>
-      <p>Nyheter och berättelser från Östersund Triathlon</p>
+      <p>Nyheter och berättelser från Östersund Triathlon.</p>
     </div>
 
     <div v-if="posts.length" class="post-list">
