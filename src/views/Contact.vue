@@ -37,7 +37,7 @@ const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
 
 const page = {
   title: pageMetadata.title || 'Kontakt',
-  backdrop: pageMetadata.backdrop || '/assets/images/img_2480.jpg',
+  backdrop: pageMetadata.backdrop,
   styrelse: marked.parse(pageMetadata.styrelse || ''),
   social: marked.parse(pageMetadata.social || '')
 }

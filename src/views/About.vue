@@ -22,7 +22,7 @@ const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
 
 const page = {
   title: pageMetadata.title || 'Om oss',
-  backdrop: pageMetadata.backdrop || '/assets/images/img_2480.jpg',
+  backdrop: pageMetadata.backdrop,
   body: marked.parse(frontMatterMatch?.[2] || '')
 }
 </script>

@@ -6,6 +6,17 @@
 
 <script setup>
 import { computed } from 'vue'
+import { parse } from 'yaml'
+
+const settingsFiles = import.meta.glob('../content/settings/site.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
+
+const settingsSource = settingsFiles['../content/settings/site.md']
+const settingsFrontMatterMatch = settingsSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+const settings = settingsFrontMatterMatch ? parse(settingsFrontMatterMatch[1]) || {} : {}
 
 const props = defineProps({
   title: {
@@ -13,13 +24,12 @@ const props = defineProps({
     required: true
   },
   backdrop: {
-    type: String,
-    default: '/assets/images/img_2480.jpg'
+    type: String
   }
 })
 
 const headerStyle = computed(() => ({
-  backgroundImage: `linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), url("${props.backdrop}")`
+  backgroundImage: `linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), url("${props.backdrop || settings.backdrop || '/assets/images/20190820_203136.jpg'}")`
 }))
 </script>
 

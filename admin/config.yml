@@ -18,6 +18,7 @@ collections:
         name: "site"
         fields:
           - { name: "contactEmail", label: "Contact form email", widget: "email" }
+          - { name: "backdrop", label: "Default page header backdrop", widget: "image" }
 
   - name: "about"
     label: "About"

@@ -1,5 +1,5 @@
 <template>
-  <PageHeader title="Välkommen till Östersund Triathlon" backdrop="/assets/images/img_2480.jpg" />
+  <PageHeader title="Välkommen till Östersund Triathlon" />
   <NextEvent />
   <LatestPosts />
 </template>

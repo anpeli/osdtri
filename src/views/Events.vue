@@ -1,6 +1,6 @@
 <template>
   <div class="events-page">
-    <PageHeader title="Kalender" backdrop="/assets/images/img_2480.jpg" />
+    <PageHeader title="Kalender" />
     <h2 class="events-title">Kommande händelser</h2>
 
     <div v-if="events.length === 0" class="no-events">
