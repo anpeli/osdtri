@@ -20,8 +20,8 @@ collections:
           - { name: "contactEmail", label: "Contact form email", widget: "email" }
           - { name: "backdrop", label: "Default page header backdrop", widget: "image" }
 
-  - name: "about"
-    label: "About"
+  - name: "pages"
+    label: "Pages"
     files:
       - file: "src/content/pages/about.md"
         label: "About"
@@ -31,10 +31,6 @@ collections:
           - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "body", label: "Body", widget: "markdown" }
-
-  - name: "membership"
-    label: "Membership"
-    files:
       - file: "src/content/pages/membership.md"
         label: "Membership"
         name: "membership"
@@ -43,10 +39,6 @@ collections:
           - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "body", label: "Body", widget: "markdown" }
-
-  - name: "training"
-    label: "Training"
-    files:
       - file: "src/content/pages/training.md"
         label: "Training"
         name: "training"
@@ -55,10 +47,6 @@ collections:
           - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "body", label: "Body", widget: "markdown" }
-
-  - name: "contact"
-    label: "Contact"
-    files:
       - file: "src/content/pages/contact.md"
         label: "Contact"
         name: "contact"
