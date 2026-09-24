@@ -1,7 +1,9 @@
 <template>
   <header class="header">
     <nav class="nav">
-      <img class="logo" src="/assets/images/osdtri-jamtkraft.png" alt="OSD Tri" />
+      <router-link to="/" aria-label="OSD Tri - hem">
+        <img class="logo" src="/assets/images/osdtri-jamtkraft.png" alt="OSD Tri" />
+      </router-link>
       <button
         class="menu-toggle"
         type="button"
