@@ -66,8 +66,7 @@ Post content goes here.
 
 The home page discovers these Markdown files at build time and renders them in date order.
 
-The calendar is stored in `src/content/pages/events.md` as an `events` list in the front matter. It is editable through
-the Events collection in Decap CMS.
+The calendar is stored as individual event markdown files in `src/content/events/`. Each file contains the same event fields used by the Events collection in Decap CMS: title, date, location, description, and optional image.
 
 ## Decap CMS
 

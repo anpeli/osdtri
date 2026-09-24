@@ -83,28 +83,27 @@ const posts = Object.entries(postFiles)
   .map(([id, source]) => parsePost(source, id))
   .sort((first, second) => new Date(second.date) - new Date(first.date))
 
-const eventFiles = import.meta.glob('../content/pages/events.md', {
+const eventFiles = import.meta.glob('../content/events/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
 
 const parseEvents = (source, filePath) => {
-  const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?[\s\S]*$/)
-  if (!frontMatterMatch) return []
+  const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+  const metadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
+  const descriptionSource = metadata.description || (frontMatterMatch ? frontMatterMatch[2] : source) || ''
 
-  const metadata = parse(frontMatterMatch[1]) || {}
-
-  return (metadata.events || []).map((event, index) => ({
-    ...event,
-    id: `${filePath}-${index}`,
-    description: marked.parse(event.description || '', { breaks: true })
-  }))
+  return {
+    ...metadata,
+    id: filePath,
+    description: marked.parse(descriptionSource, { breaks: true })
+  }
 }
 
 const nextEvent = Object.entries(eventFiles)
-  .flatMap(([filePath, source]) => parseEvents(source, filePath))
-  .filter((event) => event.date && new Date(event.date) >= new Date())
+  .map(([filePath, source]) => parseEvents(source, filePath))
+  .filter((event) => event.title && event.date && new Date(event.date) >= new Date())
   .sort((first, second) => new Date(first.date) - new Date(second.date))[0]
 
 const formatDate = (date) => {

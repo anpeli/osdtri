@@ -34,22 +34,27 @@
 import { marked } from 'marked'
 import { parse } from 'yaml'
 
-const eventFiles = import.meta.glob('../content/pages/events.md', {
+const eventFiles = import.meta.glob('../content/events/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
 
-const eventSource = eventFiles['../content/pages/events.md']
-const frontMatterMatch = eventSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-const metadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
+const parseEvent = (source, filePath) => {
+  const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+  const metadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
+  const descriptionSource = metadata.description || (frontMatterMatch ? frontMatterMatch[2] : source) || ''
 
-const events = (metadata.events || []).map((event, index) => ({
-  ...event,
-  id: `events-${index}`,
-  description: marked.parse(event.description || '', { breaks: true })
-}))
-  .filter((event) => event.date && new Date(event.date) >= new Date())
+  return {
+    ...metadata,
+    id: filePath,
+    description: marked.parse(descriptionSource, { breaks: true })
+  }
+}
+
+const events = Object.entries(eventFiles)
+  .map(([filePath, source]) => parseEvent(source, filePath))
+  .filter((event) => event.title && event.date && new Date(event.date) >= new Date())
   .sort((first, second) => new Date(first.date) - new Date(second.date))
 
 const formatDate = (dateString) => new Date(dateString).toLocaleDateString('sv-SE', {
