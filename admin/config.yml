@@ -10,10 +10,25 @@ identity:
   service: netlify
 
 collections:
-  - name: "pages"
-    label: "Pages"
-    folder: "src/content/pages"
-    create: false
+  - name: "about"
+    label: "About"
+    file: "src/content/about.md"
+    fields:
+      - { name: "title", label: "Title" }
+      - { name: "slug", label: "Slug" }
+      - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "membership"
+    label: "Membership"
+    file: "src/content/membership.md"
+    fields:
+      - { name: "title", label: "Title" }
+      - { name: "slug", label: "Slug" }
+      - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "training"
+    label: "Training"
+    file: "src/content/training.md"
     fields:
       - { name: "title", label: "Title" }
       - { name: "slug", label: "Slug" }
@@ -21,15 +36,12 @@ collections:
 
   - name: "contact"
     label: "Contact"
-    files:
-      - name: "contact"
-        label: "Contact"
-        file: "src/content/contact.md"
-        fields:
-          - { name: "title", label: "Title" }
-          - { name: "slug", label: "Slug" }
-          - { name: "styrelse", label: "Styrelse", widget: "markdown" }
-          - { name: "social", label: "Email/Facebook/Instagram", widget: "markdown" }
+    file: "src/content/contact.md"
+    fields:
+      - { name: "title", label: "Title" }
+      - { name: "slug", label: "Slug" }
+      - { name: "styrelse", label: "Styrelse", widget: "markdown" }
+      - { name: "social", label: "Email/Facebook/Instagram", widget: "markdown" }
 
   - name: "events"
     label: "Events"

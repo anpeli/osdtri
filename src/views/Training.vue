@@ -9,13 +9,13 @@
 import { marked } from 'marked'
 import { parse } from 'yaml'
 
-const pageFiles = import.meta.glob('../content/pages/*.md', {
+const pageFiles = import.meta.glob('../content/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
 
-const pageSource = pageFiles['../content/pages/training.md']
+const pageSource = pageFiles['../content/training.md']
 const frontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
 const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
 

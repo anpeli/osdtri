@@ -60,7 +60,7 @@ import { ref } from 'vue'
 import { marked } from 'marked'
 import { parse } from 'yaml'
 
-const pageFiles = import.meta.glob('../content/contact.md', {
+const pageFiles = import.meta.glob('../content/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
