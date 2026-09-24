@@ -9,5 +9,3 @@ social: |
   - Facebook
   - Instagram
 ---
-
-# Kontakt

@@ -146,8 +146,8 @@ const formatDate = (date) => {
 
 .home-content {
   max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 2rem 0;
+  margin: 2rem auto 0;
+  padding: 0 2rem;
 }
 
 .posts {

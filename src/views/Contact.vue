@@ -1,6 +1,7 @@
 <template>
   <div class="contact-page">
     <PageHeader :title="page.title" :backdrop="page.backdrop" />
+    <h2 class="contact-title">Kontakt</h2>
     
     <div class="contact-info">
       <div class="info-item">
@@ -129,6 +130,11 @@ const handleSubmit = async () => {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 2rem 2rem;
+}
+
+.contact-title {
+  margin: 0;
+  padding-top: 2rem;
 }
 
 .contact-info {
