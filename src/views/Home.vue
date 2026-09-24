@@ -1,9 +1,7 @@
 <template>
   <PageHeader :title="home.title" :backdrop="home.backdrop" />
   <div class="home-content" v-html="home.body"></div>
-
   <NextEvent />
-
   <LatestPosts />
 </template>
 
@@ -32,16 +30,9 @@ const home = {
 </script>
 
 <style scoped>
-.hero {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-}
-
 .home-content {
   max-width: 800px;
   margin: 2rem auto 0;
   padding: 0 2rem;
 }
-
 </style>

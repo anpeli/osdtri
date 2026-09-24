@@ -29,13 +29,7 @@
 import { marked } from 'marked'
 import { parse } from 'yaml'
 
-const eventFiles = import.meta.glob('../content/events/*.md', {
-  eager: true,
-  import: 'default',
-  query: '?raw'
-})
-
-const parseEvents = (source, filePath) => {
+const parseEvent = (source, filePath) => {
   const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
   const metadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
   const descriptionSource = metadata.description || (frontMatterMatch ? frontMatterMatch[2] : source) || ''
@@ -47,13 +41,20 @@ const parseEvents = (source, filePath) => {
   }
 }
 
+const eventFiles = import.meta.glob('../content/events/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
+
 const event = Object.entries(eventFiles)
-  .map(([filePath, source]) => parseEvents(source, filePath))
+  .map(([filePath, source]) => parseEvent(source, filePath))
   .filter((entry) => entry.title && entry.date && new Date(entry.date) >= new Date())
   .sort((first, second) => new Date(first.date) - new Date(second.date))[0]
 
 const formatDate = (date) => {
   if (!date) return ''
+
   return new Date(date).toLocaleDateString('sv-SE', {
     year: 'numeric',
     month: 'long',

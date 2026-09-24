@@ -24,6 +24,24 @@
 <script setup>
 import { marked } from 'marked'
 
+const parseFrontMatter = (source) => {
+  const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+  const metadata = {}
+
+  if (frontMatterMatch) {
+    frontMatterMatch[1].split(/\r?\n/).forEach((line) => {
+      const separator = line.indexOf(':')
+      if (separator === -1) return
+
+      const key = line.slice(0, separator).trim()
+      const value = line.slice(separator + 1).trim().replace(/^['"]|['"]$/g, '')
+      metadata[key] = value
+    })
+  }
+
+  return { metadata, body: frontMatterMatch ? frontMatterMatch[2] : source }
+}
+
 const postFiles = import.meta.glob('../content/posts/*.md', {
   eager: true,
   import: 'default',
@@ -31,19 +49,7 @@ const postFiles = import.meta.glob('../content/posts/*.md', {
 })
 
 const parsePost = (source, id) => {
-  const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-  const metadata = {}
-  const bodySource = frontMatterMatch ? frontMatterMatch[2] : source
-
-  if (frontMatterMatch) {
-    frontMatterMatch[1].split(/\r?\n/).forEach((line) => {
-      const separator = line.indexOf(':')
-      if (separator === -1) return
-      const key = line.slice(0, separator).trim()
-      const value = line.slice(separator + 1).trim().replace(/^['"]|['"]$/g, '')
-      metadata[key] = value
-    })
-  }
+  const { metadata, body } = parseFrontMatter(source)
 
   return {
     id,
@@ -51,7 +57,7 @@ const parsePost = (source, id) => {
     date: metadata.date || '',
     author: metadata.author || '',
     image: metadata.image || '',
-    body: marked.parse(bodySource, { breaks: true })
+    body: marked.parse(body, { breaks: true })
   }
 }
 
