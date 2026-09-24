@@ -68,6 +68,8 @@ collections:
     label: "Posts"
     folder: "src/content/posts"
     create: true
+    identifier_field: "title"
+    summary: "{{date | date('YYYY-MM-DD')}} - {{title}}"
     fields:
       - { name: "title", label: "Title" }
       - { name: "date", label: "Date", widget: "datetime" }
