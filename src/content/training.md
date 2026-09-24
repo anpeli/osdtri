@@ -1,6 +1,7 @@
 ---
 title: "Träning"
 slug: "traning"
+backdrop: "/assets/images/img_2480.jpg"
 ---
 
 ## Simträning?

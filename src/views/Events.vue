@@ -1,6 +1,7 @@
 <template>
   <div class="events-page">
-    <h1>Kalender</h1>
+    <div class="events-content" v-html="page.body"></div>
+    <PageHeader :title="page.title" :backdrop="page.backdrop" />
 
     <div v-if="events.length === 0" class="no-events">
       <p>Inga evenemang schemalagda just nu.</p>
@@ -39,6 +40,22 @@
 <script setup>
 import { marked } from 'marked'
 import { parse } from 'yaml'
+import PageHeader from '../components/PageHeader.vue'
+
+const pageFiles = import.meta.glob('../content/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
+
+const pageSource = pageFiles['../content/events.md'] || ''
+const frontMatterMatch = pageSource.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
+const page = {
+  title: pageMetadata.title || 'Kalender',
+  backdrop: pageMetadata.backdrop || '/assets/images/img_2480.jpg',
+  body: marked.parse(frontMatterMatch?.[2] || '')
+}
 
 const eventFiles = import.meta.glob('../content/events/*.md', {
   eager: true,
@@ -74,7 +91,7 @@ const formatDate = (dateString) => new Date(dateString).toLocaleDateString('sv-S
 .events-page {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
 }
 
 .event-list {

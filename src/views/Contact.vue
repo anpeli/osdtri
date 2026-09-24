@@ -1,6 +1,6 @@
 <template>
   <div class="contact-page">
-    <h1>{{ page.title }}</h1>
+    <PageHeader :title="page.title" :backdrop="page.backdrop" />
     
     <div class="contact-info">
       <div class="info-item">
@@ -59,6 +59,7 @@
 import { ref } from 'vue'
 import { marked } from 'marked'
 import { parse } from 'yaml'
+import PageHeader from '../components/PageHeader.vue'
 
 const pageFiles = import.meta.glob('../content/*.md', {
   eager: true,
@@ -72,6 +73,7 @@ const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
 
 const page = {
   title: pageMetadata.title || 'Kontakt',
+  backdrop: pageMetadata.backdrop || '/assets/images/img_2480.jpg',
   styrelse: marked.parse(pageMetadata.styrelse || ''),
   social: marked.parse(pageMetadata.social || '')
 }
@@ -126,7 +128,7 @@ const handleSubmit = async () => {
 .contact-page {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
 }
 
 .contact-info {

@@ -1,7 +1,7 @@
 <template>
-  <section class="hero">
-    <h1>Välkommen till Östersund Triathlon</h1>
-  </section>
+  <div class="home-content" v-html="home.body"></div>
+
+  <PageHeader :title="home.title" :backdrop="home.backdrop" />
 
   <section v-if="nextEvent" class="upcoming-event">
     <div class="section-heading">
@@ -53,6 +53,22 @@
 <script setup>
 import { marked } from 'marked'
 import { parse } from 'yaml'
+import PageHeader from '../components/PageHeader.vue'
+
+const pageFiles = import.meta.glob('../content/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
+
+const homeSource = pageFiles['../content/home.md'] || ''
+const homeFrontMatterMatch = homeSource.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+const homeMetadata = homeFrontMatterMatch ? parse(homeFrontMatterMatch[1]) || {} : {}
+const home = {
+  title: homeMetadata.title || 'Välkommen till Östersund Triathlon',
+  backdrop: homeMetadata.backdrop || '/assets/images/img_2480.jpg',
+  body: marked.parse(homeFrontMatterMatch?.[2] || '')
+}
 
 const postFiles = import.meta.glob('../content/posts/*.md', {
   eager: true,
