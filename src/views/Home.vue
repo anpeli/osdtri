@@ -8,7 +8,7 @@
       <h2>Nästa händelse</h2>
       <p>
         Kom och träna tillsammans med Östersund Triathlon,
-        <router-link to="/kalender">se kalendern här.</router-link>
+        <router-link to="/kalender">se alla händelser här.</router-link>
       </p>
     </div>
 
