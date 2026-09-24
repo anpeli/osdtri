@@ -9,17 +9,13 @@ backdrop: "/assets/images/20190820_203136.jpg"
 Kontakta styrelsen via formuläret nedan.
 
 ### Ordförande
-- Anna Andersson
-- anna@osdtri.se
+- Åsa Nilsson
 
 ### Kassör
-- Erik Svensson
-- erik@osdtri.se
+- Fredrik Marken
 
 ### Ledamot
-- Sofia Berg
-- sofia@osdtri.se
+- Andreas Lindström
 
 ### Ledamot
-- Martin Nilsson
-- martin@osdtri.se
+- Ann-Mari Darj
