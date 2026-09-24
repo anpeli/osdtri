@@ -3,6 +3,8 @@ backend:
   branch: main
   squash_merges: true
 
+local_backend: true
+
 media_folder: "assets/images"
 public_folder: "/assets/images"
 
