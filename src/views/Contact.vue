@@ -25,13 +25,13 @@ import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
 import ContactForm from '../components/ContactForm.vue'
 
-const pageFiles = import.meta.glob('../content/*.md', {
+const pageFiles = import.meta.glob('../content/pages/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
 
-const pageSource = pageFiles['../content/contact.md']
+const pageSource = pageFiles['../content/pages/contact.md']
 const frontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
 const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
 

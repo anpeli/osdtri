@@ -10,13 +10,13 @@ import { marked } from 'marked'
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
 
-const pageFiles = import.meta.glob('../content/*.md', {
+const pageFiles = import.meta.glob('../content/pages/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
 
-const pageSource = pageFiles['../content/membership.md']
+const pageSource = pageFiles['../content/pages/membership.md']
 const frontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
 const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
 

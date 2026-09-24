@@ -13,7 +13,7 @@ collections:
   - name: "about"
     label: "About"
     files:
-      - file: "src/content/about.md"
+      - file: "src/content/pages/about.md"
         label: "About"
         name: "about"
         fields:
@@ -25,7 +25,7 @@ collections:
   - name: "membership"
     label: "Membership"
     files:
-      - file: "src/content/membership.md"
+      - file: "src/content/pages/membership.md"
         label: "Membership"
         name: "membership"
         fields:
@@ -37,7 +37,7 @@ collections:
   - name: "training"
     label: "Training"
     files:
-      - file: "src/content/training.md"
+      - file: "src/content/pages/training.md"
         label: "Training"
         name: "training"
         fields:
@@ -49,7 +49,7 @@ collections:
   - name: "contact"
     label: "Contact"
     files:
-      - file: "src/content/contact.md"
+      - file: "src/content/pages/contact.md"
         label: "Contact"
         name: "contact"
         fields:
@@ -58,6 +58,18 @@ collections:
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "styrelse", label: "Styrelse", widget: "markdown" }
           - { name: "social", label: "Email/Facebook/Instagram", widget: "markdown" }
+
+  - name: "events-page"
+    label: "Events page"
+    files:
+      - file: "src/content/pages/events.md"
+        label: "Events page"
+        name: "events-page"
+        fields:
+          - { name: "title", label: "Title" }
+          - { name: "slug", label: "Slug" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "body", label: "Body", widget: "markdown" }
 
   - name: "events"
     label: "Events"
