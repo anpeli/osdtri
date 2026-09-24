@@ -17,7 +17,7 @@ collections:
         label: "Site settings"
         name: "site"
         fields:
-          - { name: "contactEmail", label: "Contact form email", widget: "email" }
+          - { name: "contactEmail", label: "Contact form email", widget: "string", pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
           - { name: "backdrop", label: "Default page header backdrop", widget: "image" }
 
   - name: "pages"
@@ -56,6 +56,20 @@ collections:
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "styrelse", label: "Styrelse", widget: "markdown" }
           - { name: "social", label: "Email/Facebook/Instagram", widget: "markdown" }
+
+  - name: "events"
+    label: "Events"
+    folder: "src/content/events"
+    create: true
+    identifier_field: "title"
+    summary: "{{date | date('YYYY-MM-DD')}} - {{title}}"
+    fields:
+      - { name: "title", label: "Title" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "location", label: "Location", required: false }
+      - { name: "image", label: "Image", widget: "image", required: false }
+      - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
+      - { name: "description", label: "Description", widget: "text" }
 
   - name: "posts"
     label: "Posts"
