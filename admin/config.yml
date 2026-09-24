@@ -59,18 +59,6 @@ collections:
           - { name: "styrelse", label: "Styrelse", widget: "markdown" }
           - { name: "social", label: "Email/Facebook/Instagram", widget: "markdown" }
 
-  - name: "events-page"
-    label: "Events page"
-    files:
-      - file: "src/content/events.md"
-        label: "Events page"
-        name: "events-page"
-        fields:
-          - { name: "title", label: "Title" }
-          - { name: "slug", label: "Slug" }
-          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
-          - { name: "body", label: "Body", widget: "markdown" }
-
   - name: "events"
     label: "Events"
     folder: "src/content/events"
