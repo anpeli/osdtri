@@ -12,15 +12,6 @@ identity:
   service: netlify
 
 collections:
-  - name: "site-settings"
-    label: "Site settings"
-    files:
-      - file: "src/content/settings/site.md"
-        label: "Site settings"
-        name: "site"
-        fields:
-          - { name: "contactEmail", label: "Contact form email", widget: "string", pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
-          - { name: "backdrop", label: "Default page header backdrop", widget: "image" }
 
   - name: "pages"
     label: "Pages"
@@ -83,3 +74,13 @@ collections:
       - { name: "author", label: "Author" }
       - { name: "image", label: "Image", widget: "image", required: false }
       - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "site-settings"
+    label: "Site settings"
+    files:
+      - file: "src/content/settings/site.md"
+        label: "Site settings"
+        name: "site"
+        fields:
+          - { name: "contactEmail", label: "Contact form email", widget: "string", pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
+          - { name: "backdrop", label: "Default page header backdrop", widget: "image" }
