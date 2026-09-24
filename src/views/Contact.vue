@@ -1,16 +1,16 @@
 <template>
   <div class="contact-page">
-    <h1>Kontakt</h1>
+    <h1>{{ page.title }}</h1>
     
     <div class="contact-info">
       <div class="info-item">
-        <h3>Email</h3>
-        <p><a href="mailto:info@osdtri.se">info@osdtri.se</a></p>
+        <h3>Styrelse</h3>
+        <div class="info-content" v-html="page.styrelse"></div>
       </div>
       
       <div class="info-item">
-        <h3>Besöksadress</h3>
-        <p>Östersund, Sverige</p>
+        <h3>Email/Facebook/Instagram</h3>
+        <div class="info-content" v-html="page.social"></div>
       </div>
     </div>
 
@@ -57,6 +57,24 @@
 
 <script setup>
 import { ref } from 'vue'
+import { marked } from 'marked'
+import { parse } from 'yaml'
+
+const pageFiles = import.meta.glob('../content/contact.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
+
+const pageSource = pageFiles['../content/contact.md']
+const frontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
+
+const page = {
+  title: pageMetadata.title || 'Kontakt',
+  styrelse: marked.parse(pageMetadata.styrelse || ''),
+  social: marked.parse(pageMetadata.social || '')
+}
 
 const formData = ref({
   name: '',
@@ -172,5 +190,27 @@ button:disabled {
 
 .form-status.error {
   color: #b42318;
+}
+
+.info-content :deep(p) {
+  margin: 0 0 0.75rem;
+}
+
+.info-content :deep(p:last-child) {
+  margin-bottom: 0;
+}
+
+.info-content :deep(ul) {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.info-content :deep(a) {
+  color: #6d4aff;
+  text-decoration: none;
+}
+
+.info-content :deep(a:hover) {
+  text-decoration: underline;
 }
 </style>

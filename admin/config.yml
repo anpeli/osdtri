@@ -19,6 +19,18 @@ collections:
       - { name: "slug", label: "Slug" }
       - { name: "body", label: "Body", widget: "markdown" }
 
+  - name: "contact"
+    label: "Contact"
+    files:
+      - name: "contact"
+        label: "Contact"
+        file: "src/content/contact.md"
+        fields:
+          - { name: "title", label: "Title" }
+          - { name: "slug", label: "Slug" }
+          - { name: "styrelse", label: "Styrelse", widget: "markdown" }
+          - { name: "social", label: "Email/Facebook/Instagram", widget: "markdown" }
+
   - name: "events"
     label: "Events"
     folder: "src/content/events"
