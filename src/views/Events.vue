@@ -22,7 +22,13 @@
         <div class="event-info">
           <h2>{{ event.title }}</h2>
           <p class="event-date">{{ formatDate(event.date) }}</p>
-          <p class="event-location">{{ event.location }}</p>
+          <p v-if="event.location || event.facebookUrl" class="event-location">
+            <span v-if="event.location">{{ event.location }}</span>
+            <span v-if="event.location && event.facebookUrl"> - </span>
+            <a v-if="event.facebookUrl" :href="event.facebookUrl" target="_blank" rel="noopener noreferrer" aria-label="Se händelsen på Facebook (öppnas i en ny flik)">
+              Se händelsen på Facebook <span aria-hidden="true">↗</span>
+            </a>
+          </p>
           <div v-html="event.description"></div>
         </div>
       </div>

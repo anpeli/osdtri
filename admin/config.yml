@@ -52,7 +52,8 @@ collections:
     fields:
       - { name: "title", label: "Title" }
       - { name: "date", label: "Date", widget: "datetime" }
-      - { name: "location", label: "Location" }
+      - { name: "location", label: "Location", required: false }
+      - { name: "facebookUrl", label: "Facebook URL", required: false }
       - { name: "description", label: "Description", widget: "markdown" }
       - { name: "image", label: "Image", widget: "image", required: false }
 
