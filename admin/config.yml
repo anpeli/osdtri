@@ -10,6 +10,15 @@ identity:
   service: netlify
 
 collections:
+  - name: "site-settings"
+    label: "Site settings"
+    files:
+      - file: "src/content/settings/site.md"
+        label: "Site settings"
+        name: "site"
+        fields:
+          - { name: "contactEmail", label: "Contact form email", widget: "email" }
+
   - name: "about"
     label: "About"
     files:
