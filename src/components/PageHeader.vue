@@ -37,6 +37,7 @@ const headerStyle = computed(() => ({
 .page-header {
   width: 100vw;
   margin-left: calc(50% - 50vw);
+  margin-bottom: 3rem;
   padding: 4rem 2rem;
   color: #ffffff;
   text-align: center;

@@ -80,7 +80,7 @@ const formatDate = (dateString) => new Date(dateString).toLocaleDateString('sv-S
 }
 
 .events-title {
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
 .event-list {

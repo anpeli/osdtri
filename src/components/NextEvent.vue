@@ -66,7 +66,7 @@ const formatDate = (date) => {
 <style scoped>
 .upcoming-event {
   max-width: 800px;
-  margin: 4rem auto 0;
+  margin: 0 auto;
   padding: 0 2rem;
 }
 

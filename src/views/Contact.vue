@@ -53,7 +53,6 @@ const page = {
 
 .contact-title {
   margin: 0;
-  padding-top: 2rem;
 }
 
 .contact-info {

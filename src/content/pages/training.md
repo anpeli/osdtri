@@ -4,8 +4,6 @@ slug: "traning"
 backdrop: "/assets/images/20190820_203136.jpg"
 ---
 
-# Träning
-
 ## Simträning?
 
 Vi har i dagsläget inga egna regelbundna simträningar utan hänvisar till Mastersgruppen hos den lokala simklubben [SK Ägir](http://www.skagir.se/).
