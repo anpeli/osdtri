@@ -85,4 +85,7 @@ collections:
         name: "site"
         fields:
           - { name: "contactEmail", label: "Contact form email", widget: "string", pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
+          - { name: "email", label: "Email", widget: "string", pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
+          - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
+          - { name: "instagramUrl", label: "Instagram URL", widget: "string", required: false }
           - { name: "backdrop", label: "Default page header backdrop", widget: "image" }

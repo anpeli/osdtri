@@ -20,27 +20,32 @@
       <div class="footer-section">
         <h4>Kontakt</h4>
         <address>
-          <p>Email: info@osdtri.se</p>
-          <p>Postadress:</p>
-          <p>OSD Tri</p>
-          <p>850 00 Östersund</p>
+          <p><a :href="`mailto:${settings.email}`">Email: {{ settings.email }}</a></p>
+          <p><a :href="settings.facebookUrl" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+          <p><a :href="settings.instagramUrl" target="_blank" rel="noopener noreferrer">Instagram</a></p>
         </address>
       </div>
     </div>
 
     <div class="footer-bottom">
       <p>&copy; {{ currentYear }} Östersund Triathlon. Alla rättigheter förbehållna.</p>
-      <div class="social-links">
-        <a href="#" aria-label="Facebook">FB</a>
-        <a href="#" aria-label="Instagram">IG</a>
-        <a href="#" aria-label="Strava">STV</a>
-      </div>
     </div>
   </footer>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { parse } from 'yaml'
+
+const settingsFiles = import.meta.glob('../content/settings/site.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
+
+const settingsSource = settingsFiles['../content/settings/site.md']
+const settingsFrontMatterMatch = settingsSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+const settings = settingsFrontMatterMatch ? parse(settingsFrontMatterMatch[1]) || {} : {}
 
 const currentYear = ref(new Date().getFullYear())
 </script>
@@ -84,7 +89,7 @@ const currentYear = ref(new Date().getFullYear())
   color: #6d4aff;
 }
 
-.address p {
+.footer-section address p {
   margin-bottom: 0.25rem;
   color: #cccccc;
 }
@@ -99,29 +104,6 @@ const currentYear = ref(new Date().getFullYear())
   border-top: 1px solid #333;
   flex-wrap: wrap;
   gap: 1rem;
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-links a {
-  width: 40px;
-  height: 40px;
-  background-color: #333;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.75rem;
-  transition: background-color 0.3s;
-}
-
-.social-links a:hover {
-  background-color: #6d4aff;
 }
 
 @media (max-width: 768px) {
