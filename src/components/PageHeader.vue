@@ -36,11 +36,15 @@ const headerStyle = computed(() => ({
 <style scoped>
 .page-header {
   width: 100vw;
+  height: 200px;
   margin-left: calc(50% - 50vw);
   margin-bottom: 3rem;
-  padding: 4rem 2rem;
+  padding: 2rem;
   color: #ffffff;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-position: center;
   background-size: cover;
 }
