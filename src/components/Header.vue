@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <nav class="nav">
-      <img class="logo" src="../resources/osdtri-jamtkraft.png" alt="OSD Tri" />
+      <img class="logo" src="/assets/images/osdtri-jamtkraft.png" alt="OSD Tri" />
       <button
         class="menu-toggle"
         type="button"
