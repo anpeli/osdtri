@@ -22,9 +22,9 @@ collections:
   - name: "events"
     label: "Events"
     files:
-      - file: "src/content/events/2026.md"
-        label: "2026"
-        name: "2026"
+      - file: "src/content/pages/events.md"
+        label: "Calendar"
+        name: "calendar"
         fields:
           - name: "events"
             label: "Events"

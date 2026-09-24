@@ -1,7 +1,7 @@
 <template>
   <div class="events-page">
     <h1>Kalender</h1>
-    
+
     <div v-if="events.length === 0" class="no-events">
       <p>Inga evenemang schemalagda just nu.</p>
     </div>
@@ -13,9 +13,9 @@
         class="event-card"
         :class="{ 'event-card--no-image': !event.image }"
       >
-        <img 
-          v-if="event.image" 
-          :src="event.image" 
+        <img
+          v-if="event.image"
+          :src="event.image"
           :alt="event.title"
           class="event-image"
         />
@@ -34,38 +34,29 @@
 import { marked } from 'marked'
 import { parse } from 'yaml'
 
-const eventFiles = import.meta.glob('../content/events/*.md', {
+const eventFiles = import.meta.glob('../content/pages/events.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
 
-const parseEvents = (source, filePath) => {
-  const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-  if (!frontMatterMatch) return []
+const eventSource = eventFiles['../content/pages/events.md']
+const frontMatterMatch = eventSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+const metadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
 
-  const metadata = parse(frontMatterMatch[1]) || {}
-
-  return (metadata.events || []).map((event, index) => ({
-    ...event,
-    id: `${filePath}-${index}`,
-    description: marked.parse(event.description || '', { breaks: true })
-  }))
-}
-
-const events = Object.entries(eventFiles)
-  .flatMap(([filePath, source]) => parseEvents(source, filePath))
+const events = (metadata.events || []).map((event, index) => ({
+  ...event,
+  id: `events-${index}`,
+  description: marked.parse(event.description || '', { breaks: true })
+}))
   .filter((event) => event.date && new Date(event.date) >= new Date())
   .sort((first, second) => new Date(first.date) - new Date(second.date))
 
-const formatDate = (dateString) => {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('sv-SE', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
+const formatDate = (dateString) => new Date(dateString).toLocaleDateString('sv-SE', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+})
 </script>
 
 <style scoped>

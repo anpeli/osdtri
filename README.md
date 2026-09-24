@@ -66,10 +66,8 @@ Post content goes here.
 
 The home page discovers these Markdown files at build time and renders them in date order.
 
-Events are stored one year per Markdown file in `src/content/events/`, with an `events` list in the front matter. The
-Events page discovers all yearly files at build time, sorts the entries by date, and hides events that have already
-started. Add the next year's file to the `events` file collection in `admin/config.yml` when opening that year's
-calendar in Decap CMS.
+The calendar is stored in `src/content/pages/events.md` as an `events` list in the front matter. It is editable through
+the Events collection in Decap CMS.
 
 ## Decap CMS
 

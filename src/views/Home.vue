@@ -83,7 +83,7 @@ const posts = Object.entries(postFiles)
   .map(([id, source]) => parsePost(source, id))
   .sort((first, second) => new Date(second.date) - new Date(first.date))
 
-const eventFiles = import.meta.glob('../content/events/*.md', {
+const eventFiles = import.meta.glob('../content/pages/events.md', {
   eager: true,
   import: 'default',
   query: '?raw'
