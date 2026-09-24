@@ -1,5 +1,5 @@
 <template>
-  <section class="upcoming-event">
+  <section v-if="event" class="upcoming-event">
     <div class="section-heading">
       <h2>Nästa händelse</h2>
       <p>
@@ -26,12 +26,31 @@
 </template>
 
 <script setup>
-defineProps({
-  event: {
-    type: Object,
-    required: true
-  }
+import { marked } from 'marked'
+import { parse } from 'yaml'
+
+const eventFiles = import.meta.glob('../content/events/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
 })
+
+const parseEvents = (source, filePath) => {
+  const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+  const metadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
+  const descriptionSource = metadata.description || (frontMatterMatch ? frontMatterMatch[2] : source) || ''
+
+  return {
+    ...metadata,
+    id: filePath,
+    description: marked.parse(descriptionSource, { breaks: true })
+  }
+}
+
+const event = Object.entries(eventFiles)
+  .map(([filePath, source]) => parseEvents(source, filePath))
+  .filter((entry) => entry.title && entry.date && new Date(entry.date) >= new Date())
+  .sort((first, second) => new Date(first.date) - new Date(second.date))[0]
 
 const formatDate = (date) => {
   if (!date) return ''
