@@ -1,7 +1,8 @@
 <template>
   <div class="events-page">
-    <div class="events-content" v-html="page.body"></div>
     <PageHeader :title="page.title" :backdrop="page.backdrop" />
+    <h2 class="events-title">Kommande händelser</h2>
+    <div class="events-content" v-html="page.body"></div>
 
     <div v-if="events.length === 0" class="no-events">
       <p>Inga evenemang schemalagda just nu.</p>
@@ -92,6 +93,16 @@ const formatDate = (dateString) => new Date(dateString).toLocaleDateString('sv-S
   max-width: 800px;
   margin: 0 auto;
   padding: 0 2rem 2rem;
+}
+
+.events-content {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.events-title {
+  margin: 0;
+  padding-top: 2rem;
 }
 
 .event-list {

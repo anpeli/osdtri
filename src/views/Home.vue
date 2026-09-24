@@ -1,7 +1,6 @@
 <template>
-  <div class="home-content" v-html="home.body"></div>
-
   <PageHeader :title="home.title" :backdrop="home.backdrop" />
+  <div class="home-content" v-html="home.body"></div>
 
   <section v-if="nextEvent" class="upcoming-event">
     <div class="section-heading">
@@ -143,6 +142,12 @@ const formatDate = (date) => {
   text-align: center;
   padding: 4rem 2rem;
   background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+}
+
+.home-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0;
 }
 
 .posts {

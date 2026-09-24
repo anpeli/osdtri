@@ -1,8 +1,10 @@
 ---
 title: "Bli medlem"
 slug: "bli-medlem"
-backdrop: "/assets/images/img_2480.jpg"
+backdrop: "/assets/images/20190820_203136.jpg"
 ---
+
+# Bli medlem
 
 Som medlem i Östersund Triathlon får du:
 

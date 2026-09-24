@@ -1,7 +1,7 @@
 ---
 title: "Kontakt"
 slug: "kontakt"
-backdrop: "/assets/images/img_2480.jpg"
+backdrop: "/assets/images/20190820_203136.jpg"
 styrelse: |
   Kontakta styrelsen via formuläret nedan.
 social: |
@@ -9,3 +9,5 @@ social: |
   - Facebook
   - Instagram
 ---
+
+# Kontakt
