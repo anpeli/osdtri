@@ -2,30 +2,7 @@
   <PageHeader :title="home.title" :backdrop="home.backdrop" />
   <div class="home-content" v-html="home.body"></div>
 
-  <section v-if="nextEvent" class="upcoming-event">
-    <div class="section-heading">
-      <h2>Nästa händelse</h2>
-      <p>
-        Kom och träna tillsammans med Östersund Triathlon,
-        <router-link to="/kalender">se alla händelser här.</router-link>
-      </p>
-    </div>
-
-    <article class="event-card">
-      <div class="event-content">
-        <p class="event-date">{{ formatDate(nextEvent.date) }}</p>
-        <h3>{{ nextEvent.title }}</h3>
-        <p v-if="nextEvent.location || nextEvent.facebookUrl" class="event-location">
-          <span v-if="nextEvent.location">{{ nextEvent.location }}</span>
-          <span v-if="nextEvent.location && nextEvent.facebookUrl"> - </span>
-          <a v-if="nextEvent.facebookUrl" :href="nextEvent.facebookUrl" target="_blank" rel="noopener noreferrer" aria-label="Se händelsen på Facebook (öppnas i en ny flik)">
-            Se händelsen på Facebook <span aria-hidden="true">↗</span>
-          </a>
-        </p>
-        <div class="event-description" v-html="nextEvent.description"></div>
-      </div>
-    </article>
-  </section>
+  <NextEvent v-if="nextEvent" :event="nextEvent" />
 
   <section class="posts">
     <div class="section-heading">
@@ -53,6 +30,7 @@
 import { marked } from 'marked'
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
+import NextEvent from '../components/NextEvent.vue'
 
 const pageFiles = import.meta.glob('../content/*.md', {
   eager: true,
@@ -127,14 +105,6 @@ const nextEvent = Object.entries(eventFiles)
   .filter((event) => event.title && event.date && new Date(event.date) >= new Date())
   .sort((first, second) => new Date(first.date) - new Date(second.date))[0]
 
-const formatDate = (date) => {
-  if (!date) return ''
-  return new Date(date).toLocaleDateString('sv-SE', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
 </script>
 
 <style scoped>
@@ -154,42 +124,6 @@ const formatDate = (date) => {
   max-width: 800px;
   margin: 4rem auto;
   padding: 0 2rem;
-}
-
-.upcoming-event {
-  max-width: 800px;
-  margin: 4rem auto 0;
-  padding: 0 2rem;
-}
-
-.event-card {
-  overflow: hidden;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.event-content {
-  padding: 1.5rem;
-}
-
-.event-date,
-.event-location {
-  margin: 0 0 0.5rem;
-  color: #666;
-}
-
-.event-content h3 {
-  margin: 0 0 0.75rem;
-}
-
-.event-description {
-  color: #454545;
-  line-height: 1.6;
-}
-
-.event-description :deep(p:last-child) {
-  margin-bottom: 0;
 }
 
 .section-heading {
