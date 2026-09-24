@@ -12,45 +12,64 @@ identity:
 collections:
   - name: "about"
     label: "About"
-    file: "src/content/about.md"
-    fields:
-      - { name: "title", label: "Title" }
-      - { name: "slug", label: "Slug" }
-      - { name: "body", label: "Body", widget: "markdown" }
+    files:
+      - file: "src/content/about.md"
+        label: "About"
+        name: "about"
+        fields:
+          - { name: "title", label: "Title" }
+          - { name: "slug", label: "Slug" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "body", label: "Body", widget: "markdown" }
 
   - name: "membership"
     label: "Membership"
-    file: "src/content/membership.md"
-    fields:
-      - { name: "title", label: "Title" }
-      - { name: "slug", label: "Slug" }
-      - { name: "body", label: "Body", widget: "markdown" }
+    files:
+      - file: "src/content/membership.md"
+        label: "Membership"
+        name: "membership"
+        fields:
+          - { name: "title", label: "Title" }
+          - { name: "slug", label: "Slug" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "body", label: "Body", widget: "markdown" }
 
   - name: "training"
     label: "Training"
-    file: "src/content/training.md"
-    fields:
-      - { name: "title", label: "Title" }
-      - { name: "slug", label: "Slug" }
-      - { name: "body", label: "Body", widget: "markdown" }
+    files:
+      - file: "src/content/training.md"
+        label: "Training"
+        name: "training"
+        fields:
+          - { name: "title", label: "Title" }
+          - { name: "slug", label: "Slug" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "body", label: "Body", widget: "markdown" }
 
   - name: "contact"
     label: "Contact"
-    file: "src/content/contact.md"
-    fields:
-      - { name: "title", label: "Title" }
-      - { name: "slug", label: "Slug" }
-      - { name: "styrelse", label: "Styrelse", widget: "markdown" }
-      - { name: "social", label: "Email/Facebook/Instagram", widget: "markdown" }
+    files:
+      - file: "src/content/contact.md"
+        label: "Contact"
+        name: "contact"
+        fields:
+          - { name: "title", label: "Title" }
+          - { name: "slug", label: "Slug" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "styrelse", label: "Styrelse", widget: "markdown" }
+          - { name: "social", label: "Email/Facebook/Instagram", widget: "markdown" }
 
   - name: "events-page"
     label: "Events page"
-    file: "src/content/events.md"
-    fields:
-      - { name: "title", label: "Title" }
-      - { name: "slug", label: "Slug" }
-      - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
-      - { name: "body", label: "Body", widget: "markdown" }
+    files:
+      - file: "src/content/events.md"
+        label: "Events page"
+        name: "events-page"
+        fields:
+          - { name: "title", label: "Title" }
+          - { name: "slug", label: "Slug" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "body", label: "Body", widget: "markdown" }
 
   - name: "events"
     label: "Events"
