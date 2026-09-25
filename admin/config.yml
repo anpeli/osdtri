@@ -99,7 +99,7 @@ collections:
         label: "Site settings"
         name: "site"
         fields:
-          - { name: "contactEmail", label: "Contact form email", widget: "string" }
+          - { name: "formSubmitToken", label: "FormSubmit token", widget: "string", hint: "Use the token from FormSubmit, then activate it from the email FormSubmit sends." }
           - { name: "email", label: "Email", widget: "string", pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
           - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
           - { name: "instagramUrl", label: "Instagram URL", widget: "string", required: false }

@@ -58,7 +58,7 @@ const settingsFiles = import.meta.glob('../content/settings/site.md', {
 const settingsSource = settingsFiles['../content/settings/site.md']
 const settingsFrontMatterMatch = settingsSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
 const settings = settingsFrontMatterMatch ? parse(settingsFrontMatterMatch[1]) || {} : {}
-const contactEmail = settings.contactEmail || 'andreas.lindstrom@gmail.com'
+const formSubmitEndpoint = settings.formSubmitToken || settings.email || ''
 
 const formData = ref({
   name: '',
@@ -74,7 +74,11 @@ const handleSubmit = async () => {
   statusMessage.value = ''
 
   try {
-    const response = await fetch(`https://formsubmit.co/ajax/${contactEmail}`, {
+    if (!formSubmitEndpoint) {
+      throw new Error('FormSubmit token or email is not configured')
+    }
+
+    const response = await fetch(`https://formsubmit.co/ajax/${formSubmitEndpoint}`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -91,7 +95,8 @@ const handleSubmit = async () => {
     })
 
     if (!response.ok) {
-      throw new Error('The email service returned an error')
+      const errorBody = await response.json().catch(() => ({}))
+      throw new Error(errorBody.message || 'The email service returned an error')
     }
 
     formData.value = { name: '', email: '', message: '' }
