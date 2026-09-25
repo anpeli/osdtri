@@ -2,6 +2,7 @@
 title: Bli medlem
 slug: bli-medlem
 backdrop: /assets/images/IMG_6465.jpg
+backdropPosition: center 65%
 ---
 
 ## Bli medlem

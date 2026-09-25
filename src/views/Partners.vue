@@ -1,6 +1,6 @@
 <template>
   <div class="partners-page">
-    <PageHeader :title="page.title" :backdrop="page.backdrop" />
+    <PageHeader :title="page.title" :backdrop="page.backdrop" :backdrop-position="page.backdropPosition" />
     <div class="page-content" v-html="page.body"></div>
   </div>
 </template>
@@ -23,6 +23,7 @@ const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
 const page = {
   title: pageMetadata.title || 'Sponsorer och samarbeten',
   backdrop: pageMetadata.backdrop,
+  backdropPosition: pageMetadata.backdropPosition,
   body: marked.parse(frontMatterMatch?.[2] || '')
 }
 </script>

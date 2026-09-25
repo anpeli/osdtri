@@ -2,6 +2,7 @@
 title: Om oss
 slug: om-oss
 backdrop: /assets/images/img_2480.jpg
+backdropPosition: center 18%
 ---
 ## Sveriges skönaste triathlonklubb håller hus kring Östersund, Jämtland
 
