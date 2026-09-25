@@ -37,7 +37,7 @@ const menuOpen = ref(false)
 
 <style scoped>
 .header {
-  background-color: var(--club-charcoal);
+  background-color: var(--club-surface);
   padding: 1rem 2rem;
   border-bottom: 4px solid var(--club-lime);
 }
@@ -65,7 +65,7 @@ const menuOpen = ref(false)
 
 .nav-links a {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--club-charcoal);
   font-weight: 700;
   padding: 0.35rem 0;
   border-bottom: 3px solid transparent;
@@ -117,7 +117,7 @@ const menuOpen = ref(false)
     z-index: 10;
     min-width: 12rem;
     padding: 0.5rem 0;
-    background-color: var(--club-charcoal);
+    background-color: var(--club-surface);
     border: 1px solid var(--club-lime);
     box-shadow: 0 4px 12px rgb(0 0 0 / 12%);
   }
