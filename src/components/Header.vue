@@ -22,6 +22,7 @@
         <li><router-link to="/traning" @click="menuOpen = false">Träning</router-link></li>
         <li><router-link to="/bli-medlem" @click="menuOpen = false">Bli medlem</router-link></li>
         <li><router-link to="/om-oss" @click="menuOpen = false">Om oss</router-link></li>
+        <li><router-link to="/partners" @click="menuOpen = false">Partners</router-link></li>
       </ul>
     </nav>
   </header>
