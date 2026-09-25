@@ -36,9 +36,22 @@ const resolveAssetUrl = (assetPath) => {
   return `${import.meta.env.BASE_URL}${assetPath.slice(1)}`
 }
 
-const headerStyle = computed(() => ({
-  backgroundImage: `linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), url("${resolveAssetUrl(props.backdrop || settings.backdrop || '/assets/images/20190820_203136.jpg')}")`
-}))
+const getMobileBackdrop = (backdrop) => {
+  if (!backdrop?.startsWith('/assets/images/')) {
+    return backdrop
+  }
+
+  return backdrop.replace(/(\.[^.]+)$/, '-mobile$1')
+}
+
+const headerStyle = computed(() => {
+  const backdrop = props.backdrop || settings.backdrop || '/assets/images/20190820_203136.jpg'
+
+  return {
+    '--page-header-backdrop': `url("${resolveAssetUrl(backdrop)}")`,
+    '--page-header-backdrop-mobile': `url("${resolveAssetUrl(getMobileBackdrop(backdrop))}")`
+  }
+})
 </script>
 
 <style scoped>
@@ -54,8 +67,15 @@ const headerStyle = computed(() => ({
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), var(--page-header-backdrop);
   background-position: center;
   background-size: cover;
+}
+
+@media (max-width: 767px) {
+  .page-header {
+    background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), var(--page-header-backdrop-mobile);
+  }
 }
 
 .page-header h1 {
