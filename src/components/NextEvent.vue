@@ -9,16 +9,18 @@
 
     <article class="event-card">
       <div class="event-content">
-        <p class="event-date">{{ formatDate(event.date) }}</p>
-        <h3>{{ event.title }}</h3>
-        <p v-if="event.location || event.facebookUrl" class="event-location">
-          <span v-if="event.location">{{ event.location }}</span>
-          <span v-if="event.location && event.facebookUrl"> - </span>
-          <a v-if="event.facebookUrl" :href="event.facebookUrl" target="_blank" rel="noopener noreferrer" aria-label="Se händelsen på Facebook (öppnas i en ny flik)">
-            Se händelsen på Facebook <span aria-hidden="true">↗</span>
-          </a>
+        <p class="event-date">
+          {{ formatDate(event.date) }}
+          <span v-if="event.time">, {{ event.time }}</span>
+          <span v-if="event.duration">, {{ event.duration }}</span>
+          <span v-if="event.location">, {{ event.location }}</span>
         </p>
+        <h3>{{ event.title }}</h3>
+        <p v-if="event.author" class="event-author">Av {{ event.author }}</p>
         <div class="event-description" v-html="event.description"></div>
+        <a v-if="event.facebookUrl" class="event-facebook-link" :href="event.facebookUrl" target="_blank" rel="noopener noreferrer" aria-label="Läs mer (öppnas i en ny flik)">
+          Läs mer... <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </article>
     <router-link class="upcoming-events-link" to="/kalender">
@@ -49,10 +51,28 @@ const eventFiles = import.meta.glob('../content/events/*.md', {
   query: '?raw'
 })
 
+const getDateKey = (date) => {
+  if (typeof date === 'string') return date.slice(0, 10)
+
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
+const now = new Date()
+const todayKey = getDateKey(now)
+const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+
 const event = Object.entries(eventFiles)
   .map(([filePath, source]) => parseEvent(source, filePath))
-  .filter((entry) => entry.title && entry.date && new Date(entry.date) >= new Date())
-  .sort((first, second) => new Date(first.date) - new Date(second.date))[0]
+  .filter((entry) => {
+    if (!entry.title || !entry.date) return false
+
+    const dateKey = getDateKey(entry.date)
+    return dateKey > todayKey || (dateKey === todayKey && (!entry.time || entry.time >= currentTime))
+  })
+  .sort((first, second) => getDateKey(first.date).localeCompare(getDateKey(second.date)) || (first.time || '').localeCompare(second.time || ''))[0]
 
 const formatDate = (date) => {
   if (!date) return ''
@@ -60,9 +80,11 @@ const formatDate = (date) => {
   return new Date(date).toLocaleDateString('sv-SE', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
+    timeZone: 'UTC'
   })
 }
+
 </script>
 
 <style scoped>
@@ -102,7 +124,8 @@ const formatDate = (date) => {
 }
 
 .event-date,
-.event-location {
+.event-location,
+.event-author {
   margin: 0 0 0.5rem;
   color: var(--club-muted);
 }
@@ -124,8 +147,10 @@ const formatDate = (date) => {
   line-height: 1.6;
 }
 
-.event-location a,
+.event-facebook-link,
 .event-description :deep(a) {
+  display: inline-block;
+  margin-top: 0.75rem;
   color: #287b9f;
   font-weight: 700;
 }

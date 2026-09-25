@@ -60,16 +60,18 @@
         >
           <img v-if="event.image" :src="event.image" :alt="event.title" class="event-image" />
           <div class="event-info">
-            <p class="event-date">{{ formatDate(event.date) }}</p>
-            <h3>{{ event.title }}</h3>
-            <p v-if="event.location || event.facebookUrl" class="event-location">
-              <span v-if="event.location">{{ event.location }}</span>
-              <span v-if="event.location && event.facebookUrl"> - </span>
-              <a v-if="event.facebookUrl" :href="event.facebookUrl" target="_blank" rel="noopener noreferrer" aria-label="Se händelsen på Facebook (öppnas i en ny flik)">
-                Se händelsen på Facebook <span aria-hidden="true">↗</span>
-              </a>
+            <p class="event-date">
+              {{ formatDate(event.date) }}
+              <span v-if="event.time">, {{ event.time }}</span>
+              <span v-if="event.duration">, {{ event.duration }}</span>
+              <span v-if="event.location">, {{ event.location }}</span>
             </p>
+            <h3>{{ event.title }}</h3>
+            <p v-if="event.author" class="event-author">Av {{ event.author }}</p>
             <div v-html="event.description"></div>
+            <a v-if="event.facebookUrl" class="event-facebook-link" :href="event.facebookUrl" target="_blank" rel="noopener noreferrer" aria-label="Läs mer (öppnas i en ny flik)">
+              Läs mer... <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </article>
 
@@ -122,20 +124,35 @@ const parseEvent = (source, filePath) => {
   }
 }
 
-const events = Object.entries(eventFiles)
-  .map(([filePath, source]) => parseEvent(source, filePath))
-  .filter((event) => event.title && event.date && new Date(event.date) >= new Date())
-  .sort((first, second) => new Date(first.date) - new Date(second.date))
-
-const weekdays = ['Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör', 'Sön']
 const getDateKey = (date) => {
+  if (typeof date === 'string') return date.slice(0, 10)
+
   const parsedDate = new Date(date)
   const year = parsedDate.getFullYear()
   const month = String(parsedDate.getMonth() + 1).padStart(2, '0')
   const day = String(parsedDate.getDate()).padStart(2, '0')
   return `${year}-${month}-${day}`
 }
-const firstEventDate = events.length ? new Date(events[0].date) : new Date()
+const getLocalDate = (date) => {
+  const [year, month, day] = getDateKey(date).split('-').map(Number)
+  return new Date(year, month - 1, day)
+}
+
+const events = Object.entries(eventFiles)
+  .map(([filePath, source]) => parseEvent(source, filePath))
+  .filter((event) => {
+    if (!event.title || !event.date) return false
+
+    const dateKey = getDateKey(event.date)
+    const now = new Date()
+    const todayKey = getDateKey(now)
+    const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+    return dateKey > todayKey || (dateKey === todayKey && (!event.time || event.time >= currentTime))
+  })
+  .sort((first, second) => getDateKey(first.date).localeCompare(getDateKey(second.date)) || (first.time || '').localeCompare(second.time || ''))
+
+const weekdays = ['Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör', 'Sön']
+const firstEventDate = events.length ? getLocalDate(events[0].date) : new Date()
 const displayedMonth = ref(new Date(firstEventDate.getFullYear(), firstEventDate.getMonth(), 1))
 const selectedEvent = ref(null)
 
@@ -177,9 +194,9 @@ const formatDate = (dateString) => new Date(dateString).toLocaleDateString('sv-S
   year: 'numeric',
   month: 'long',
   day: 'numeric',
-  hour: 'numeric',
-  minute: '2-digit'
+  timeZone: 'UTC'
 })
+
 </script>
 
 <style scoped>
@@ -332,7 +349,8 @@ const formatDate = (dateString) => new Date(dateString).toLocaleDateString('sv-S
 
 .section-heading p,
 .event-date,
-.event-location {
+.event-location,
+.event-author {
   color: var(--club-muted);
   font-size: 0.9rem;
 }
@@ -371,7 +389,13 @@ const formatDate = (dateString) => new Date(dateString).toLocaleDateString('sv-S
   margin-bottom: 0.75rem;
 }
 
-.event-location a {
+.event-author {
+  margin: 0 0 0.5rem;
+}
+
+.event-facebook-link {
+  display: inline-block;
+  margin-top: 0.75rem;
   color: var(--club-ink);
   font-weight: 700;
 }
