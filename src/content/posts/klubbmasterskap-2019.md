@@ -14,6 +14,6 @@ Mest applåder och jubel fick dock den som gick i mål sist av alla, precis som 
 
 Tack för en riktigt rolig tävling alla! Detta och resten av säsongen kommer firas på klubbfesten den 11 oktober!
 
-![Klubbmästerskapet](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1567502881373-IN0NXMJNMB46RUEXVSQE/IMG_4174.jpg?format=1000w)
+[![Klubbmästerskapet](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1567502881373-IN0NXMJNMB46RUEXVSQE/IMG_4174.jpg?format=1000w)](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1567502881373-IN0NXMJNMB46RUEXVSQE/IMG_4174.jpg)
 
-![Klubbmästerskapet](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1567502804475-V8F78YZMESPJPFT8G5RS/IMG_4173.JPG?format=1000w)
+[![Klubbmästerskapet](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1567502804475-V8F78YZMESPJPFT8G5RS/IMG_4173.JPG?format=1000w)](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1567502804475-V8F78YZMESPJPFT8G5RS/IMG_4173.JPG)

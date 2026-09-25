@@ -12,7 +12,7 @@ Det går att få sitt namn tryckt på samtliga plagg mot en extra kostnad på 10
 
 [Läs mer om klubbklädkollektionen](https://preview.trimtex.ee/project/5e61fa240d2c2/5e61fd0e5e5ef)
 
-![Klubbkläder](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1625908019432-1L0RW1T8ATYYROVKYFHN/IMG_4558.jpg?format=1000w)
+[![Klubbkläder](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1625908019432-1L0RW1T8ATYYROVKYFHN/IMG_4558.jpg?format=1000w)](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1625908019432-1L0RW1T8ATYYROVKYFHN/IMG_4558.jpg)
 
 Om det blir färre än fem av en viss typ av plagg, exempelvis tights, blir det ingen beställning av den typen. Vill du beställa två eller fler av något gör du flera beställningar.
 

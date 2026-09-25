@@ -6,7 +6,7 @@ author: "Styrelsen"
 
 Efter ett konstigt år har styrelsen beslutat att nya klubbkläder kommer att beställas i samband med nästa årsmöte. Men redan nu kan vi bjuda på ett litet smakprov!
 
-![Nya klubbkläder](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1601649790044-W215CZWQAO1VILY568SI/image001.jpg?format=1000w)
+[![Nya klubbkläder](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1601649790044-W215CZWQAO1VILY568SI/image001.jpg?format=1000w)](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1601649790044-W215CZWQAO1VILY568SI/image001.jpg)
 
 Känns både härligt jämtländskt och riktigt snyggt. På [den här länken](https://preview.trimtex.ee/project/5e61fa240d2c2/5e61fe82f03c5) kan du se hela dräkten.
 

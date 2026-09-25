@@ -10,4 +10,4 @@ Resten av kollektionen hittar du [här](https://preview.trimtex.ee/project/5e61f
 
 /Styrelsen
 
-![Nya klubbkläder](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1625056796677-9KKNWBK85S8XS17GV9RB/2.png.jpeg?format=1000w)
+[![Nya klubbkläder](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1625056796677-9KKNWBK85S8XS17GV9RB/2.png.jpeg?format=1000w)](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1625056796677-9KKNWBK85S8XS17GV9RB/2.png.jpeg)

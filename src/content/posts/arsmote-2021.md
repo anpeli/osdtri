@@ -12,4 +12,4 @@ Alnö Race Team kommer bland annat arrangera en [coronaanpassad tävling i Sunds
 
 Tills dess är det bara att nöta på med trainerdäcken och ice bugsen. Förhoppningsvis kommer simsäsongen igång snart också. Tills dess är det Storsjön som gäller.
 
-![Vinterträning](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1613051908341-VXWBI0B3IY09LDVB9FI6/IMG_5659_redigerad.jpg?format=1000w)
+[![Vinterträning](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1613051908341-VXWBI0B3IY09LDVB9FI6/IMG_5659_redigerad.jpg?format=1000w)](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1613051908341-VXWBI0B3IY09LDVB9FI6/IMG_5659_redigerad.jpg)
