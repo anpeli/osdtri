@@ -1,6 +1,6 @@
 <template>
   <div class="home-page">
-    <PageHeader :title="page.title" :backdrop="page.backdrop" :backdrop-position="page.backdropPosition" />
+    <PageHeader :title="page.title" :backdrop-desktop="page.backdropDesktop" :backdrop-mobile="page.backdropMobile" :backdrop-desktop-position="page.backdropDesktopPosition" :backdrop-mobile-position="page.backdropMobilePosition" />
     <div class="page-content" v-html="page.body"></div>
   </div>
   <NextEvent />
@@ -26,8 +26,10 @@ const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
 
 const page = {
   title: pageMetadata.title || 'Välkommen till Östersund Triathlon',
-  backdrop: pageMetadata.backdrop,
-  backdropPosition: pageMetadata.backdropPosition,
+  backdropDesktop: pageMetadata.backdropDesktop,
+  backdropMobile: pageMetadata.backdropMobile,
+  backdropDesktopPosition: pageMetadata.backdropDesktopPosition,
+  backdropMobilePosition: pageMetadata.backdropMobilePosition,
   body: marked.parse(frontMatterMatch?.[2] || '')
 }
 </script>

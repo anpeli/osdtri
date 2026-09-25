@@ -23,10 +23,16 @@ const props = defineProps({
     type: String,
     required: true
   },
-  backdrop: {
+  backdropDesktop: {
     type: String
   },
-  backdropPosition: {
+  backdropMobile: {
+    type: String
+  },
+  backdropDesktopPosition: {
+    type: String
+  },
+  backdropMobilePosition: {
     type: String
   }
 })
@@ -39,22 +45,17 @@ const resolveAssetUrl = (assetPath) => {
   return `${import.meta.env.BASE_URL}${assetPath.slice(1)}`
 }
 
-const getBackdropVariant = (backdrop, variant) => {
-  if (!backdrop?.startsWith('/assets/images/')) {
-    return backdrop
-  }
-
-  return backdrop.replace(/(\.[^.]+)$/, `-${variant}$1`)
-}
-
 const headerStyle = computed(() => {
-  const backdrop = props.backdrop || settings.backdrop || '/assets/images/20190820_203136.jpg'
-  const backdropPosition = props.backdropPosition || settings.backdropPosition || 'center 33%'
+  const desktopBackdrop = props.backdropDesktop || settings.backdropDesktop || '/assets/images/20190820_203136-desktop.jpg'
+  const mobileBackdrop = props.backdropMobile || settings.backdropMobile || '/assets/images/20190820_203136-mobile.jpg'
+  const desktopPosition = props.backdropDesktopPosition || settings.backdropDesktopPosition || 'center 33%'
+  const mobilePosition = props.backdropMobilePosition || settings.backdropMobilePosition || 'center 33%'
 
   return {
-    '--page-header-backdrop': `url("${resolveAssetUrl(getBackdropVariant(backdrop, 'desktop'))}")`,
-    '--page-header-backdrop-mobile': `url("${resolveAssetUrl(getBackdropVariant(backdrop, 'mobile'))}")`,
-    '--page-header-backdrop-position': backdropPosition
+    '--page-header-backdrop': `url("${resolveAssetUrl(desktopBackdrop)}")`,
+    '--page-header-backdrop-mobile': `url("${resolveAssetUrl(mobileBackdrop)}")`,
+    '--page-header-backdrop-position': desktopPosition,
+    '--page-header-backdrop-mobile-position': mobilePosition
   }
 })
 </script>
@@ -80,7 +81,7 @@ const headerStyle = computed(() => {
 @media (max-width: 767px) {
   .page-header {
     background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), var(--page-header-backdrop-mobile);
-    background-position: var(--page-header-backdrop-position);
+    background-position: var(--page-header-backdrop-mobile-position);
   }
 }
 

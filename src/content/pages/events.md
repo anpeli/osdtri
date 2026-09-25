@@ -1,6 +1,8 @@
 ---
 title: "Kalender"
 slug: "kalender"
-backdrop: "/assets/images/20190820_203136.jpg"
-backdropPosition: center 42%
+backdropDesktop: "/assets/images/20190820_203136-desktop.jpg"
+backdropMobile: "/assets/images/20190820_203136-mobile.jpg"
+backdropDesktopPosition: center 42%
+backdropMobilePosition: center 42%
 ---

@@ -1,8 +1,10 @@
 ---
 title: Träning
 slug: traning
-backdrop: /assets/images/IMG_6412.jpg
-backdropPosition: center 40%
+backdropDesktop: /assets/images/IMG_6412-desktop.jpg
+backdropMobile: /assets/images/IMG_6412-mobile.jpg
+backdropDesktopPosition: center 40%
+backdropMobilePosition: center 40%
 ---
 
 ## Simträning?

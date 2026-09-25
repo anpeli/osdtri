@@ -1,6 +1,6 @@
 <template>
   <div class="events-page">
-    <PageHeader :title="page.title" :backdrop="page.backdrop" :backdrop-position="page.backdropPosition" />
+    <PageHeader :title="page.title" :backdrop-desktop="page.backdropDesktop" :backdrop-mobile="page.backdropMobile" :backdrop-desktop-position="page.backdropDesktopPosition" :backdrop-mobile-position="page.backdropMobilePosition" />
     <div class="page-content" v-html="page.body"></div>
 
     <div v-if="events.length === 0" class="no-events">
@@ -103,8 +103,10 @@ const pageMetadata = pageFrontMatterMatch ? parse(pageFrontMatterMatch[1]) || {}
 
 const page = {
   title: pageMetadata.title || 'Kalender',
-  backdrop: pageMetadata.backdrop,
-  backdropPosition: pageMetadata.backdropPosition,
+  backdropDesktop: pageMetadata.backdropDesktop,
+  backdropMobile: pageMetadata.backdropMobile,
+  backdropDesktopPosition: pageMetadata.backdropDesktopPosition,
+  backdropMobilePosition: pageMetadata.backdropMobilePosition,
   body: marked.parse(pageFrontMatterMatch?.[2] || '')
 }
 

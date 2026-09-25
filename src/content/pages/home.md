@@ -1,6 +1,8 @@
 ---
 title: Välkommen till Östersund Triathlon
 slug: hem
-backdrop: /assets/images/IMG_6460.jpg
-backdropPosition: center 42%
+backdropDesktop: /assets/images/IMG_6460-desktop.jpg
+backdropMobile: /assets/images/IMG_6460-mobile.jpg
+backdropDesktopPosition: center 42%
+backdropMobilePosition: center 42%
 ---

@@ -1,8 +1,10 @@
 ---
 title: Bli medlem
 slug: bli-medlem
-backdrop: /assets/images/IMG_6465.jpg
-backdropPosition: center 65%
+backdropDesktop: /assets/images/IMG_6465-desktop.jpg
+backdropMobile: /assets/images/IMG_6465-mobile.jpg
+backdropDesktopPosition: center 65%
+backdropMobilePosition: center 65%
 ---
 
 ## Bli medlem
