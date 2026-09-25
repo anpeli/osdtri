@@ -1,9 +1,8 @@
 ---
-title: "Om oss"
-slug: "om-oss"
-backdrop: "/assets/images/img_2480.jpg"
+title: Om oss
+slug: om-oss
+backdrop: /assets/images/img_2480.jpg
 ---
-
 ## Sveriges skönaste triathlonklubb håller hus kring Östersund, Jämtland
 
 Östersund Triathlon i dess nuvarande form startades den 25:e januari 2013. Tidigare fanns en triathlon-sektion under ÖCK (Östersunds Cykelklubb) men den har varit vilande i många år nu.
@@ -21,13 +20,21 @@ Oavsett om du är erfaren triathlet eller nyfiken nybörjare som skulle vilja pr
 Kontakta styrelsen via formuläret nedan.
 
 ### Ordförande
-- Åsa Nilsson
+
+* Åsa Nilsson
 
 ### Kassör
-- Fredrik Marken
+
+* Fredrik Marken
 
 ### Ledamot
-- Andreas Lindström
+
+* Andreas Lindström
 
 ### Ledamot
-- Ann-Mari Darj
+
+* Ann-Mari Darj
+
+### Suppleant
+
+* Claes Bång
