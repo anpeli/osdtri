@@ -28,8 +28,16 @@ const props = defineProps({
   }
 })
 
+const resolveAssetUrl = (assetPath) => {
+  if (!assetPath?.startsWith('/')) {
+    return assetPath
+  }
+
+  return `${import.meta.env.BASE_URL}${assetPath.slice(1)}`
+}
+
 const headerStyle = computed(() => ({
-  backgroundImage: `linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), url("${props.backdrop || settings.backdrop || '/assets/images/20190820_203136.jpg'}")`
+  backgroundImage: `linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), url("${resolveAssetUrl(props.backdrop || settings.backdrop || '/assets/images/20190820_203136.jpg')}")`
 }))
 </script>
 
