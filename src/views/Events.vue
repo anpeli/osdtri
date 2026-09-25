@@ -1,6 +1,7 @@
 <template>
   <div class="events-page">
-    <PageHeader title="Kalender" />
+    <PageHeader :title="page.title" :backdrop="page.backdrop" />
+    <div class="page-content" v-html="page.body"></div>
 
     <div v-if="events.length === 0" class="no-events">
       <p>Inga evenemang schemalagda just nu.</p>
@@ -89,6 +90,22 @@ const eventFiles = import.meta.glob('../content/events/*.md', {
   import: 'default',
   query: '?raw'
 })
+
+const pageFiles = import.meta.glob('../content/pages/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
+
+const pageSource = pageFiles['../content/pages/events.md']
+const pageFrontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+const pageMetadata = pageFrontMatterMatch ? parse(pageFrontMatterMatch[1]) || {} : {}
+
+const page = {
+  title: pageMetadata.title || 'Kalender',
+  backdrop: pageMetadata.backdrop,
+  body: marked.parse(pageFrontMatterMatch?.[2] || '')
+}
 
 const parseEvent = (source, filePath) => {
   const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
