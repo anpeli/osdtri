@@ -72,9 +72,10 @@ const formatDate = (date) => {
 
 .event-card {
   overflow: hidden;
-  background: white;
+  background: #ffffff;
+  border-top: 6px solid var(--club-blue);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgb(32 37 42 / 10%);
 }
 
 .event-content {
@@ -84,16 +85,30 @@ const formatDate = (date) => {
 .event-date,
 .event-location {
   margin: 0 0 0.5rem;
-  color: #666;
+  color: var(--club-muted);
+}
+
+.event-date {
+  color: var(--club-blue);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .event-content h3 {
   margin: 0 0 0.75rem;
+  color: var(--club-charcoal);
+  font-size: 1.8rem;
 }
 
 .event-description {
-  color: #454545;
+  color: var(--club-ink);
   line-height: 1.6;
+}
+
+.event-location a,
+.event-description :deep(a) {
+  color: #287b9f;
+  font-weight: 700;
 }
 
 .event-description :deep(p:last-child) {
@@ -106,9 +121,12 @@ const formatDate = (date) => {
 
 .section-heading h2 {
   margin-bottom: 0.5rem;
+  color: var(--club-charcoal);
+  border-left: 5px solid var(--club-lime);
+  padding-left: 0.75rem;
 }
 
 .section-heading p {
-  color: #666;
+  color: var(--club-muted);
 }
 </style>

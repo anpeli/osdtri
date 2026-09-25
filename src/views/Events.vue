@@ -1,7 +1,9 @@
 <template>
   <div class="events-page">
     <PageHeader title="Kalender" />
-    <h2 class="events-title">Kommande händelser</h2>
+    <div class="section-heading">
+      <h2>Kommande händelser</h2>
+    </div>
 
     <div v-if="events.length === 0" class="no-events">
       <p>Inga evenemang schemalagda just nu.</p>
@@ -79,8 +81,15 @@ const formatDate = (dateString) => new Date(dateString).toLocaleDateString('sv-S
   padding: 0 2rem 2rem;
 }
 
-.events-title {
-  margin-top: 0;
+.section-heading {
+  margin-bottom: 2rem;
+}
+
+.section-heading h2 {
+  margin-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  color: var(--club-charcoal);
+  border-left: 5px solid var(--club-lime);
 }
 
 .event-list {

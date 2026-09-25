@@ -37,9 +37,9 @@ const menuOpen = ref(false)
 
 <style scoped>
 .header {
-  background-color: #ffffff;
+  background-color: var(--club-charcoal);
   padding: 1rem 2rem;
-  border-bottom: 2px solid #6d4aff;
+  border-bottom: 4px solid var(--club-lime);
 }
 
 .nav {
@@ -65,7 +65,16 @@ const menuOpen = ref(false)
 
 .nav-links a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.35rem 0;
+  border-bottom: 3px solid transparent;
+}
+
+.nav-links a:hover,
+.nav-links a.router-link-active {
+  color: var(--club-lime);
+  border-bottom-color: var(--club-lime);
 }
 
 .menu-toggle {
@@ -89,7 +98,7 @@ const menuOpen = ref(false)
     height: 2.5rem;
     padding: 0.55rem 0.65rem;
     background: transparent;
-    border: 1px solid #6d4aff;
+    border: 1px solid var(--club-lime);
     border-radius: 4px;
   }
 
@@ -97,7 +106,7 @@ const menuOpen = ref(false)
     display: block;
     width: 100%;
     height: 2px;
-    background-color: #333;
+    background-color: var(--club-lime);
   }
 
   .nav-links {
@@ -108,8 +117,8 @@ const menuOpen = ref(false)
     z-index: 10;
     min-width: 12rem;
     padding: 0.5rem 0;
-    background-color: #ffffff;
-    border: 1px solid #e5e5e5;
+    background-color: var(--club-charcoal);
+    border: 1px solid var(--club-lime);
     box-shadow: 0 4px 12px rgb(0 0 0 / 12%);
   }
 
@@ -124,7 +133,7 @@ const menuOpen = ref(false)
 
   .nav-links li a:hover,
   .nav-links li a.router-link-active {
-    background-color: #f6f4ff;
+    background-color: rgb(139 203 63 / 16%);
   }
 }
 </style>

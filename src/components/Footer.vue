@@ -52,7 +52,7 @@ const currentYear = ref(new Date().getFullYear())
 
 <style scoped>
 .footer {
-  background-color: #1a1a2e;
+  background-color: var(--club-charcoal);
   color: #ffffff;
   padding: 2rem 0 0 0;
 }
@@ -69,7 +69,7 @@ const currentYear = ref(new Date().getFullYear())
 .footer-section h3,
 .footer-section h4 {
   margin-bottom: 1rem;
-  color: #6d4aff;
+  color: var(--club-lime);
 }
 
 .footer-section ul {
@@ -86,7 +86,7 @@ const currentYear = ref(new Date().getFullYear())
 }
 
 .footer-section a:hover {
-  color: #6d4aff;
+  color: var(--club-blue);
 }
 
 .footer-section address p {
@@ -101,7 +101,7 @@ const currentYear = ref(new Date().getFullYear())
   max-width: 800px;
   margin: 0 auto;
   padding: 1.5rem 2rem;
-  border-top: 1px solid #333;
+  border-top: 1px solid rgb(255 255 255 / 18%);
   flex-wrap: wrap;
   gap: 1rem;
 }

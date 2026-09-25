@@ -89,13 +89,16 @@ const formatDate = (date) => {
 
 .section-heading h2 {
   margin-bottom: 0.5rem;
+  color: var(--club-charcoal);
+  border-left: 5px solid var(--club-lime);
+  padding-left: 0.75rem;
 }
 
 .section-heading p,
 .post-date,
 .post-author,
 .no-posts {
-  color: #666;
+  color: var(--club-muted);
 }
 
 .post-list {
@@ -106,9 +109,10 @@ const formatDate = (date) => {
 
 .post-card {
   overflow: hidden;
-  background: white;
+  background: #ffffff;
+  border-top: 4px solid var(--club-blue);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgb(32 37 42 / 10%);
 }
 
 .post-image {
@@ -120,6 +124,7 @@ const formatDate = (date) => {
 
 .post-content {
   padding: 1.5rem;
+  color: var(--club-ink);
 }
 
 .post-date,
@@ -128,12 +133,19 @@ const formatDate = (date) => {
   font-size: 0.9rem;
 }
 
+.post-date {
+  color: #287b9f;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .post-content h3 {
   margin: 0 0 0.75rem;
+  color: var(--club-charcoal);
 }
 
 .post-body {
-  color: #454545;
+  color: var(--club-ink);
   font-size: 1.05rem;
   line-height: 1.75;
 }
@@ -152,7 +164,7 @@ const formatDate = (date) => {
 .post-body :deep(h3),
 .post-body :deep(h4) {
   margin: 2rem 0 0.75rem;
-  color: #242424;
+  color: var(--club-charcoal);
   line-height: 1.25;
 }
 
@@ -173,7 +185,7 @@ const formatDate = (date) => {
 }
 
 .post-body :deep(a) {
-  color: #5038c9;
+  color: #287b9f;
   font-weight: 600;
   text-decoration: underline;
   text-decoration-thickness: 0.08em;
@@ -182,14 +194,14 @@ const formatDate = (date) => {
 }
 
 .post-body :deep(a:hover) {
-  color: #35239a;
+  color: var(--club-charcoal);
 }
 
 .post-body :deep(blockquote) {
   padding: 0.85rem 1.25rem;
-  border-left: 4px solid #6d4aff;
-  background: #f6f4ff;
-  color: #555;
+  border-left: 4px solid var(--club-lime);
+  background: rgb(139 203 63 / 12%);
+  color: var(--club-muted);
   font-style: italic;
 }
 
@@ -229,7 +241,7 @@ const formatDate = (date) => {
 .post-body :deep(hr) {
   margin: 2rem 0;
   border: 0;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--club-border);
 }
 
 .post-body :deep(table) {
@@ -242,13 +254,13 @@ const formatDate = (date) => {
 .post-body :deep(th),
 .post-body :deep(td) {
   padding: 0.6rem 0.8rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--club-border);
   text-align: left;
 }
 
 .post-body :deep(th) {
-  background: #f6f4ff;
-  color: #242424;
+  background: rgb(85 182 220 / 14%);
+  color: var(--club-charcoal);
 }
 
 .post-body :deep(p:last-child),

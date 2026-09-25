@@ -46,14 +46,19 @@ const headerStyle = computed(() => ({
   width: 100vw;
   height: 200px;
   margin-left: calc(50% - 50vw);
-  margin-bottom: 3rem;
-  padding: 2rem;
+  margin-bottom: 2rem;
+  padding: 3rem 2rem;
   color: #ffffff;
+  border-bottom: 6px solid var(--club-blue);
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   background-position: center;
   background-size: cover;
+}
+
+.page-header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
 }
 </style>

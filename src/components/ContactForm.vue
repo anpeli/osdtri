@@ -103,10 +103,11 @@ const handleSubmit = async () => {
 
 <style scoped>
 .contact-form {
-  background: white;
+  background: #ffffff;
+  border-top: 3px solid var(--club-blue);
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgb(32 37 42 / 10%);
 }
 
 .form-group {
@@ -131,7 +132,8 @@ const handleSubmit = async () => {
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #6d4aff;
+  border-color: var(--club-blue);
+  box-shadow: 0 0 0 3px rgb(85 182 220 / 20%);
 }
 
 button:disabled {
