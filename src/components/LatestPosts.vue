@@ -134,7 +134,7 @@ const formatDate = (date) => {
 }
 
 .post-date {
-  color: #287b9f;
+  color: var(--club-blue);
   font-weight: 700;
   text-transform: uppercase;
 }
