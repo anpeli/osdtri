@@ -2,7 +2,7 @@
   <header class="header">
     <nav class="nav">
       <router-link to="/" aria-label="OSD Tri - hem">
-        <img class="logo" :src="`${import.meta.env.BASE_URL}assets/images/osdtri-jamtkraft.png`" alt="OSD Tri" />
+        <img class="logo" :src="`${assetBaseUrl}assets/images/osdtri-jamtkraft.png`" alt="OSD Tri" />
       </router-link>
       <button
         class="menu-toggle"
@@ -31,6 +31,7 @@
 <script setup>
 import { ref } from 'vue'
 
+const assetBaseUrl = import.meta.env.BASE_URL
 const menuOpen = ref(false)
 </script>
 
