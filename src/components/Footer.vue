@@ -11,9 +11,8 @@
         <ul>
           <li><router-link to="/">Hem</router-link></li>
           <li><router-link to="/kalender">Kalender</router-link></li>
-          <li><router-link to="/om-oss">Om oss</router-link></li>
           <li><router-link to="/bli-medlem">Bli medlem</router-link></li>
-          <li><router-link to="/kontakt">Kontakt</router-link></li>
+          <li><router-link to="/om-oss">Om oss</router-link></li>
         </ul>
       </div>
 

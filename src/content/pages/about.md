@@ -15,3 +15,19 @@ Bland klubbmedlemmarna återfinns allt från en världsmästare i vintertriathlo
 Kanske är det just kombinationen av snabb och långsam, erfaren eller nybörjare, hårdsatsande såväl som glad motionär som gör oss till Sveriges skönaste triathlonklubb?
 
 Oavsett om du är erfaren triathlet eller nyfiken nybörjare som skulle vilja prova på så är du hjärtligt välkommen med i gänget!
+
+## Styrelse
+
+Kontakta styrelsen via formuläret nedan.
+
+### Ordförande
+- Åsa Nilsson
+
+### Kassör
+- Fredrik Marken
+
+### Ledamot
+- Andreas Lindström
+
+### Ledamot
+- Ann-Mari Darj

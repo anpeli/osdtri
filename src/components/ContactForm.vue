@@ -1,43 +1,48 @@
 <template>
-  <form class="contact-form" @submit.prevent="handleSubmit">
-    <div class="form-group">
-      <label for="name">Namn</label>
-      <input
-        id="name"
-        v-model="formData.name"
-        type="text"
-        required
-      />
-    </div>
+  <div class="contact-form-wrapper">
+    <h2>Kontakt</h2>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        id="email"
-        v-model="formData.email"
-        type="email"
-        required
-      />
-    </div>
+    <form class="contact-form" @submit.prevent="handleSubmit">
 
-    <div class="form-group">
-      <label for="message">Meddelande</label>
-      <textarea
-        id="message"
-        v-model="formData.message"
-        rows="5"
-        required
-      ></textarea>
-    </div>
+      <div class="form-group">
+        <label for="name">Namn</label>
+        <input
+          id="name"
+          v-model="formData.name"
+          type="text"
+          required
+        />
+      </div>
 
-    <button type="submit" :disabled="isSubmitting">
-      {{ isSubmitting ? 'Skickar...' : 'Skicka Meddelande' }}
-    </button>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          v-model="formData.email"
+          type="email"
+          required
+        />
+      </div>
 
-    <p v-if="statusMessage" class="form-status" :class="statusType" role="status">
-      {{ statusMessage }}
-    </p>
-  </form>
+      <div class="form-group">
+        <label for="message">Meddelande</label>
+        <textarea
+          id="message"
+          v-model="formData.message"
+          rows="5"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" :disabled="isSubmitting">
+        {{ isSubmitting ? 'Skickar...' : 'Skicka Meddelande' }}
+      </button>
+
+      <p v-if="statusMessage" class="form-status" :class="statusType" role="status">
+        {{ statusMessage }}
+      </p>
+    </form>
+  </div>
 </template>
 
 <script setup>
@@ -108,6 +113,13 @@ const handleSubmit = async () => {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 6px 20px rgb(32 37 42 / 10%);
+}
+
+.contact-form-wrapper h2 {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1.25rem;
+  color: var(--club-charcoal);
+  border-left: 5px solid var(--club-lime);
 }
 
 .form-group {
