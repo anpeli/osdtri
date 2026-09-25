@@ -1,7 +1,7 @@
 ---
-title: "Bli medlem"
-slug: "bli-medlem"
-backdrop: "/assets/images/20190820_203136.jpg"
+title: Bli medlem
+slug: bli-medlem
+backdrop: /assets/images/IMG_6465.jpg
 ---
 
 ## Bli medlem

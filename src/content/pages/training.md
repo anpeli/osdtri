@@ -1,7 +1,7 @@
 ---
-title: "Träning"
-slug: "traning"
-backdrop: "/assets/images/20190820_203136.jpg"
+title: Träning
+slug: traning
+backdrop: /assets/images/IMG_6412.jpg
 ---
 
 ## Simträning?

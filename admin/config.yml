@@ -23,7 +23,7 @@ collections:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
-          - { name: "body", label: "Body", widget: "markdown" }
+          - { name: "body", label: "Body", widget: "markdown", required: false }
       - file: "src/content/pages/events.md"
         label: "Events"
         name: "events"
@@ -31,7 +31,7 @@ collections:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
-          - { name: "body", label: "Body", widget: "markdown" }
+          - { name: "body", label: "Body", widget: "markdown", required: false }
       - file: "src/content/pages/about.md"
         label: "About"
         name: "about"
@@ -39,7 +39,7 @@ collections:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
-          - { name: "body", label: "Body", widget: "markdown" }
+          - { name: "body", label: "Body", widget: "markdown", required: false }
       - file: "src/content/pages/membership.md"
         label: "Membership"
         name: "membership"
@@ -47,7 +47,7 @@ collections:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
-          - { name: "body", label: "Body", widget: "markdown" }
+          - { name: "body", label: "Body", widget: "markdown", required: false }
       - file: "src/content/pages/training.md"
         label: "Training"
         name: "training"
@@ -55,7 +55,7 @@ collections:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
-          - { name: "body", label: "Body", widget: "markdown" }
+          - { name: "body", label: "Body", widget: "markdown", required: false }
       - file: "src/content/pages/partners.md"
         label: "Partners"
         name: "partners"
@@ -63,7 +63,7 @@ collections:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
-          - { name: "body", label: "Body", widget: "markdown" }
+          - { name: "body", label: "Body", widget: "markdown", required: false }
 
   - name: "events"
     label: "Events"
