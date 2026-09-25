@@ -3,8 +3,7 @@
     <div class="section-heading">
       <h2>Nästa händelse</h2>
       <p>
-        Kom och träna tillsammans med Östersund Triathlon,
-        <router-link to="/kalender">se alla händelser här.</router-link>
+        Kom och träna tillsammans med Östersund Triathlon.
       </p>
     </div>
 
@@ -22,6 +21,9 @@
         <div class="event-description" v-html="event.description"></div>
       </div>
     </article>
+    <router-link class="upcoming-events-link" to="/kalender">
+      Visa alla kommande händelser
+    </router-link>
   </section>
 </template>
 
@@ -78,6 +80,23 @@ const formatDate = (date) => {
   box-shadow: 0 6px 20px rgb(32 37 42 / 10%);
 }
 
+.upcoming-events-link {
+  display: flex;
+  width: fit-content;
+  margin: 1rem auto 0;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--club-lime);
+  border-radius: 4px;
+  color: var(--club-charcoal);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.upcoming-events-link:hover {
+  opacity: 0.9;
+}
+
 .event-content {
   padding: 1.5rem;
 }
@@ -127,6 +146,10 @@ const formatDate = (date) => {
 }
 
 .section-heading p {
-  color: var(--club-muted);
+  max-width: 38rem;
+  margin-left: 0.75rem;
+  color: var(--club-ink);
+  font-size: 1.05rem;
+  line-height: 1.65;
 }
 </style>

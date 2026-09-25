@@ -94,11 +94,18 @@ const formatDate = (date) => {
   padding-left: 0.75rem;
 }
 
-.section-heading p,
 .post-date,
 .post-author,
 .no-posts {
   color: var(--club-muted);
+}
+
+.section-heading p {
+  max-width: 38rem;
+  margin-left: 0.75rem;
+  color: var(--club-ink);
+  font-size: 1.05rem;
+  line-height: 1.65;
 }
 
 .post-list {
