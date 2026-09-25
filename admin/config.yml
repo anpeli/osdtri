@@ -56,14 +56,6 @@ collections:
           - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "body", label: "Body", widget: "markdown" }
-      - file: "src/content/pages/contact.md"
-        label: "Contact"
-        name: "contact"
-        fields:
-          - { name: "title", label: "Title" }
-          - { name: "slug", label: "Slug" }
-          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
-          - { name: "body", label: "Body", widget: "markdown" }
       - file: "src/content/pages/partners.md"
         label: "Partners"
         name: "partners"
