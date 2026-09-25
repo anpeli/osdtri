@@ -1,5 +1,5 @@
 ---
-title: "Sponsorer och samarbeten"
+title: "Partners"
 slug: "partners"
 backdrop: "/assets/images/20190820_203136.jpg"
 ---
