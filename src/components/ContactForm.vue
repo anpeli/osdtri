@@ -94,9 +94,9 @@ const handleSubmit = async () => {
       })
     })
 
-    if (!response.ok) {
-      const errorBody = await response.json().catch(() => ({}))
-      throw new Error(errorBody.message || 'The email service returned an error')
+    const result = await response.json().catch(() => ({}))
+    if (!response.ok || result.success === false || result.success === 'false') {
+      throw new Error(result.message || 'The email service returned an error')
     }
 
     formData.value = { name: '', email: '', message: '' }
