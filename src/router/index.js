@@ -5,6 +5,7 @@ import About from '../views/About.vue'
 import Membership from '../views/Membership.vue'
 import Training from '../views/Training.vue'
 import Partners from '../views/Partners.vue'
+import Archive from '../views/Archive.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -13,7 +14,8 @@ const routes = [
   { path: '/bli-medlem', component: Membership },
   { path: '/kontakt', redirect: '/om-oss' },
   { path: '/traning', component: Training },
-  { path: '/partners', component: Partners }
+  { path: '/partners', component: Partners },
+  { path: '/arkiv', component: Archive }
 ]
 
 export default createRouter({

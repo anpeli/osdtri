@@ -1,8 +1,8 @@
 <template>
   <section class="posts">
     <div class="section-heading">
-      <h2>Senaste inläggen</h2>
-      <p>Nyheter och berättelser från Östersund Triathlon.</p>
+      <h2>{{ archive ? 'Inläggsarkiv' : 'Senaste inläggen' }}</h2>
+      <p v-if="!archive">Nyheter och berättelser från Östersund Triathlon.</p>
     </div>
 
     <div v-if="posts.length" class="post-list">
@@ -17,12 +17,19 @@
       </article>
     </div>
 
-    <p v-else class="no-posts">Inga inlägg publicerade ännu.</p>
+    <p v-else class="no-posts">{{ archive ? 'Inga äldre inlägg att visa.' : 'Inga inlägg publicerade ännu.' }}</p>
   </section>
 </template>
 
 <script setup>
 import { marked } from 'marked'
+
+const props = defineProps({
+  archive: {
+    type: Boolean,
+    default: false
+  }
+})
 
 const parseFrontMatter = (source) => {
   const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
@@ -61,9 +68,21 @@ const parsePost = (source, id) => {
   }
 }
 
-const posts = Object.entries(postFiles)
+const allPosts = Object.entries(postFiles)
   .map(([id, source]) => parsePost(source, id))
   .sort((first, second) => new Date(second.date) - new Date(first.date))
+
+const sixMonthsAgo = new Date()
+const currentDay = sixMonthsAgo.getDate()
+sixMonthsAgo.setDate(1)
+sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6)
+sixMonthsAgo.setDate(Math.min(currentDay, new Date(sixMonthsAgo.getFullYear(), sixMonthsAgo.getMonth() + 1, 0).getDate()))
+
+const recentPosts = allPosts.filter((post) => new Date(post.date) >= sixMonthsAgo)
+const olderPosts = allPosts.filter((post) => new Date(post.date) < sixMonthsAgo)
+const homePosts = [...recentPosts, ...olderPosts.slice(0, Math.max(0, 3 - recentPosts.length))]
+const homePostIds = new Set(homePosts.map((post) => post.id))
+const posts = props.archive ? allPosts.filter((post) => !homePostIds.has(post.id)) : homePosts
 
 const formatDate = (date) => {
   if (!date) return ''

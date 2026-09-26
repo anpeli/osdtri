@@ -5,6 +5,7 @@
   </div>
   <NextEvent />
   <LatestPosts />
+  <router-link class="home-archive-link" to="/arkiv">Fler inlägg</router-link>
 </template>
 
 <script setup>
@@ -47,5 +48,21 @@ const page = {
 
 .page-content :deep(h2) {
   margin: 0 0 1rem;
+}
+
+.home-archive-link {
+  display: block;
+  width: fit-content;
+  margin: -2rem auto 4rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--club-lime);
+  border-radius: 4px;
+  color: var(--club-charcoal);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.home-archive-link:hover {
+  opacity: 0.9;
 }
 </style>
