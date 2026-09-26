@@ -5,7 +5,7 @@
   </div>
   <NextEvent />
   <LatestPosts />
-  <router-link class="home-archive-link" to="/arkiv">Fler inlägg</router-link>
+  <router-link class="home-archive-link" to="/arkiv" @click="scrollToTop">Fler inlägg</router-link>
 </template>
 
 <script setup>
@@ -30,6 +30,10 @@ const page = {
   backdrop: pageMetadata.backdrop,
   backdropPosition: pageMetadata.backdropPosition,
   body: marked.parse(frontMatterMatch?.[2] || '')
+}
+
+function scrollToTop() {
+  window.scrollTo(0, 0)
 }
 </script>
 

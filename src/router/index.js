@@ -22,5 +22,8 @@ export default createRouter({
   history: window.location.protocol === 'file:'
     ? createWebHashHistory()
     : createWebHistory(import.meta.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior() {
+    return { top: 0 }
+  }
 })

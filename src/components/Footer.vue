@@ -9,11 +9,11 @@
       <div class="footer-section">
         <h4>Länkar</h4>
         <ul>
-          <li><router-link to="/">Hem</router-link></li>
-          <li><router-link to="/kalender">Kalender</router-link></li>
-          <li><router-link to="/bli-medlem">Bli medlem</router-link></li>
-          <li><router-link to="/om-oss">Om oss</router-link></li>
-          <li><router-link to="/partners">Partners</router-link></li>
+          <li><router-link to="/" @click="scrollToTop">Hem</router-link></li>
+          <li><router-link to="/kalender" @click="scrollToTop">Kalender</router-link></li>
+          <li><router-link to="/bli-medlem" @click="scrollToTop">Bli medlem</router-link></li>
+          <li><router-link to="/om-oss" @click="scrollToTop">Om oss</router-link></li>
+          <li><router-link to="/partners" @click="scrollToTop">Partners</router-link></li>
         </ul>
       </div>
 
@@ -48,6 +48,10 @@ const settingsFrontMatterMatch = settingsSource?.match(/^---\r?\n([\s\S]*?)\r?\n
 const settings = settingsFrontMatterMatch ? parse(settingsFrontMatterMatch[1]) || {} : {}
 
 const currentYear = ref(new Date().getFullYear())
+
+function scrollToTop() {
+  window.scrollTo(0, 0)
+}
 </script>
 
 <style scoped>
