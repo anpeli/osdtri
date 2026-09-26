@@ -1,6 +1,5 @@
 ---
 title: Träning
-slug: traning
 backdrop: /assets/images/IMG_6412-desktop.jpg
 backdropPosition: center 40%
 ---

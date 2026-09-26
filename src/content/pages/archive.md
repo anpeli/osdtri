@@ -1,4 +1,3 @@
 ---
 title: Inläggsarkiv
-slug: arkiv
 ---

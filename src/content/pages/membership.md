@@ -1,6 +1,5 @@
 ---
 title: Bli medlem
-slug: bli-medlem
 backdrop: /assets/images/IMG_6465-desktop.jpg
 backdropPosition: center 65%
 ---

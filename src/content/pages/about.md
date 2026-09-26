@@ -1,6 +1,5 @@
 ---
 title: Om oss
-slug: om-oss
 backdrop: /assets/images/img_2480-desktop.jpg
 backdropPosition: center 18%
 ---

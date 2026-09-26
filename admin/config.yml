@@ -21,7 +21,6 @@ collections:
         name: "home"
         fields:
           - { name: "title", label: "Title" }
-          - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
@@ -30,7 +29,6 @@ collections:
         name: "events"
         fields:
           - { name: "title", label: "Title" }
-          - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
@@ -39,7 +37,6 @@ collections:
         name: "about"
         fields:
           - { name: "title", label: "Title" }
-          - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
@@ -48,7 +45,6 @@ collections:
         name: "membership"
         fields:
           - { name: "title", label: "Title" }
-          - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
@@ -57,7 +53,6 @@ collections:
         name: "training"
         fields:
           - { name: "title", label: "Title" }
-          - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
@@ -66,7 +61,6 @@ collections:
         name: "partners"
         fields:
           - { name: "title", label: "Title" }
-          - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
@@ -75,7 +69,6 @@ collections:
         name: "archive"
         fields:
           - { name: "title", label: "Title" }
-          - { name: "slug", label: "Slug" }
           - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
