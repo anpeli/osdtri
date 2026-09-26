@@ -24,7 +24,10 @@ const page = {
   title: pageMetadata.title || 'Sponsorer och samarbeten',
   backdrop: pageMetadata.backdrop,
   backdropPosition: pageMetadata.backdropPosition,
-  body: marked.parse(frontMatterMatch?.[2] || '')
+  body: marked.parse(frontMatterMatch?.[2] || '').replace(
+    /src="\/assets\//g,
+    `src="${import.meta.env.BASE_URL}assets/`
+  )
 }
 </script>
 
