@@ -24,4 +24,4 @@ Om du vill sponsra föreningen eller bli en samarbetspartner till oss, kontakta 
 
 ### Sponsrade av Jämtkraft
 
-![Jämtkrafts logotyp](https://images.squarespace-cdn.com/content/v1/5d6e206582e9bf0001ba2eb9/1623137983120-QHLHT6ILY9YBQTLOWOS5/logotyp_liggande.jpg?format=500w)
+![Jämtkrafts logotyp](/assets/images/jamtkraft-logo-small.png)

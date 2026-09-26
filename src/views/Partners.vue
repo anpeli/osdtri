@@ -46,6 +46,12 @@ const page = {
   margin-bottom: 0.75rem;
 }
 
+.page-content :deep(img) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .page-content :deep(ul) {
   padding-left: 1.5rem;
   margin: 1rem 0 2rem;
