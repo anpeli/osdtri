@@ -23,16 +23,10 @@ const props = defineProps({
     type: String,
     required: true
   },
-  backdropDesktop: {
+  backdrop: {
     type: String
   },
-  backdropMobile: {
-    type: String
-  },
-  backdropDesktopPosition: {
-    type: String
-  },
-  backdropMobilePosition: {
+  backdropPosition: {
     type: String
   }
 })
@@ -46,16 +40,12 @@ const resolveAssetUrl = (assetPath) => {
 }
 
 const headerStyle = computed(() => {
-  const desktopBackdrop = props.backdropDesktop || settings.backdropDesktop || '/assets/images/20190820_203136-desktop.jpg'
-  const mobileBackdrop = props.backdropMobile || settings.backdropMobile || '/assets/images/20190820_203136-mobile.jpg'
-  const desktopPosition = props.backdropDesktopPosition || settings.backdropDesktopPosition || 'center 33%'
-  const mobilePosition = props.backdropMobilePosition || settings.backdropMobilePosition || 'center 33%'
+  const backdrop = props.backdrop || settings.backdrop || '/assets/images/20190820_203136-desktop.jpg'
+  const backdropPosition = props.backdropPosition || settings.backdropPosition || 'center 33%'
 
   return {
-    '--page-header-backdrop': `url("${resolveAssetUrl(desktopBackdrop)}")`,
-    '--page-header-backdrop-mobile': `url("${resolveAssetUrl(mobileBackdrop)}")`,
-    '--page-header-backdrop-position': desktopPosition,
-    '--page-header-backdrop-mobile-position': mobilePosition
+    '--page-header-backdrop': `url("${resolveAssetUrl(backdrop)}")`,
+    '--page-header-backdrop-position': backdropPosition
   }
 })
 </script>
@@ -76,13 +66,6 @@ const headerStyle = computed(() => {
   background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), var(--page-header-backdrop);
   background-position: var(--page-header-backdrop-position);
   background-size: cover;
-}
-
-@media (max-width: 767px) {
-  .page-header {
-    background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), var(--page-header-backdrop-mobile);
-    background-position: var(--page-header-backdrop-mobile-position);
-  }
 }
 
 .page-header h1 {

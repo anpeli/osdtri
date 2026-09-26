@@ -1,6 +1,6 @@
 <template>
   <div class="about-page">
-    <PageHeader :title="page.title" :backdrop-desktop="page.backdropDesktop" :backdrop-mobile="page.backdropMobile" :backdrop-desktop-position="page.backdropDesktopPosition" :backdrop-mobile-position="page.backdropMobilePosition" />
+    <PageHeader :title="page.title" :backdrop="page.backdrop" :backdrop-position="page.backdropPosition" />
     <div class="page-content" v-html="page.body"></div>
     <ContactForm />
   </div>
@@ -24,10 +24,8 @@ const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
 
 const page = {
   title: pageMetadata.title || 'Om oss',
-  backdropDesktop: pageMetadata.backdropDesktop,
-  backdropMobile: pageMetadata.backdropMobile,
-  backdropDesktopPosition: pageMetadata.backdropDesktopPosition,
-  backdropMobilePosition: pageMetadata.backdropMobilePosition,
+  backdrop: pageMetadata.backdrop,
+  backdropPosition: pageMetadata.backdropPosition,
   body: marked.parse(frontMatterMatch?.[2] || '')
 }
 </script>

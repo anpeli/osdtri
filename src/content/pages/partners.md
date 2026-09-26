@@ -1,10 +1,8 @@
 ---
 title: "Partners"
 slug: "partners"
-backdropDesktop: "/assets/images/20190820_203136-desktop.jpg"
-backdropMobile: "/assets/images/20190820_203136-mobile.jpg"
-backdropDesktopPosition: center 43%
-backdropMobilePosition: center 43%
+backdrop: "/assets/images/20190820_203136-desktop.jpg"
+backdropPosition: center 43%
 ---
 
 ## Sponsorer

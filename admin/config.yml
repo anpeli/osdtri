@@ -22,10 +22,8 @@ collections:
         fields:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
-          - { name: "backdropDesktop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropMobile", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropDesktopPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropMobilePosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
       - file: "src/content/pages/events.md"
         label: "Events"
@@ -33,10 +31,8 @@ collections:
         fields:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
-          - { name: "backdropDesktop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropMobile", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropDesktopPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropMobilePosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
       - file: "src/content/pages/about.md"
         label: "About"
@@ -44,10 +40,8 @@ collections:
         fields:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
-          - { name: "backdropDesktop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropMobile", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropDesktopPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropMobilePosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
       - file: "src/content/pages/membership.md"
         label: "Membership"
@@ -55,10 +49,8 @@ collections:
         fields:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
-          - { name: "backdropDesktop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropMobile", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropDesktopPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropMobilePosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
       - file: "src/content/pages/training.md"
         label: "Training"
@@ -66,10 +58,8 @@ collections:
         fields:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
-          - { name: "backdropDesktop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropMobile", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropDesktopPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropMobilePosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
       - file: "src/content/pages/partners.md"
         label: "Partners"
@@ -77,10 +67,8 @@ collections:
         fields:
           - { name: "title", label: "Title" }
           - { name: "slug", label: "Slug" }
-          - { name: "backdropDesktop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropMobile", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropDesktopPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropMobilePosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdrop", label: "Page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
 
   - name: "events"
@@ -124,7 +112,5 @@ collections:
           - { name: "email", label: "Email", widget: "string", pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
           - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
           - { name: "instagramUrl", label: "Instagram URL", widget: "string", required: false }
-          - { name: "backdropDesktop", label: "Default desktop page header backdrop", widget: "image" }
-          - { name: "backdropMobile", label: "Default mobile page header backdrop", widget: "image" }
-          - { name: "backdropDesktopPosition", label: "Default desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropMobilePosition", label: "Default mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdrop", label: "Default page header backdrop", widget: "image" }
+          - { name: "backdropPosition", label: "Default page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
