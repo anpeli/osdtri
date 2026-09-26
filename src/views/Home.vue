@@ -5,7 +5,7 @@
   </div>
   <NextEvent />
   <LatestPosts />
-  <router-link class="home-archive-link" to="/arkiv" @click="scrollToTop">Fler inlägg</router-link>
+  <router-link class="home-archive-link" to="/arkiv" @click="scrollToTop">Visa fler inlägg</router-link>
 </template>
 
 <script setup>
