@@ -6,7 +6,7 @@ import { resolve } from 'node:path'
 const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1]
 
 export default defineConfig({
-  base: repositoryName ? `/${repositoryName}/` : './',
+  base: '/',
   plugins: [
     vue(),
     {
