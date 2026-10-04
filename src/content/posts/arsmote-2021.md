@@ -2,6 +2,7 @@
 title: "Årsmöte 2021"
 date: "2021-02-11T12:00:00+01:00"
 author: "Styrelsen"
+image: ""
 ---
 
 Årsmötet 2021 kommer gå av stapeln den 18 mars klockan 19:00. Det kommer finnas möjlighet att delta digitalt och fysiskt.

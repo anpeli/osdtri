@@ -2,6 +2,7 @@
 title: "Beställ klubbkläder!"
 date: "2021-07-10T12:00:00+02:00"
 author: "Styrelsen"
+image: ""
 ---
 
 Äntligen är beställningen av klubbkläder öppen!

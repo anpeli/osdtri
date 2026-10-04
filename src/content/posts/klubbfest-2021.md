@@ -1,7 +1,8 @@
 ---
 title: Klubbfest anno 2021!
-date: 2021-09-20T12:00:00+02:00
+date: "2021-09-20T12:00:00+02:00"
 author: Styrelsen genom Åsa
+image: ""
 ---
 Årets höjdpunkt, klubbfesten, närmar sig!
 

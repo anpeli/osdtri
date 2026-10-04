@@ -1,7 +1,8 @@
 ---
 title: "Styrelsen informerar"
 date: "2020-10-02T12:00:00+02:00"
-author: "Styrelsen"
+author: "Styrelsen genom Ann-Mari"
+image: ""
 ---
 
 Efter ett konstigt år har styrelsen beslutat att nya klubbkläder kommer att beställas i samband med nästa årsmöte. Men redan nu kan vi bjuda på ett litet smakprov!
@@ -19,5 +20,3 @@ Klubbfesten är planerad till fredag 16/10. För att kunna coronaanpassa den beh
 Evenemanget finns på vår [Facebook-sida](https://www.facebook.com/groups/109864395743968), men det går också bra att mejla info@osdtri.se.
 
 Tills vi hörs eller ses, allt gott!
-
-Styrelsen genom Ann-Mari

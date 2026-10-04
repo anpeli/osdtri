@@ -2,6 +2,7 @@
 title: "Klubbfesten 2019"
 date: "2019-09-03T12:00:00+02:00"
 author: "Styrelsen"
+image: ""
 ---
 
 Äntligen dags igen! Årets klubbfest blir hemma hos ordförande Stefan.

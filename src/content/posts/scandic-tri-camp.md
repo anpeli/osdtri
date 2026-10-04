@@ -1,7 +1,8 @@
 ---
 title: "Scandic Tri Camp"
 date: "2022-10-15T12:00:00+02:00"
-author: "Styrelsen"
+author: "Svenska Triathlonförbundet"
+image: ""
 ---
 
 Inbjudan från [Svenska Triathlonförbundet](https://www.svensktriathlon.org/Nyheter/Nyheter/ScandicTriCamp/) till Scandic Tri Camp.
@@ -27,7 +28,3 @@ Sista dag för att vara garanterad boende är 3 november.
 Varje camp har ett begränsat antal platser - först till kvarn gäller.
 
 Tillsammans är vi Svensk Triathlon - Världens Bästa!
-
-Med vänlig hälsning
-
-Svenska Triathlonförbundet

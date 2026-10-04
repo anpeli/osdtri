@@ -5,6 +5,7 @@ author: "Ann-Mari Darj"
 time: "16:00"
 duration: "1 timme"
 location: Storsjöbadet
+image: ""
 facebookUrl: https://fb.me/e/6DVlmTCUV
 description: >-
   Häng med mig och simma nästa söndag (4/10) 💦

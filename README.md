@@ -51,7 +51,7 @@ Vite uses the `GITHUB_REPOSITORY` environment variable, when available, to set t
 
 ## Content
 
-Posts are stored as Markdown files in `src/content/posts/`. Each post can contain front matter such as:
+Posts are stored as Markdown files in `src/content/posts/`. Each post has `title`, `date`, and `author` front matter properties; `image` is optional and is left empty when a post has no image:
 
 ```md
 ---
@@ -66,7 +66,7 @@ Post content goes here.
 
 The home page discovers these Markdown files at build time and renders them in date order.
 
-The calendar is stored as individual event markdown files in `src/content/events/`. Each file contains the same event fields used by the Events collection in Decap CMS: title, date, location, description, and optional image.
+The calendar is stored as individual event Markdown files in `src/content/events/`. Each file has `title`, `date`, and `description` properties. Optional properties are also kept in the front matter and left empty when unused: `author`, `time`, `duration`, `location`, `image`, and `facebookUrl`.
 
 ## Decap CMS
 
