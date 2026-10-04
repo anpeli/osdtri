@@ -6,6 +6,7 @@ import Membership from '../views/Membership.vue'
 import Training from '../views/Training.vue'
 import Partners from '../views/Partners.vue'
 import Archive from '../views/Archive.vue'
+import Gallery from '../views/Gallery.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -15,7 +16,8 @@ const routes = [
   { path: '/kontakt', redirect: '/om-oss' },
   { path: '/traning', component: Training },
   { path: '/partners', component: Partners },
-  { path: '/arkiv', component: Archive }
+  { path: '/arkiv', component: Archive },
+  { path: '/galleri/:slug', name: 'gallery', component: Gallery }
 ]
 
 export default createRouter({

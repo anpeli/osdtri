@@ -117,6 +117,21 @@ collections:
       - { name: "image", label: "Image", widget: "image", required: false }
       - { name: "body", label: "Body", widget: "markdown" }
 
+  - name: "galleries"
+    label: "Galleries"
+    folder: "src/content/galleries"
+    create: true
+    identifier_field: "title"
+    summary: "{{title}}"
+    fields:
+      - { name: "title", label: "Title" }
+      - { name: "photographer", label: "Photographer" }
+      - name: "images"
+        label: "Images"
+        widget: "list"
+        required: false
+        field: { name: "image", label: "Image", widget: "image" }
+
   - name: "site-settings"
     label: "Site settings"
     files:
