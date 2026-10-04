@@ -1,9 +1,8 @@
 ---
-title: "Årsmöte 2025 + Club social = sant"
-date: "2025-02-07T12:00:00+01:00"
-author: "Styrelsen"
+title: Årsmöte 2025 + Club social = sant
+date: 2025-02-07T12:00:00+01:00
+author: Styrelsen
 ---
-
 Kära triathleter!
 
 Den 11 april kör vi en kombination av Club Social (träning och mat) och Årsmötet 2025.
@@ -23,5 +22,3 @@ Det här vill du inte missa! Boka in det i kalendern redan nu.
 Vi återkommer med plats och träningsform när det är spikat.
 
 Varmt välkomna!
-
-/Styrelsen
