@@ -3,7 +3,7 @@
     <img v-if="post.image" :src="post.image" :alt="post.title" class="post-image" />
     <div class="post-content">
       <p v-if="post.date" class="post-date">{{ formatDate(post.date) }}</p>
-      <h3 v-if="showTitle">
+      <h3 v-if="showTitle" class="post-title">
         <router-link
           v-if="linkTitle"
           :to="{ name: 'post', params: { slug: post.slug }, query: { from: returnTo } }"
@@ -11,7 +11,19 @@
           {{ post.title }}
         </router-link>
         <template v-else>{{ post.title }}</template>
+        <button
+          class="post-link-button"
+          type="button"
+          aria-label="Kopiera länk till inlägget"
+          title="Kopiera länk till inlägget"
+          @click="copyPostLink"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M10 13a5 5 0 0 0 7.07 0l3-3A5 5 0 0 0 13 2.93l-1.72 1.71m2.72 6.36a5 5 0 0 0-7.07 0l-3 3A5 5 0 0 0 11 21.07l1.71-1.71" />
+          </svg>
+        </button>
       </h3>
+      <p v-if="copyStatus" class="post-copy-status" aria-live="polite">{{ copyStatus }}</p>
       <p v-if="post.author" class="post-author">Av {{ post.author }}</p>
       <div class="post-body" v-html="post.body"></div>
     </div>
@@ -19,7 +31,14 @@
 </template>
 
 <script setup>
-defineProps({
+import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+const copyStatus = ref('')
+
+const props = defineProps({
   post: {
     type: Object,
     required: true
@@ -42,6 +61,26 @@ defineProps({
     default: false
   }
 })
+
+const copyPostLink = async () => {
+  const slug = props.post.slug || route.params.slug
+  if (typeof slug !== 'string' || !slug) {
+    copyStatus.value = 'Länken till inlägget kunde inte skapas.'
+    return
+  }
+
+  const postUrl = new URL(
+    router.resolve({ name: 'post', params: { slug } }).href,
+    window.location.href
+  ).href
+
+  try {
+    await navigator.clipboard.writeText(postUrl)
+    copyStatus.value = 'Länken kopierades.'
+  } catch {
+    copyStatus.value = 'Kunde inte kopiera länken. Kontrollera webbläsarens behörigheter.'
+  }
+}
 
 const formatDate = (date) => {
   const parsedDate = new Date(date)
@@ -102,6 +141,52 @@ const formatDate = (date) => {
 .post-content h3 {
   margin: 0 0 0.75rem;
   color: var(--club-charcoal);
+}
+
+.post-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.post-link-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.35rem;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--club-blue);
+  cursor: pointer;
+}
+
+.post-link-button:hover {
+  background: rgb(40 123 159 / 10%);
+}
+
+.post-link-button:focus-visible {
+  outline: 3px solid var(--club-lime);
+  outline-offset: 2px;
+}
+
+.post-link-button svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.post-copy-status {
+  margin: -0.5rem 0 0.75rem;
+  color: var(--club-muted);
+  font-size: 0.9rem;
 }
 
 .post-content h3 a {
