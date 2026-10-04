@@ -1,5 +1,6 @@
 ---
 title: "Klubbmästerskap 2026"
+date: "2026-08-27"
 photographer: "Claes Bång"
 images:
   - "/assets/images/787831551_4211765962294008_6974260592797971064_n.jpg"

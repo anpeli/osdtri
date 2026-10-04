@@ -143,6 +143,7 @@ collections:
     summary: "{{title}}"
     fields:
       - { name: "title", label: "Title" }
+      - { name: "date", label: "Date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { name: "photographer", label: "Photographer" }
       - { name: "body", label: "Body", widget: "markdown", required: false }
       - name: "images"

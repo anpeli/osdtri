@@ -10,6 +10,7 @@
     <div v-if="page.body" class="page-content" v-html="page.body"></div>
     <article class="gallery-card">
       <div v-if="gallery.body" class="gallery-description page-content" v-html="gallery.body"></div>
+      <p v-if="gallery.date" class="gallery-date">{{ formatDate(gallery.date) }}</p>
       <p v-if="gallery.photographer" class="gallery-photographer">Fotograf: {{ gallery.photographer }}</p>
       <div v-if="gallery.images.length" class="gallery-grid" :aria-label="gallery.title">
         <figure v-for="(image, index) in gallery.images" :key="`${image}-${index}`" class="gallery-image">
@@ -71,10 +72,22 @@ const gallery = computed(() => {
 
   return {
     ...metadata,
+    date: typeof metadata.date === 'string' ? metadata.date : '',
     body: marked.parse(frontMatterMatch?.[2] || ''),
     images: Array.isArray(metadata.images) ? metadata.images.filter((image) => typeof image === 'string') : []
   }
 })
+
+const formatDate = (date) => {
+  const parsedDate = new Date(date)
+  if (Number.isNaN(parsedDate.getTime())) return ''
+
+  return parsedDate.toLocaleDateString('sv-SE', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
 
 const resolveImageUrl = (imagePath) => imagePath.startsWith('/')
   ? `${import.meta.env.BASE_URL}${imagePath.slice(1)}`
@@ -95,10 +108,16 @@ const galleryImages = computed(() => gallery.value
   padding: 0 2rem 2rem;
 }
 
+.gallery-date,
 .gallery-photographer {
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.5rem;
   color: var(--club-muted);
   font-size: 0.95rem;
+}
+
+.gallery-date {
+  color: var(--club-blue);
+  font-weight: 700;
 }
 
 .gallery-description {
