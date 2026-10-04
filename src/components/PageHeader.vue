@@ -26,6 +26,9 @@ const props = defineProps({
   backdrop: {
     type: String
   },
+  backdropSmall: {
+    type: String
+  },
   backdropPosition: {
     type: String
   }
@@ -40,11 +43,13 @@ const resolveAssetUrl = (assetPath) => {
 }
 
 const headerStyle = computed(() => {
-  const backdrop = props.backdrop || settings.backdrop || '/assets/images/20190820_203136-desktop.jpg'
+  const backdrop = props.backdrop || settings.backdrop || '/assets/images/20190820_203136-medium.jpg'
+  const backdropSmall = props.backdropSmall || settings.backdropSmall || backdrop
   const backdropPosition = props.backdropPosition || settings.backdropPosition || 'center 33%'
 
   return {
     '--page-header-backdrop': `url("${resolveAssetUrl(backdrop)}")`,
+    '--page-header-backdrop-small': `url("${resolveAssetUrl(backdropSmall)}")`,
     '--page-header-backdrop-position': backdropPosition
   }
 })
@@ -70,5 +75,11 @@ const headerStyle = computed(() => {
 
 .page-header h1 {
   font-size: clamp(1.6rem, 4vw, 2.5rem);
+}
+
+@media (max-width: 640px) {
+  .page-header {
+    background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), var(--page-header-backdrop-small);
+  }
 }
 </style>
