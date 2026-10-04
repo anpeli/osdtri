@@ -144,6 +144,7 @@ collections:
     fields:
       - { name: "title", label: "Title" }
       - { name: "photographer", label: "Photographer" }
+      - { name: "body", label: "Body", widget: "markdown", required: false }
       - name: "images"
         label: "Images"
         widget: "list"

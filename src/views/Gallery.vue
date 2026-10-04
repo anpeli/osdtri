@@ -9,6 +9,7 @@
     />
     <div v-if="page.body" class="page-content" v-html="page.body"></div>
     <article class="gallery-card">
+      <div v-if="gallery.body" class="gallery-description page-content" v-html="gallery.body"></div>
       <p v-if="gallery.photographer" class="gallery-photographer">Fotograf: {{ gallery.photographer }}</p>
       <div v-if="gallery.images.length" class="gallery-grid" :aria-label="gallery.title">
         <figure v-for="(image, index) in gallery.images" :key="`${image}-${index}`" class="gallery-image">
@@ -70,6 +71,7 @@ const gallery = computed(() => {
 
   return {
     ...metadata,
+    body: marked.parse(frontMatterMatch?.[2] || ''),
     images: Array.isArray(metadata.images) ? metadata.images.filter((image) => typeof image === 'string') : []
   }
 })
@@ -97,6 +99,14 @@ const galleryImages = computed(() => gallery.value
   margin: 0 0 1.5rem;
   color: var(--club-muted);
   font-size: 0.95rem;
+}
+
+.gallery-description {
+  margin-bottom: 1.5rem;
+}
+
+.gallery-description :deep(p) {
+  margin: 0 0 1rem;
 }
 
 .gallery-card {
