@@ -96,6 +96,15 @@ collections:
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
+      - file: "src/content/pages/post.md"
+        label: "Post"
+        name: "post"
+        fields:
+          - { name: "title", label: "Title" }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
 
   - name: "events"
     label: "Events"

@@ -64,7 +64,7 @@ image: /assets/uploads/example.jpg
 Post content goes here.
 ```
 
-The home page discovers these Markdown files at build time and renders them in date order.
+The home page and archive discover these Markdown files at build time and render them in date order. Each post title links to its single-post page at `/inlagg/<filename-slug>`.
 
 The calendar is stored as individual event Markdown files in `src/content/events/`. Each file has `title`, `date`, and `description` properties. Optional properties are also kept in the front matter and left empty when unused: `author`, `time`, `duration`, `location`, `image`, and `facebookUrl`.
 

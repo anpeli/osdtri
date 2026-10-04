@@ -19,6 +19,11 @@ const galleryFiles = import.meta.glob('../content/galleries/*.md', {
   import: 'default',
   query: '?raw'
 })
+const postFiles = import.meta.glob('../content/posts/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
 
 const getTitleFromSource = (source) => {
   const frontMatterMatch = source?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
@@ -40,6 +45,7 @@ const routes = [
   { path: '/traning', component: Training, meta: { title: getCmsPageTitle('training'), cmsPage: 'training' } },
   { path: '/partners', component: Partners, meta: { title: getCmsPageTitle('partners'), cmsPage: 'partners' } },
   { path: '/arkiv', component: Archive, meta: { title: getCmsPageTitle('archive'), cmsPage: 'archive' } },
+  { path: '/inlagg/:slug', name: 'post', component: () => import('../views/Post.vue'), meta: { title: getCmsPageTitle('post'), cmsPage: 'post' } },
   { path: '/galleri/:slug', name: 'gallery', component: Gallery, meta: { title: getCmsPageTitle('gallery') } }
 ]
 
@@ -48,12 +54,18 @@ const router = createRouter({
     ? createWebHashHistory()
     : createWebHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior() {
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition
+    if (to.hash) return { el: to.hash, behavior: 'smooth' }
     return { top: 0 }
   }
 })
 
 const getCmsTitle = (route) => {
+  if (route.name === 'post') {
+    return getTitleFromSource(postFiles[`../content/posts/${route.params.slug}.md`])
+      || route.meta.title
+  }
   if (route.name === 'gallery') {
     return getTitleFromSource(galleryFiles[`../content/galleries/${route.params.slug}.md`])
       || route.meta.title
