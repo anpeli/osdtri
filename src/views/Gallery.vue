@@ -9,8 +9,9 @@
     />
     <div v-if="page.body" class="page-content" v-html="page.body"></div>
     <article class="gallery-card">
-      <div v-if="gallery.body" class="gallery-description page-content" v-html="gallery.body"></div>
       <p v-if="gallery.date" class="gallery-date">{{ formatDate(gallery.date) }}</p>
+      <h3 class="gallery-title">{{ gallery.title || page.title }}</h3>
+      <div v-if="gallery.body" class="gallery-description page-content" v-html="gallery.body"></div>
       <p v-if="gallery.photographer" class="gallery-photographer">Fotograf: {{ gallery.photographer }}</p>
       <div v-if="gallery.images.length" class="gallery-grid" :aria-label="gallery.title">
         <figure v-for="(image, index) in gallery.images" :key="`${image}-${index}`" class="gallery-image">
@@ -113,6 +114,11 @@ const galleryImages = computed(() => gallery.value
   margin: 0 0 0.5rem;
   color: var(--club-muted);
   font-size: 0.95rem;
+}
+
+.gallery-title {
+  margin: 0 0 0.75rem;
+  color: var(--club-charcoal);
 }
 
 .gallery-date {
