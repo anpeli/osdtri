@@ -146,8 +146,7 @@ const events = Object.entries(eventFiles)
     const dateKey = getDateKey(event.date)
     const now = new Date()
     const todayKey = getDateKey(now)
-    const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
-    return dateKey > todayKey || (dateKey === todayKey && (!event.time || event.time >= currentTime))
+    return dateKey >= todayKey
   })
   .sort((first, second) => getDateKey(first.date).localeCompare(getDateKey(second.date)) || (first.time || '').localeCompare(second.time || ''))
 

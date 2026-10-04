@@ -49,7 +49,6 @@ const getDateKey = (date) => {
 
 const now = new Date()
 const todayKey = getDateKey(now)
-const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
 
 const event = Object.entries(eventFiles)
   .map(([filePath, source]) => parseEvent(source, filePath))
@@ -57,7 +56,7 @@ const event = Object.entries(eventFiles)
     if (!entry.title || !entry.date) return false
 
     const dateKey = getDateKey(entry.date)
-    return dateKey > todayKey || (dateKey === todayKey && (!entry.time || entry.time >= currentTime))
+    return dateKey >= todayKey
   })
   .sort((first, second) => getDateKey(first.date).localeCompare(getDateKey(second.date)) || (first.time || '').localeCompare(second.time || ''))[0]
 
