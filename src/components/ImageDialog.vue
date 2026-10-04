@@ -45,7 +45,12 @@
         @click="closeDialog"
       >
       </button>
-      <img class="image-dialog__image" :src="currentImage.src" :alt="currentImage.alt" />
+      <img
+        :key="currentImage.src"
+        class="image-dialog__image"
+        :src="currentImage.src"
+        :alt="currentImage.alt"
+      />
     </dialog>
   </Teleport>
 </template>
