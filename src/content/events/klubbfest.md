@@ -7,6 +7,5 @@ duration: ""
 location: ""
 image: ""
 facebookUrl: ""
-description: Dags för årets klubbfest. Vi börjar med träning, sen äter vi
-  tillsammans. Mer information kommer.
 ---
+Dags för årets klubbfest. Vi börjar med träning, sen äter vi tillsammans. Mer information kommer.

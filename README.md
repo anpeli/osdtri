@@ -66,7 +66,7 @@ Post content goes here.
 
 The home page and archive discover these Markdown files at build time and render them in date order. Each post title links to its single-post page at `/inlagg/<filename-slug>`.
 
-The calendar is stored as individual event Markdown files in `src/content/events/`. Each file has `title`, `date`, and `description` properties. Optional properties are also kept in the front matter and left empty when unused: `author`, `time`, `duration`, `location`, `image`, and `facebookUrl`.
+The calendar is stored as individual event Markdown files in `src/content/events/`. Each file has `title` and `date` properties in the front matter, with the event description in the Markdown body. Optional front matter properties are left empty when unused: `author`, `time`, `duration`, `location`, `image`, and `facebookUrl`.
 
 ## Decap CMS
 

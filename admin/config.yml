@@ -121,7 +121,7 @@ collections:
       - { name: "location", label: "Location", required: false }
       - { name: "image", label: "Image", widget: "image", required: false }
       - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
-      - { name: "description", label: "Description", widget: "text" }
+      - { name: "body", label: "Description", widget: "markdown" }
 
   - name: "posts"
     label: "Posts"

@@ -7,5 +7,5 @@ duration: "1-2 timmar"
 location: ""
 image: ""
 facebookUrl: ""
-description: "Månadsträning december, mer information kommer närmare inpå."
 ---
+Månadsträning december, mer information kommer närmare inpå.
