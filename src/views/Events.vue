@@ -60,7 +60,7 @@
         >
           <div class="event-info">
             <p class="event-date">
-              {{ formatDate(event.date) }}
+              {{ formatEventDate(event.date) }}
               <span v-if="event.time">, {{ event.time }}</span>
               <span v-if="event.duration">, {{ event.duration }}</span>
               <span v-if="event.location">, {{ event.location }}</span>
@@ -85,6 +85,7 @@ import { computed, ref } from 'vue'
 import { marked } from 'marked'
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
+import { formatEventDate } from '../utils/eventDate.js'
 
 const eventFiles = import.meta.glob('../content/events/*.md', {
   eager: true,
@@ -188,13 +189,6 @@ const changeMonth = (offset) => {
   displayedMonth.value = new Date(displayedMonth.value.getFullYear(), displayedMonth.value.getMonth() + offset, 1)
   selectedEvent.value = null
 }
-
-const formatDate = (dateString) => new Date(dateString).toLocaleDateString('sv-SE', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  timeZone: 'UTC'
-})
 
 </script>
 

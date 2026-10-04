@@ -1,7 +1,7 @@
 <template>
   <article class="event-card">
     <div class="event-content">
-      <p class="event-date">{{ formatDate(event.date) }}<span v-if="event.time">, {{ event.time }}</span><span v-if="event.duration">, {{ event.duration }}</span><span v-if="event.location">, {{ event.location }}</span></p>
+      <p class="event-date">{{ formatEventDate(event.date) }}<span v-if="event.time">, {{ event.time }}</span><span v-if="event.duration">, {{ event.duration }}</span><span v-if="event.location">, {{ event.location }}</span></p>
       <h3 class="event-title">
         <router-link
           v-if="linkTitle"
@@ -35,6 +35,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { formatEventDate } from '../utils/eventDate.js'
 
 const route = useRoute()
 const router = useRouter()
@@ -71,16 +72,6 @@ const copyEventLink = async () => {
   }
 }
 
-const formatDate = (date) => {
-  if (!date) return ''
-
-  return new Date(date).toLocaleDateString('sv-SE', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    timeZone: 'UTC'
-  })
-}
 </script>
 
 <style scoped>
