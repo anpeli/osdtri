@@ -5,7 +5,7 @@
   </div>
   <NextEvent />
   <PostList />
-  <router-link class="home-archive-link" to="/arkiv" @click="scrollToTop">Visa fler inlägg</router-link>
+  <router-link class="home-archive-link" to="/arkiv">Visa fler inlägg</router-link>
 </template>
 
 <script setup>
@@ -34,9 +34,6 @@ const page = {
   body: marked.parse(frontMatterMatch?.[2] || '')
 }
 
-function scrollToTop() {
-  window.scrollTo(0, 0)
-}
 </script>
 
 <style scoped>
