@@ -2,14 +2,14 @@
   <div class="archive-page">
     <PageHeader :title="page.title" :backdrop="page.backdrop" :backdrop-small="page.backdropSmall" :backdrop-position="page.backdropPosition" :backdrop-small-position="page.backdropSmallPosition" />
     <div v-if="page.body" class="page-content" v-html="page.body"></div>
-    <LatestPosts :archive="true" />
+    <PostList :archive="true" />
   </div>
 </template>
 
 <script setup>
 import { marked } from 'marked'
 import { parse } from 'yaml'
-import LatestPosts from '../components/LatestPosts.vue'
+import PostList from '../components/PostList.vue'
 import PageHeader from '../components/PageHeader.vue'
 
 const pageFiles = import.meta.glob('../content/pages/*.md', {

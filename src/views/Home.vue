@@ -4,7 +4,7 @@
     <div class="page-content" v-html="page.body"></div>
   </div>
   <NextEvent />
-  <LatestPosts />
+  <PostList />
   <router-link class="home-archive-link" to="/arkiv" @click="scrollToTop">Visa fler inlägg</router-link>
 </template>
 
@@ -13,7 +13,7 @@ import { marked } from 'marked'
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
 import NextEvent from '../components/NextEvent.vue'
-import LatestPosts from '../components/LatestPosts.vue'
+import PostList from '../components/PostList.vue'
 
 const pageFiles = import.meta.glob('../content/pages/*.md', {
   eager: true,

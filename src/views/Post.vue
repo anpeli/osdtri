@@ -7,7 +7,7 @@
       :backdrop-position="page.backdropPosition"
       :backdrop-small-position="page.backdropSmallPosition"
     />
-    <PostCard :post="post" :single="true" />
+    <PostItem :post="post" :single="true" />
     <router-link class="back-link" :to="returnLocation">
       {{ isFromArchive ? 'Tillbaka till inläggsarkivet' : 'Tillbaka till senaste inläggen' }}
     </router-link>
@@ -24,7 +24,7 @@ import { useRoute } from 'vue-router'
 import { marked } from 'marked'
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
-import PostCard from '../components/PostCard.vue'
+import PostItem from '../components/PostItem.vue'
 import { getPostGroups } from '../utils/postGroups'
 
 const route = useRoute()

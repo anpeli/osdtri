@@ -13,7 +13,7 @@
       @keydown.enter="openPostImage"
       @keydown.space="openPostImage"
     >
-      <PostCard
+      <PostItem
         v-for="post in posts"
         :key="post.id"
         :post="post"
@@ -30,7 +30,7 @@
 import { onMounted, ref } from 'vue'
 import { marked } from 'marked'
 import ImageDialog from './ImageDialog.vue'
-import PostCard from './PostCard.vue'
+import PostItem from './PostItem.vue'
 import { getPostGroups } from '../utils/postGroups'
 
 const postList = ref(null)

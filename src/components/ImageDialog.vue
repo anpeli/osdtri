@@ -59,6 +59,8 @@
 <script setup>
 import { computed, onBeforeUnmount, ref } from 'vue'
 
+defineOptions({ name: 'ImageDialog' })
+
 const props = defineProps({
   src: {
     type: String,
