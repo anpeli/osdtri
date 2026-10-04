@@ -146,6 +146,12 @@ function scrollToTop() {
 @media (max-width: 768px) {
   .footer-bottom {
     text-align: left;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .footer-bottom p {
+    min-width: 0;
   }
 }
 </style>
