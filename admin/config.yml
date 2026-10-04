@@ -36,6 +36,16 @@ collections:
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "body", label: "Body", widget: "markdown", required: false }
+      - file: "src/content/pages/gallery.md"
+        label: "Gallery"
+        name: "gallery"
+        fields:
+          - { name: "title", label: "Title" }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "body", label: "Body", widget: "markdown", required: false }
       - file: "src/content/pages/about.md"
         label: "About"
         name: "about"

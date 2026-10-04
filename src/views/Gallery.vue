@@ -1,6 +1,13 @@
 <template>
   <div v-if="gallery" class="gallery-page">
-    <PageHeader :title="gallery.title || 'Galleri'" />
+    <PageHeader
+      :title="gallery.title || page.title"
+      :backdrop="page.backdrop"
+      :backdrop-small="page.backdropSmall"
+      :backdrop-position="page.backdropPosition"
+      :backdrop-small-position="page.backdropSmallPosition"
+    />
+    <div v-if="page.body" class="page-content" v-html="page.body"></div>
     <article class="gallery-card">
       <p v-if="gallery.photographer" class="gallery-photographer">Fotograf: {{ gallery.photographer }}</p>
       <div v-if="gallery.images.length" class="gallery-grid" :aria-label="gallery.title">
@@ -18,15 +25,33 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { marked } from 'marked'
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
 
 const route = useRoute()
+const pageFiles = import.meta.glob('../content/pages/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
 const galleryFiles = import.meta.glob('../content/galleries/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
+
+const pageSource = pageFiles['../content/pages/gallery.md']
+const pageFrontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+const pageMetadata = pageFrontMatterMatch ? parse(pageFrontMatterMatch[1]) || {} : {}
+const page = {
+  title: pageMetadata.title || 'Galleri',
+  backdrop: pageMetadata.backdrop,
+  backdropSmall: pageMetadata.backdropSmall,
+  backdropPosition: pageMetadata.backdropPosition,
+  backdropSmallPosition: pageMetadata.backdropSmallPosition,
+  body: marked.parse(pageFrontMatterMatch?.[2] || '')
+}
 
 const gallery = computed(() => {
   const source = galleryFiles[`../content/galleries/${route.params.slug}.md`]
