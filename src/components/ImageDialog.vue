@@ -262,7 +262,8 @@ defineExpose({ open: openDialog })
 @media (max-width: 600px) {
   .image-dialog {
     inset: auto 0 0;
-    width: 100%;
+    width: auto;
+    max-width: none;
     height: min(90vh, 900px);
     height: min(90dvh, 900px);
     max-height: 90vh;
@@ -282,18 +283,18 @@ defineExpose({ open: openDialog })
     right: 0.75rem;
   }
 
-    .image-dialog__navigate {
-      top: 0.5rem;
-    }
-
-    .image-dialog__previous {
-      left: 0.75rem;
-    }
-
-    .image-dialog__next {
-      left: 4rem;
-    }
+  .image-dialog__navigate {
+    top: 0.5rem;
   }
+
+  .image-dialog__previous {
+    left: 0.75rem;
+  }
+
+  .image-dialog__next {
+    left: 4rem;
+  }
+}
 
 @keyframes image-sheet-in {
   from {
