@@ -17,3 +17,5 @@ Föreläsningen är digital och kostnadsfri.
 [Länk till anmälan](https://educationwebregistration.idrottonline.se/home/index/1507447)
 
 Stort tack för er insats!
+
+![Föreläsning med Carolina Klüft den 31 augusti](assets/images/Skärmavbild+2021-08-18+kl.+13.14.34_1yPa.webp)
