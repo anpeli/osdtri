@@ -8,6 +8,7 @@ import Training from '../views/Training.vue'
 import Partners from '../views/Partners.vue'
 import Archive from '../views/Archive.vue'
 import Gallery from '../views/Gallery.vue'
+import Event from '../views/Event.vue'
 
 const pageFiles = import.meta.glob('../content/pages/*.md', {
   eager: true,
@@ -15,6 +16,11 @@ const pageFiles = import.meta.glob('../content/pages/*.md', {
   query: '?raw'
 })
 const galleryFiles = import.meta.glob('../content/galleries/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
+const eventFiles = import.meta.glob('../content/events/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
@@ -46,7 +52,8 @@ const routes = [
   { path: '/partners', component: Partners, meta: { title: getCmsPageTitle('partners'), cmsPage: 'partners' } },
   { path: '/arkiv', component: Archive, meta: { title: getCmsPageTitle('archive'), cmsPage: 'archive' } },
   { path: '/inlagg/:slug', name: 'post', component: () => import('../views/Post.vue'), meta: { title: getCmsPageTitle('post'), cmsPage: 'post' } },
-  { path: '/galleri/:slug', name: 'gallery', component: Gallery, meta: { title: getCmsPageTitle('gallery') } }
+  { path: '/galleri/:slug', name: 'gallery', component: Gallery, meta: { title: getCmsPageTitle('gallery') } },
+  { path: '/handelse/:slug', name: 'event', component: Event, meta: { title: getCmsPageTitle('event'), cmsPage: 'event' } }
 ]
 
 const router = createRouter({
@@ -68,6 +75,10 @@ const getCmsTitle = (route) => {
   }
   if (route.name === 'gallery') {
     return getTitleFromSource(galleryFiles[`../content/galleries/${route.params.slug}.md`])
+      || route.meta.title
+  }
+  if (route.name === 'event') {
+    return getTitleFromSource(eventFiles[`../content/events/${route.params.slug}.md`])
       || route.meta.title
   }
   return route.meta.title

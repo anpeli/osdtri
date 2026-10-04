@@ -7,22 +7,7 @@
       </p>
     </div>
 
-    <article class="event-card">
-      <div class="event-content">
-        <p class="event-date">
-          {{ formatDate(event.date) }}
-          <span v-if="event.time">, {{ event.time }}</span>
-          <span v-if="event.duration">, {{ event.duration }}</span>
-          <span v-if="event.location">, {{ event.location }}</span>
-        </p>
-        <h3>{{ event.title }}</h3>
-        <p v-if="event.author" class="event-author">Av {{ event.author }}</p>
-        <div class="event-description" v-html="event.description"></div>
-        <a v-if="event.facebookUrl" class="event-facebook-link" :href="event.facebookUrl" target="_blank" rel="noopener noreferrer" aria-label="Läs mer (öppnas i en ny flik)">
-          Läs mer... <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </article>
+    <EventItem :event="event" link-title />
     <router-link class="upcoming-events-link" to="/kalender">
       Visa alla kommande händelser
     </router-link>
@@ -32,6 +17,7 @@
 <script setup>
 import { marked } from 'marked'
 import { parse } from 'yaml'
+import EventItem from './EventItem.vue'
 
 const parseEvent = (source, filePath) => {
   const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
@@ -41,6 +27,7 @@ const parseEvent = (source, filePath) => {
   return {
     ...metadata,
     id: filePath,
+    slug: filePath.split('/').pop().replace(/\.md$/, ''),
     description: marked.parse(descriptionSource, { breaks: true })
   }
 }
@@ -74,17 +61,6 @@ const event = Object.entries(eventFiles)
   })
   .sort((first, second) => getDateKey(first.date).localeCompare(getDateKey(second.date)) || (first.time || '').localeCompare(second.time || ''))[0]
 
-const formatDate = (date) => {
-  if (!date) return ''
-
-  return new Date(date).toLocaleDateString('sv-SE', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    timeZone: 'UTC'
-  })
-}
-
 </script>
 
 <style scoped>
@@ -92,14 +68,6 @@ const formatDate = (date) => {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 2rem;
-}
-
-.event-card {
-  overflow: hidden;
-  background: #ffffff;
-  border-top: 6px solid var(--club-blue);
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgb(32 37 42 / 10%);
 }
 
 .upcoming-events-link {
@@ -117,45 +85,6 @@ const formatDate = (date) => {
 
 .upcoming-events-link:hover {
   opacity: 0.9;
-}
-
-.event-content {
-  padding: 1.5rem;
-}
-
-.event-date,
-.event-location,
-.event-author {
-  margin: 0 0 0.5rem;
-  color: var(--club-muted);
-}
-
-.event-date {
-  color: var(--club-blue);
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.event-content h3 {
-  margin: 0 0 0.75rem;
-  color: var(--club-charcoal);
-}
-
-.event-description {
-  color: var(--club-ink);
-  line-height: 1.6;
-}
-
-.event-facebook-link,
-.event-description :deep(a) {
-  display: inline-block;
-  margin-top: 0.75rem;
-  color: #287b9f;
-  font-weight: 700;
-}
-
-.event-description :deep(p:last-child) {
-  margin-bottom: 0;
 }
 
 .section-heading {
