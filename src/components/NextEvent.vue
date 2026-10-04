@@ -139,7 +139,6 @@ const formatDate = (date) => {
 .event-content h3 {
   margin: 0 0 0.75rem;
   color: var(--club-charcoal);
-  font-size: 1.8rem;
 }
 
 .event-description {
