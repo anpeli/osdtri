@@ -25,7 +25,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", required: false }
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
       - file: "src/content/pages/events.md"
         label: "Events"
         name: "events"
@@ -35,7 +35,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", required: false }
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
       - file: "src/content/pages/gallery.md"
         label: "Gallery"
         name: "gallery"
@@ -45,7 +45,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", required: false }
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
       - file: "src/content/pages/about.md"
         label: "About"
         name: "about"
@@ -55,7 +55,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", required: false }
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
       - file: "src/content/pages/membership.md"
         label: "Membership"
         name: "membership"
@@ -65,7 +65,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", required: false }
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
       - file: "src/content/pages/training.md"
         label: "Training"
         name: "training"
@@ -75,7 +75,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", required: false }
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
       - file: "src/content/pages/partners.md"
         label: "Partners"
         name: "partners"
@@ -85,7 +85,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", required: false }
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
       - file: "src/content/pages/archive.md"
         label: "Archive"
         name: "archive"
@@ -95,7 +95,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", required: false }
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
 
   - name: "events"
     label: "Events"
@@ -105,7 +105,7 @@ collections:
     summary: "{{date | date('YYYY-MM-DD')}} - {{title}}"
     fields:
       - { name: "title", label: "Title" }
-      - { name: "date", label: "Date", widget: "date" }
+      - { name: "date", label: "Date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { name: "author", label: "Author", required: false }
       - { name: "time", label: "Time", widget: "string", required: false, pattern: ["^([01]\\d|2[0-3]):[0-5]\\d$", "Enter a time in 24-hour format (HH:MM)"] }
       - { name: "duration", label: "Expected duration", widget: "string", required: false, hint: "Include the unit, e.g. 1 timme or 1,5 timmar." }
@@ -125,7 +125,7 @@ collections:
       - { name: "date", label: "Date", widget: "datetime" }
       - { name: "author", label: "Author" }
       - { name: "image", label: "Image", widget: "image", required: false }
-      - { name: "body", label: "Body", widget: "markdown" }
+      - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"] }
 
   - name: "galleries"
     label: "Galleries"
