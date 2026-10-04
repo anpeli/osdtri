@@ -12,7 +12,12 @@
       <p v-if="gallery.photographer" class="gallery-photographer">Fotograf: {{ gallery.photographer }}</p>
       <div v-if="gallery.images.length" class="gallery-grid" :aria-label="gallery.title">
         <figure v-for="(image, index) in gallery.images" :key="`${image}-${index}`" class="gallery-image">
-          <img :src="resolveImageUrl(image)" :alt="`Fotografi ${index + 1} från ${gallery.title}`" />
+          <ImageDialog
+            :src="resolveImageUrl(image)"
+            :alt="`Fotografi ${index + 1} från ${gallery.title}`"
+          >
+            <img :src="resolveImageUrl(image)" :alt="`Fotografi ${index + 1} från ${gallery.title}`" />
+          </ImageDialog>
         </figure>
       </div>
     </article>
@@ -28,6 +33,7 @@ import { useRoute } from 'vue-router'
 import { marked } from 'marked'
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
+import ImageDialog from '../components/ImageDialog.vue'
 
 const route = useRoute()
 const pageFiles = import.meta.glob('../content/pages/*.md', {
