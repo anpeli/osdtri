@@ -64,7 +64,7 @@ const getCmsTitle = (route) => {
 router.afterEach((to) => {
   const title = getCmsTitle(to)
   document.title = title
-    ? `${title} | Östersund Triathlon`
+    ? `Östersund Triathlon | ${title}`
     : 'Östersund Triathlon'
 })
 
