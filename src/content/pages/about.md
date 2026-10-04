@@ -28,6 +28,10 @@ Kontakta styrelsen via formuläret nedan.
 
 * Fredrik Marken
 
+### Revisor
+
+* Fredrik Olsson
+
 ### Ledamot
 
 * Andreas Lindström
