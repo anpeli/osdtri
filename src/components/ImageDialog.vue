@@ -15,7 +15,29 @@
       class="image-dialog"
       aria-label="Fotovisare"
       @keydown.esc.prevent="closeDialog"
+      @keydown.arrow-left.prevent="showPrevious"
+      @keydown.arrow-right.prevent="showNext"
     >
+      <button
+        v-if="activeImages.length > 1"
+        class="image-dialog__navigate image-dialog__previous"
+        type="button"
+        aria-label="Visa föregående bild"
+        :disabled="currentIndex === 0"
+        @click="showPrevious"
+      >
+        <span aria-hidden="true"></span>
+      </button>
+      <button
+        v-if="activeImages.length > 1"
+        class="image-dialog__navigate image-dialog__next"
+        type="button"
+        aria-label="Visa nästa bild"
+        :disabled="currentIndex === activeImages.length - 1"
+        @click="showNext"
+      >
+        <span aria-hidden="true"></span>
+      </button>
       <button
         class="image-dialog__close"
         type="button"
@@ -23,13 +45,13 @@
         @click="closeDialog"
       >
       </button>
-      <img class="image-dialog__image" :src="imageSrc" :alt="imageAlt" />
+      <img class="image-dialog__image" :src="currentImage.src" :alt="currentImage.alt" />
     </dialog>
   </Teleport>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
   src: {
@@ -39,20 +61,37 @@ const props = defineProps({
   alt: {
     type: String,
     default: ''
+  },
+  images: {
+    type: Array,
+    default: () => []
+  },
+  index: {
+    type: Number,
+    default: 0
   }
 })
 
 const dialog = ref(null)
-const imageSrc = ref(props.src)
-const imageAlt = ref(props.alt)
+const activeImages = ref([])
+const currentIndex = ref(0)
+const currentImage = computed(() => activeImages.value[currentIndex.value] || { src: '', alt: '' })
 
-const openDialog = (src = imageSrc.value, alt = imageAlt.value) => {
-  imageSrc.value = src
-  imageAlt.value = alt
+const openDialog = (images = props.images, index = props.index) => {
+  activeImages.value = images.length ? images : [{ src: props.src, alt: props.alt }]
+  currentIndex.value = Math.max(0, Math.min(index, activeImages.value.length - 1))
   dialog.value?.showModal()
 }
 
 const openFromTrigger = () => openDialog()
+
+const showPrevious = () => {
+  if (currentIndex.value > 0) currentIndex.value -= 1
+}
+
+const showNext = () => {
+  if (currentIndex.value < activeImages.value.length - 1) currentIndex.value += 1
+}
 
 const closeDialog = () => {
   dialog.value?.close()
@@ -77,6 +116,7 @@ defineExpose({ open: openDialog })
 }
 
 .image-dialog__trigger:focus-visible,
+.image-dialog__navigate:focus-visible,
 .image-dialog__close:focus-visible {
   outline: 3px solid var(--club-lime);
   outline-offset: 3px;
@@ -138,6 +178,50 @@ defineExpose({ open: openDialog })
   cursor: pointer;
 }
 
+.image-dialog__navigate {
+  position: absolute;
+  z-index: 1;
+  top: 0.75rem;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  place-items: center;
+  appearance: none;
+  background: rgb(32 37 42 / 82%);
+  border: 1px solid rgb(255 255 255 / 30%);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.image-dialog__previous {
+  left: 0.75rem;
+}
+
+.image-dialog__next {
+  left: 4rem;
+}
+
+.image-dialog__navigate span {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.image-dialog__previous span {
+  transform: translateX(2px) rotate(135deg);
+}
+
+.image-dialog__next span {
+  transform: translateX(-2px) rotate(-45deg);
+}
+
+.image-dialog__navigate:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
 .image-dialog__close::before,
 .image-dialog__close::after {
   position: absolute;
@@ -197,7 +281,19 @@ defineExpose({ open: openDialog })
     top: 0.5rem;
     right: 0.75rem;
   }
-}
+
+    .image-dialog__navigate {
+      top: 0.5rem;
+    }
+
+    .image-dialog__previous {
+      left: 0.75rem;
+    }
+
+    .image-dialog__next {
+      left: 4rem;
+    }
+  }
 
 @keyframes image-sheet-in {
   from {

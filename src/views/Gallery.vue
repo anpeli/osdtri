@@ -15,6 +15,8 @@
           <ImageDialog
             :src="resolveImageUrl(image)"
             :alt="`Fotografi ${index + 1} från ${gallery.title}`"
+            :images="galleryImages"
+            :index="index"
           >
             <img :src="resolveImageUrl(image)" :alt="`Fotografi ${index + 1} från ${gallery.title}`" />
           </ImageDialog>
@@ -75,6 +77,13 @@ const gallery = computed(() => {
 const resolveImageUrl = (imagePath) => imagePath.startsWith('/')
   ? `${import.meta.env.BASE_URL}${imagePath.slice(1)}`
   : imagePath
+
+const galleryImages = computed(() => gallery.value
+  ? gallery.value.images.map((image, index) => ({
+      src: resolveImageUrl(image),
+      alt: `Fotografi ${index + 1} från ${gallery.value.title}`
+    }))
+  : [])
 </script>
 
 <style scoped>

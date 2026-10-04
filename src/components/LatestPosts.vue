@@ -5,28 +5,27 @@
       <p v-if="!archive">Nyheter och berättelser från Östersund Triathlon.</p>
     </div>
 
-    <div v-if="posts.length" ref="postList" class="post-list">
+    <div
+      v-if="posts.length"
+      ref="postList"
+      class="post-list"
+      @click="openPostImage"
+      @keydown.enter="openPostImage"
+      @keydown.space="openPostImage"
+    >
       <article v-for="post in posts" :key="post.id" class="post-card">
-        <ImageDialog v-if="post.image" :src="post.image" :alt="post.title">
-          <img :src="post.image" :alt="post.title" class="post-image" />
-        </ImageDialog>
+        <img v-if="post.image" :src="post.image" :alt="post.title" class="post-image" />
         <div class="post-content">
           <p class="post-date">{{ formatDate(post.date) }}</p>
           <h3>{{ post.title }}</h3>
           <p v-if="post.author" class="post-author">Av {{ post.author }}</p>
-          <div
-            class="post-body"
-            v-html="post.body"
-            @click="openBodyImage"
-            @keydown.enter.prevent="openBodyImage"
-            @keydown.space.prevent="openBodyImage"
-          ></div>
+          <div class="post-body" v-html="post.body"></div>
         </div>
       </article>
     </div>
 
     <p v-else class="no-posts">{{ archive ? 'Inga äldre inlägg att visa.' : 'Inga inlägg publicerade ännu.' }}</p>
-    <ImageDialog ref="bodyImageDialog" />
+    <ImageDialog ref="postImageDialog" />
   </section>
 </template>
 
@@ -36,7 +35,7 @@ import { marked } from 'marked'
 import ImageDialog from './ImageDialog.vue'
 
 const postList = ref(null)
-const bodyImageDialog = ref(null)
+const postImageDialog = ref(null)
 
 const props = defineProps({
   archive: {
@@ -98,24 +97,38 @@ const homePosts = [...recentPosts, ...olderPosts.slice(0, Math.max(0, 3 - recent
 const homePostIds = new Set(homePosts.map((post) => post.id))
 const posts = props.archive ? allPosts.filter((post) => !homePostIds.has(post.id)) : homePosts
 
-const openBodyImage = (event) => {
+const openPostImage = (event) => {
   const target = event.target
   if (!(target instanceof Element)) return
 
   const image = target.closest('img') || target.closest('a')?.querySelector('img')
   if (!image) return
+  if (event.type === 'keydown') event.preventDefault()
+
+  const post = image.closest('.post-card')
+  if (!post) return
 
   const link = image.closest('a')
   if (link) event.preventDefault()
 
-  const postTitle = image.closest('.post-card')?.querySelector('h3')?.textContent || ''
-  bodyImageDialog.value?.open(link?.href || image.currentSrc || image.src, image.alt || postTitle)
+  const postTitle = post.querySelector('h3')?.textContent || ''
+  const postImages = [...post.querySelectorAll('img')].map((postImage) => {
+    const imageLink = postImage.closest('a')
+    return {
+      src: imageLink?.href || postImage.currentSrc || postImage.src,
+      alt: postImage.alt || postTitle
+    }
+  })
+  const index = [...post.querySelectorAll('img')].indexOf(image)
+  postImageDialog.value?.open(postImages, index)
 }
 
 onMounted(() => {
-  postList.value?.querySelectorAll('.post-body img:not(a img)').forEach((image) => {
-    image.tabIndex = 0
-    image.setAttribute('role', 'button')
+  postList.value?.querySelectorAll('.post-card img').forEach((image) => {
+    if (!image.closest('a')) {
+      image.tabIndex = 0
+      image.setAttribute('role', 'button')
+    }
     image.setAttribute('aria-label', `Visa större: ${image.alt}`)
   })
 })
