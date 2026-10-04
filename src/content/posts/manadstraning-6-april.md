@@ -2,7 +2,6 @@
 title: "Månadsträning 6 april"
 date: "2025-04-06T12:00:00+02:00"
 author: "Styrelsen"
-image: ""
 ---
 
 Löpning med Åsa!

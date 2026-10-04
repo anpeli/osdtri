@@ -2,7 +2,6 @@
 title: "NYHET! Månadsträning!"
 date: "2025-02-20T12:00:00+01:00"
 author: "Styrelsen"
-image: ""
 ---
 
 På senaste styrelsemötet bestämde vi att vi ska testa ett nytt koncept som innebär en gemensam gruppträning i månaden.

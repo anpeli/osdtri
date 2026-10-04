@@ -2,7 +2,6 @@
 title: "Nya klubbkläder!"
 date: "2021-06-30T12:00:00+02:00"
 author: "Styrelsen"
-image: ""
 ---
 
 Här kommer smakprov på de nya klubbkläderna från Trimtex. Det finns möjlighet att få sitt namn på både fram- och baksida.

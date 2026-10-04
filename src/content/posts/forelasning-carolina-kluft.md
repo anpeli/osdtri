@@ -2,7 +2,6 @@
 title: "Föreläsning med Carolina Klüft den 31 augusti"
 date: "2021-08-18T12:00:00+02:00"
 author: "RF-SISU Jämtland-Härjedalen"
-image: ""
 ---
 
 RF-SISU Jämtland-Härjedalen bjuder in till kostnadsfri föreläsning med tema att behålla barn och unga inom idrotten.

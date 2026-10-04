@@ -2,7 +2,6 @@
 title: "Årsmöte 2020"
 date: "2020-03-25T12:00:00+01:00"
 author: "Styrelsen"
-image: ""
 ---
 
 Skriv redan nu upp att årsmötet för 2020 kommer äga rum:

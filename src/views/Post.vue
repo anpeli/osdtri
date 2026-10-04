@@ -80,7 +80,6 @@ const post = computed(() => {
       : 'Namnlöst inlägg',
     date: typeof metadata.date === 'string' ? metadata.date : '',
     author: typeof metadata.author === 'string' ? metadata.author : '',
-    image: typeof metadata.image === 'string' ? metadata.image : '',
     body: marked.parse(body, { breaks: true })
   }
 })

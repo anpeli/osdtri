@@ -2,7 +2,6 @@
 title: "Styrelsen informerar"
 date: "2020-10-02T12:00:00+02:00"
 author: "Styrelsen genom Ann-Mari"
-image: ""
 ---
 
 Efter ett konstigt år har styrelsen beslutat att nya klubbkläder kommer att beställas i samband med nästa årsmöte. Men redan nu kan vi bjuda på ett litet smakprov!

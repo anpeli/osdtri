@@ -76,7 +76,6 @@ const parsePost = (source, id) => {
     title: metadata.title || 'Namnlöst inlägg',
     date: metadata.date || '',
     author: metadata.author || '',
-    image: metadata.image || '',
     body: marked.parse(body, { breaks: true })
   }
 }

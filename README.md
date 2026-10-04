@@ -51,14 +51,13 @@ Vite uses the `GITHUB_REPOSITORY` environment variable, when available, to set t
 
 ## Content
 
-Posts are stored as Markdown files in `src/content/posts/`. Each post has `title`, `date`, and `author` front matter properties; `image` is optional and is left empty when a post has no image:
+Posts are stored as Markdown files in `src/content/posts/`. Each post has `title`, `date`, and `author` front matter properties:
 
 ```md
 ---
 title: Example post
 date: 2026-01-01
 author: Author name
-image: /assets/uploads/example.jpg
 ---
 
 Post content goes here.

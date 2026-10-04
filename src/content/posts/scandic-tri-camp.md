@@ -2,7 +2,6 @@
 title: "Scandic Tri Camp"
 date: "2022-10-15T12:00:00+02:00"
 author: "Svenska Triathlonförbundet"
-image: ""
 ---
 
 Inbjudan från [Svenska Triathlonförbundet](https://www.svensktriathlon.org/Nyheter/Nyheter/ScandicTriCamp/) till Scandic Tri Camp.

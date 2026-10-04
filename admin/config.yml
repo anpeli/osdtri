@@ -132,7 +132,6 @@ collections:
       - { name: "title", label: "Title" }
       - { name: "date", label: "Date", widget: "datetime" }
       - { name: "author", label: "Author" }
-      - { name: "image", label: "Image", widget: "image", required: false }
       - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"] }
 
   - name: "galleries"

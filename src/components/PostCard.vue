@@ -1,6 +1,5 @@
 <template>
   <article :id="`post-${post.slug}`" class="post-card" :class="{ 'post-card--single': single }">
-    <img v-if="post.image" :src="post.image" :alt="post.title" class="post-image" />
     <div class="post-content">
       <p v-if="post.date" class="post-date">{{ formatDate(post.date) }}</p>
       <h3 v-if="showTitle" class="post-title">
@@ -96,18 +95,6 @@ const formatDate = (date) => {
   border-top: 4px solid var(--club-blue);
   border-radius: 8px;
   box-shadow: 0 6px 20px rgb(32 37 42 / 10%);
-}
-
-.post-image {
-  display: block;
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.post-card--single .post-image {
-  height: auto;
-  max-height: 420px;
 }
 
 .post-card--single .post-date {

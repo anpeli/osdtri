@@ -2,7 +2,6 @@
 title: Årsmöte 2025 + Club social = sant
 date: "2025-02-07T12:00:00+01:00"
 author: Styrelsen
-image: ""
 ---
 Kära triathleter!
 

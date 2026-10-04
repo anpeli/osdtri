@@ -2,7 +2,6 @@
 title: "Klubbmästerskap 2019"
 date: "2019-05-28T12:00:00+02:00"
 author: "Styrelsen"
-image: ""
 ---
 
 Under en riktigt kul kväll, med många duktiga triathleter som tagit sig upp till Önsjön, avgjordes klubbmästerskapet den 22 augusti!
