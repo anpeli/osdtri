@@ -21,7 +21,7 @@ const getMetadata = (source) => {
 }
 
 const settings = getMetadata(Object.values(settingsFiles)[0])
-const defaultBackdrop = settings.backdrop || '/assets/images/20190820_203136-medium.jpg'
+const defaultBackdrop = settings.backdrop
 const imagePaths = new Set([defaultBackdrop, settings.backdropSmall || defaultBackdrop])
 
 for (const source of Object.values(pageFiles)) {

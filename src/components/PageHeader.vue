@@ -46,9 +46,9 @@ const resolveAssetUrl = (assetPath) => {
 }
 
 const headerStyle = computed(() => {
-  const backdrop = props.backdrop || settings.backdrop || '/assets/images/20190820_203136-medium.jpg'
+  const backdrop = props.backdrop || settings.backdrop
   const backdropSmall = props.backdropSmall || settings.backdropSmall || backdrop
-  const backdropPositionDesktop = props.backdropPosition || settings.backdropPosition || 'center 33%'
+  const backdropPositionDesktop = props.backdropPosition || settings.backdropPosition
   const backdropPositionMobile = props.backdropSmallPosition || settings.backdropSmallPosition || backdropPositionDesktop
 
   return {
