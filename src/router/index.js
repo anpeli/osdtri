@@ -20,16 +20,27 @@ const galleryFiles = import.meta.glob('../content/galleries/*.md', {
   query: '?raw'
 })
 
+const getTitleFromSource = (source) => {
+  const frontMatterMatch = source?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
+  const metadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
+  return typeof metadata.title === 'string' && metadata.title.trim()
+    ? metadata.title
+    : undefined
+}
+
+const getCmsPageTitle = (page) =>
+  getTitleFromSource(pageFiles[`../content/pages/${page}.md`])
+
 const routes = [
-  { path: '/', component: Home, meta: { cmsPage: 'home' } },
-  { path: '/kalender', name: 'kalender', component: Events, alias: ['/events'], meta: { title: 'Kalender', cmsPage: 'events' } },
-  { path: '/om-oss', component: About, meta: { title: 'Om oss', cmsPage: 'about' } },
-  { path: '/bli-medlem', component: Membership, meta: { title: 'Bli medlem', cmsPage: 'membership' } },
+  { path: '/', component: Home, meta: { title: getCmsPageTitle('home'), cmsPage: 'home' } },
+  { path: '/kalender', name: 'kalender', component: Events, alias: ['/events'], meta: { title: getCmsPageTitle('events'), cmsPage: 'events' } },
+  { path: '/om-oss', component: About, meta: { title: getCmsPageTitle('about'), cmsPage: 'about' } },
+  { path: '/bli-medlem', component: Membership, meta: { title: getCmsPageTitle('membership'), cmsPage: 'membership' } },
   { path: '/kontakt', redirect: '/om-oss' },
-  { path: '/traning', component: Training, meta: { title: 'Träning', cmsPage: 'training' } },
-  { path: '/partners', component: Partners, meta: { title: 'Partners', cmsPage: 'partners' } },
-  { path: '/arkiv', component: Archive, meta: { title: 'Inläggsarkiv', cmsPage: 'archive' } },
-  { path: '/galleri/:slug', name: 'gallery', component: Gallery, meta: { title: 'Galleri' } }
+  { path: '/traning', component: Training, meta: { title: getCmsPageTitle('training'), cmsPage: 'training' } },
+  { path: '/partners', component: Partners, meta: { title: getCmsPageTitle('partners'), cmsPage: 'partners' } },
+  { path: '/arkiv', component: Archive, meta: { title: getCmsPageTitle('archive'), cmsPage: 'archive' } },
+  { path: '/galleri/:slug', name: 'gallery', component: Gallery, meta: { title: getCmsPageTitle('gallery') } }
 ]
 
 const router = createRouter({
@@ -43,14 +54,11 @@ const router = createRouter({
 })
 
 const getCmsTitle = (route) => {
-  const source = route.name === 'gallery'
-    ? galleryFiles[`../content/galleries/${route.params.slug}.md`]
-    : pageFiles[`../content/pages/${route.meta.cmsPage}.md`]
-  const frontMatterMatch = source?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
-  const metadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
-  return typeof metadata.title === 'string' && metadata.title.trim()
-    ? metadata.title
-    : route.meta.title
+  if (route.name === 'gallery') {
+    return getTitleFromSource(galleryFiles[`../content/galleries/${route.params.slug}.md`])
+      || route.meta.title
+  }
+  return route.meta.title
 }
 
 router.afterEach((to) => {
