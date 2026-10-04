@@ -31,6 +31,9 @@ const props = defineProps({
   },
   backdropPosition: {
     type: String
+  },
+  backdropSmallPosition: {
+    type: String
   }
 })
 
@@ -45,12 +48,14 @@ const resolveAssetUrl = (assetPath) => {
 const headerStyle = computed(() => {
   const backdrop = props.backdrop || settings.backdrop || '/assets/images/20190820_203136-medium.jpg'
   const backdropSmall = props.backdropSmall || settings.backdropSmall || backdrop
-  const backdropPosition = props.backdropPosition || settings.backdropPosition || 'center 33%'
+  const backdropPositionDesktop = props.backdropPosition || settings.backdropPosition || 'center 33%'
+  const backdropPositionMobile = props.backdropSmallPosition || settings.backdropSmallPosition || backdropPositionDesktop
 
   return {
     '--page-header-backdrop': `url("${resolveAssetUrl(backdrop)}")`,
     '--page-header-backdrop-small': `url("${resolveAssetUrl(backdropSmall)}")`,
-    '--page-header-backdrop-position': backdropPosition
+    '--page-header-backdrop-position-desktop': backdropPositionDesktop,
+    '--page-header-backdrop-position-mobile': backdropPositionMobile
   }
 })
 </script>
@@ -69,7 +74,7 @@ const headerStyle = computed(() => {
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), var(--page-header-backdrop);
-  background-position: var(--page-header-backdrop-position);
+  background-position: var(--page-header-backdrop-position-desktop);
   background-size: cover;
 }
 
@@ -80,6 +85,7 @@ const headerStyle = computed(() => {
 @media (max-width: 640px) {
   .page-header {
     background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), var(--page-header-backdrop-small);
+    background-position: var(--page-header-backdrop-position-mobile);
   }
 }
 </style>

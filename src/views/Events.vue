@@ -1,6 +1,6 @@
 <template>
   <div class="events-page">
-    <PageHeader :title="page.title" :backdrop="page.backdrop" :backdrop-small="page.backdropSmall" :backdrop-position="page.backdropPosition" />
+    <PageHeader :title="page.title" :backdrop="page.backdrop" :backdrop-small="page.backdropSmall" :backdrop-position="page.backdropPosition" :backdrop-small-position="page.backdropSmallPosition" />
     <div class="page-content" v-html="page.body"></div>
 
     <div v-if="events.length === 0" class="no-events">
@@ -108,6 +108,7 @@ const page = {
   backdrop: pageMetadata.backdrop,
   backdropSmall: pageMetadata.backdropSmall,
   backdropPosition: pageMetadata.backdropPosition,
+  backdropSmallPosition: pageMetadata.backdropSmallPosition,
   body: marked.parse(pageFrontMatterMatch?.[2] || '')
 }
 
