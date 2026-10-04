@@ -5,24 +5,38 @@
       <p v-if="!archive">Nyheter och berättelser från Östersund Triathlon.</p>
     </div>
 
-    <div v-if="posts.length" class="post-list">
+    <div v-if="posts.length" ref="postList" class="post-list">
       <article v-for="post in posts" :key="post.id" class="post-card">
-        <img v-if="post.image" :src="post.image" :alt="post.title" class="post-image" />
+        <ImageDialog v-if="post.image" :src="post.image" :alt="post.title">
+          <img :src="post.image" :alt="post.title" class="post-image" />
+        </ImageDialog>
         <div class="post-content">
           <p class="post-date">{{ formatDate(post.date) }}</p>
           <h3>{{ post.title }}</h3>
           <p v-if="post.author" class="post-author">Av {{ post.author }}</p>
-          <div class="post-body" v-html="post.body"></div>
+          <div
+            class="post-body"
+            v-html="post.body"
+            @click="openBodyImage"
+            @keydown.enter.prevent="openBodyImage"
+            @keydown.space.prevent="openBodyImage"
+          ></div>
         </div>
       </article>
     </div>
 
     <p v-else class="no-posts">{{ archive ? 'Inga äldre inlägg att visa.' : 'Inga inlägg publicerade ännu.' }}</p>
+    <ImageDialog ref="bodyImageDialog" />
   </section>
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
 import { marked } from 'marked'
+import ImageDialog from './ImageDialog.vue'
+
+const postList = ref(null)
+const bodyImageDialog = ref(null)
 
 const props = defineProps({
   archive: {
@@ -83,6 +97,28 @@ const olderPosts = allPosts.filter((post) => new Date(post.date) < sixMonthsAgo)
 const homePosts = [...recentPosts, ...olderPosts.slice(0, Math.max(0, 3 - recentPosts.length))]
 const homePostIds = new Set(homePosts.map((post) => post.id))
 const posts = props.archive ? allPosts.filter((post) => !homePostIds.has(post.id)) : homePosts
+
+const openBodyImage = (event) => {
+  const target = event.target
+  if (!(target instanceof Element)) return
+
+  const image = target.closest('img') || target.closest('a')?.querySelector('img')
+  if (!image) return
+
+  const link = image.closest('a')
+  if (link) event.preventDefault()
+
+  const postTitle = image.closest('.post-card')?.querySelector('h3')?.textContent || ''
+  bodyImageDialog.value?.open(link?.href || image.currentSrc || image.src, image.alt || postTitle)
+}
+
+onMounted(() => {
+  postList.value?.querySelectorAll('.post-body img:not(a img)').forEach((image) => {
+    image.tabIndex = 0
+    image.setAttribute('role', 'button')
+    image.setAttribute('aria-label', `Visa större: ${image.alt}`)
+  })
+})
 
 const formatDate = (date) => {
   if (!date) return ''
@@ -262,6 +298,12 @@ const formatDate = (date) => {
   height: auto;
   margin: 1.5rem auto;
   border-radius: 6px;
+  cursor: zoom-in;
+}
+
+.post-body :deep(img:focus-visible) {
+  outline: 3px solid var(--club-lime);
+  outline-offset: 3px;
 }
 
 .post-body :deep(hr) {

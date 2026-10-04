@@ -1,9 +1,10 @@
 <template>
   <button
+    v-if="$slots.default"
     class="image-dialog__trigger"
     type="button"
     :aria-label="`Visa större: ${alt}`"
-    @click="openDialog"
+    @click="openFromTrigger"
   >
     <slot />
   </button>
@@ -22,7 +23,7 @@
         @click="closeDialog"
       >
       </button>
-      <img class="image-dialog__image" :src="src" :alt="alt" />
+      <img class="image-dialog__image" :src="imageSrc" :alt="imageAlt" />
     </dialog>
   </Teleport>
 </template>
@@ -30,26 +31,34 @@
 <script setup>
 import { ref } from 'vue'
 
-defineProps({
+const props = defineProps({
   src: {
     type: String,
-    required: true
+    default: ''
   },
   alt: {
     type: String,
-    required: true
+    default: ''
   }
 })
 
 const dialog = ref(null)
+const imageSrc = ref(props.src)
+const imageAlt = ref(props.alt)
 
-const openDialog = () => {
+const openDialog = (src = imageSrc.value, alt = imageAlt.value) => {
+  imageSrc.value = src
+  imageAlt.value = alt
   dialog.value?.showModal()
 }
+
+const openFromTrigger = () => openDialog()
 
 const closeDialog = () => {
   dialog.value?.close()
 }
+
+defineExpose({ open: openDialog })
 </script>
 
 <style scoped>
@@ -74,9 +83,6 @@ const closeDialog = () => {
 }
 
 .image-dialog__trigger :slotted(img) {
-  display: block;
-  width: 100%;
-  height: auto;
   transition: transform 180ms ease;
 }
 
