@@ -18,7 +18,6 @@
         :key="post.id"
         :post="post"
         :link-title="true"
-        :return-to="archive ? 'archive' : 'home'"
       />
     </div>
 
@@ -32,6 +31,7 @@ import { onMounted, ref } from 'vue'
 import { marked } from 'marked'
 import ImageDialog from './ImageDialog.vue'
 import PostCard from './PostCard.vue'
+import { getPostGroups } from '../utils/postGroups'
 
 const postList = ref(null)
 const postImageDialog = ref(null)
@@ -81,21 +81,10 @@ const parsePost = (source, id) => {
   }
 }
 
-const allPosts = Object.entries(postFiles)
-  .map(([id, source]) => parsePost(source, id))
-  .sort((first, second) => new Date(second.date) - new Date(first.date))
-
-const sixMonthsAgo = new Date()
-const currentDay = sixMonthsAgo.getDate()
-sixMonthsAgo.setDate(1)
-sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6)
-sixMonthsAgo.setDate(Math.min(currentDay, new Date(sixMonthsAgo.getFullYear(), sixMonthsAgo.getMonth() + 1, 0).getDate()))
-
-const recentPosts = allPosts.filter((post) => new Date(post.date) >= sixMonthsAgo)
-const olderPosts = allPosts.filter((post) => new Date(post.date) < sixMonthsAgo)
-const homePosts = [...recentPosts, ...olderPosts.slice(0, Math.max(0, 3 - recentPosts.length))]
-const homePostIds = new Set(homePosts.map((post) => post.id))
-const posts = props.archive ? allPosts.filter((post) => !homePostIds.has(post.id)) : homePosts
+const postGroups = getPostGroups(
+  Object.entries(postFiles).map(([id, source]) => parsePost(source, id))
+)
+const posts = props.archive ? postGroups.archivePosts : postGroups.homePosts
 
 const openPostImage = (event) => {
   const target = event.target

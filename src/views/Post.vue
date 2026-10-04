@@ -25,9 +25,27 @@ import { marked } from 'marked'
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
 import PostCard from '../components/PostCard.vue'
+import { getPostGroups } from '../utils/postGroups'
 
 const route = useRoute()
-const isFromArchive = computed(() => route.query.from === 'archive')
+const postFiles = import.meta.glob('../content/posts/*.md', {
+  eager: true,
+  import: 'default',
+  query: '?raw'
+})
+const postGroups = getPostGroups(Object.entries(postFiles).map(([id, source]) => {
+  const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
+  const metadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
+
+  return {
+    id,
+    date: typeof metadata.date === 'string' ? metadata.date : ''
+  }
+}))
+
+const isFromArchive = computed(() =>
+  postGroups.archivePosts.some((item) => item.id === `../content/posts/${route.params.slug}.md`)
+)
 const returnLocation = computed(() => ({
   path: isFromArchive.value ? '/arkiv' : '/',
   hash: `#post-${route.params.slug}`
@@ -38,12 +56,6 @@ const pageFiles = import.meta.glob('../content/pages/*.md', {
   import: 'default',
   query: '?raw'
 })
-const postFiles = import.meta.glob('../content/posts/*.md', {
-  eager: true,
-  import: 'default',
-  query: '?raw'
-})
-
 const pageSource = pageFiles['../content/pages/post.md']
 const pageFrontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
 const pageMetadata = pageFrontMatterMatch ? parse(pageFrontMatterMatch[1]) || {} : {}

@@ -6,7 +6,7 @@
       <h3 v-if="showTitle" class="post-title">
         <router-link
           v-if="linkTitle"
-          :to="{ name: 'post', params: { slug: post.slug }, query: { from: returnTo } }"
+          :to="{ name: 'post', params: { slug: post.slug } }"
         >
           {{ post.title }}
         </router-link>
@@ -46,11 +46,6 @@ const props = defineProps({
   linkTitle: {
     type: Boolean,
     default: false
-  },
-  returnTo: {
-    type: String,
-    default: 'home',
-    validator: (value) => ['home', 'archive'].includes(value)
   },
   showTitle: {
     type: Boolean,
