@@ -1,12 +1,7 @@
 <template>
   <article class="event-card">
     <div class="event-content">
-      <p class="event-date">
-        {{ formatDate(event.date) }}
-        <span v-if="event.time">, {{ event.time }}</span>
-        <span v-if="event.duration">, {{ event.duration }}</span>
-        <span v-if="event.location">, {{ event.location }}</span>
-      </p>
+      <p class="event-date">{{ formatDate(event.date) }}<span v-if="event.time">, {{ event.time }}</span><span v-if="event.duration">, {{ event.duration }}</span><span v-if="event.location">, {{ event.location }}</span></p>
       <h3 class="event-title">
         <router-link
           v-if="linkTitle"
