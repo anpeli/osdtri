@@ -17,6 +17,7 @@
       @keydown.esc.prevent="closeDialog"
       @keydown.arrow-left.prevent="showPrevious"
       @keydown.arrow-right.prevent="showNext"
+      @close="restorePageScroll"
     >
       <button
         v-if="activeImages.length > 1"
@@ -56,7 +57,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, ref } from 'vue'
 
 const props = defineProps({
   src: {
@@ -81,11 +82,27 @@ const dialog = ref(null)
 const activeImages = ref([])
 const currentIndex = ref(0)
 const currentImage = computed(() => activeImages.value[currentIndex.value] || { src: '', alt: '' })
+let previousOverflow = null
+
+const lockPageScroll = () => {
+  if (previousOverflow !== null) return
+
+  previousOverflow = document.documentElement.style.overflow
+  document.documentElement.style.overflow = 'hidden'
+}
+
+const restorePageScroll = () => {
+  if (previousOverflow === null) return
+
+  document.documentElement.style.overflow = previousOverflow
+  previousOverflow = null
+}
 
 const openDialog = (images = props.images, index = props.index) => {
   activeImages.value = images.length ? images : [{ src: props.src, alt: props.alt }]
   currentIndex.value = Math.max(0, Math.min(index, activeImages.value.length - 1))
   dialog.value?.showModal()
+  lockPageScroll()
 }
 
 const openFromTrigger = () => openDialog()
@@ -101,6 +118,8 @@ const showNext = () => {
 const closeDialog = () => {
   dialog.value?.close()
 }
+
+onBeforeUnmount(restorePageScroll)
 
 defineExpose({ open: openDialog })
 </script>
@@ -137,20 +156,20 @@ defineExpose({ open: openDialog })
 
 .image-dialog {
   position: fixed;
-  inset: 50% auto auto 50%;
+  inset: 0;
   display: flex;
-  width: min(94vw, 1440px);
-  height: 92vh;
-  height: 92dvh;
-  max-height: 1000px;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
   margin: 0;
   padding: 3rem;
   overflow: hidden;
-  transform: translate(-50%, -50%);
+  transform: none;
   background: var(--club-charcoal);
   border: 0;
-  border-radius: 12px;
-  box-shadow: 0 12px 48px rgb(0 0 0 / 35%);
+  border-radius: 0;
   color: #ffffff;
 }
 
@@ -255,32 +274,16 @@ defineExpose({ open: openDialog })
 @keyframes image-dialog-in {
   from {
     opacity: 0;
-    transform: translate(-50%, -48%) scale(0.98);
   }
 
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
   }
 }
 
 @media (max-width: 600px) {
   .image-dialog {
-    inset: auto 0 0;
-    width: auto;
-    max-width: none;
-    height: min(90vh, 900px);
-    height: min(90dvh, 900px);
-    max-height: 90vh;
-    max-height: 90dvh;
-    margin: 0;
-    padding: 3.5rem 1rem 1.5rem;
-    transform: none;
-    border-radius: 16px 16px 0 0;
-  }
-
-  .image-dialog[open] {
-    animation: image-sheet-in 220ms ease-out;
+    padding: 3.5rem 1rem 1rem;
   }
 
   .image-dialog__close {
@@ -298,18 +301,6 @@ defineExpose({ open: openDialog })
 
   .image-dialog__next {
     left: 4rem;
-  }
-}
-
-@keyframes image-sheet-in {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
