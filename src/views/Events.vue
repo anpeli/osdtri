@@ -58,7 +58,6 @@
           class="event-card"
           :class="{ 'event-card--selected': selectedEvent && selectedEvent.id === event.id }"
         >
-          <img v-if="event.image" :src="event.image" :alt="event.title" class="event-image" />
           <div class="event-info">
             <p class="event-date">
               {{ formatDate(event.date) }}
@@ -370,13 +369,6 @@ const formatDate = (dateString) => new Date(dateString).toLocaleDateString('sv-S
 .event-card--selected {
   padding-left: 0.75rem;
   border-left: 4px solid var(--club-lime);
-}
-
-.event-image {
-  width: 100%;
-  max-height: 180px;
-  margin-bottom: 0.75rem;
-  object-fit: cover;
 }
 
 .event-info h3 {
