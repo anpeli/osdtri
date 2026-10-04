@@ -5,5 +5,4 @@ author: "Styrelsen"
 ---
 
 På grund av rådande omständigheter kommer torsdagens möte enbart köras digitalt.
-
-[Delta i mötet via Zoom](https://miun-se.zoom.us/j/66560866706)
+För att vara med klicka [här](https://miun-se.zoom.us/j/66560866706).

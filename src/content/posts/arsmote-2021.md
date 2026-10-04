@@ -4,12 +4,15 @@ date: "2021-02-11T12:00:00+01:00"
 author: "Styrelsen"
 ---
 
-Årsmötet 2021 kommer gå av stapeln den 18 mars klockan 19:00. Det kommer finnas möjlighet att delta digitalt och fysiskt.
+Årsmötet 2021 kommer gå av stapeln den 18 Mars klockan 19:00.
+Det kommer finnas möjlighet att delta digitalt och fysiskt.
 
-Glöm inte att betala klubbavgiften på 300 kronor till Bankgiro 159-8408 innan dess!
+Missa inte det och kom ihåg att betala klubbavgiften på 300 kronor till Bankgiro: 159-8408 innan dess!
 
-Alnö Race Team kommer bland annat arrangera en [coronaanpassad tävling i Sundsvall i sommar](https://www.b3sundsvalltriathlon.se/). Kanske erbjuds det också en mer lokal tävlingsmöjlighet i Jämtland i sommar? Håll utkik.
+Ps! Ni har väl inte missat att bland annat Alnö Race Team kommer arrangera en [corona-anpassad tävling i Sundsvall i sommar](https://www.b3sundsvalltriathlon.se/)?
 
-Tills dess är det bara att nöta på med trainerdäcken och ice bugsen. Förhoppningsvis kommer simsäsongen igång snart också. Tills dess är det Storsjön som gäller.
+Och kanske kommer det erbjudas en ännu mer lokal tävlingsmöjlighet i Jämtland i sommar? Håll utkik efter det!
+
+Tills dess är det bara att nöta på med trainerdäcken och ice bugsen! Förhoppningsvis kommer simsäsongen igång snart också… Tills dess är det Storsjön som gäller ;)
 
 ![Vinterträning](assets/images/IMG_5659_redigerad_004_1yPa.webp)

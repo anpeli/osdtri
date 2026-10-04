@@ -6,14 +6,14 @@ author: "RF-SISU Jämtland-Härjedalen"
 
 RF-SISU Jämtland-Härjedalen bjuder in till kostnadsfri föreläsning med tema att behålla barn och unga inom idrotten.
 
-Många ungdomar slutar med sin idrott som en direkt effekt av pandemin och stillasittandet riskerar tyvärr att öka. Tillsammans med kunniga och engagerade Carolina Klüft fokuserar kvällen på vad vi tillsammans kan göra för att vända trenden.
+Många ungdomar slutar med sin idrott som en direkt effekt av pandemin och stillasittandet riskerar tyvärr att öka. Tillsammans med kunniga och engagerade Carolina Klüft fokuserar denna kväll på vad vi tillsammans kan göra för att vända trenden.
 
-Föreläsningen är digital och kostnadsfri.
+Föreläsningen är en del av en extrainsats för att stärka föreningarna i återstarten efter coronapandemin. Den är digital och kostnadsfri, så missa inte!
 
-- **Tisdag 31 augusti**
-- **Kl. 18-20**
+Tisdag 31 augusti
+Kl: 18-20
 
-[Länk till anmälan](https://educationwebregistration.idrottonline.se/home/index/1507447)
+Hjälp oss gärna att sprida föreläsningen vidare i era föreningar, länk till anmälan finns i bifogad inbjudan och här: [https://educationwebregistration.idrottonline.se/home/index/1507447](https://educationwebregistration.idrottonline.se/home/index/1507447)
 
 Stort tack för er insats!
 
