@@ -2,7 +2,6 @@
   <div class="events-page">
     <PageHeader :title="page.title" :backdrop="page.backdrop" :backdrop-small="page.backdropSmall" :backdrop-position="page.backdropPosition" :backdrop-small-position="page.backdropSmallPosition" />
     <div class="page-content" v-html="page.body"></div>
-
     <div v-if="events.length === 0" class="no-events">
       <p>Inga evenemang schemalagda just nu.</p>
     </div>
@@ -14,9 +13,17 @@
             <span aria-hidden="true">&lt;</span>
           </button>
           <h2 id="calendar-title">{{ monthLabel }}</h2>
-          <button class="month-button" type="button" aria-label="Nästa månad" @click="changeMonth(1)">
-            <span aria-hidden="true">&gt;</span>
-          </button>
+          <div class="calendar-actions">
+            <button class="month-button" type="button" aria-label="Nästa månad" @click="changeMonth(1)">
+              <span aria-hidden="true">&gt;</span>
+            </button>
+            <a class="calendar-feed" href="/events.ics" download aria-label="Ladda ner kalenderfilen" title="Ladda ner kalenderfilen">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 2v4m8-4v4M4 9h16M5 4h14a1 1 0 0 1 1 1v15H4V5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 12v6m-2.5-2.5L12 18l2.5-2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
         </div>
 
         <div class="weekday-row" aria-hidden="true">
@@ -111,7 +118,6 @@ const page = {
   backdropSmallPosition: pageMetadata.backdropSmallPosition,
   body: marked.parse(pageFrontMatterMatch?.[2] || '')
 }
-
 const parseEvent = (source, filePath) => {
   const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
   const metadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
@@ -246,6 +252,12 @@ const changeMonth = (offset) => {
 .month-button:hover {
   background: rgba(255, 255, 255, 0.12);
   opacity: 1;
+}
+
+.calendar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .weekday-row,
@@ -389,6 +401,33 @@ const changeMonth = (offset) => {
   padding: 3rem;
   color: var(--club-muted);
   text-align: center;
+}
+
+.calendar-feed {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--club-border);
+  border-radius: 50%;
+  color: white;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.calendar-feed svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.calendar-feed:hover {
+  background: var(--club-lime);
+  color: var(--club-charcoal);
+}
+
+.calendar-feed:focus-visible {
+  outline: 3px solid var(--club-blue);
+  outline-offset: 3px;
 }
 
 .empty-month {
