@@ -6,7 +6,7 @@ backdropPosition: center 40%
 backdropSmallPosition: ""
 ---
 
-## Triathlonträning?
+## Triathlon?
 
 Vi har inga regelbundna triathlonträningar, men på våren/sommaren lägger vi upp evenemang för att köra kortare träningstävlingar i triathlon.
 
@@ -15,7 +15,7 @@ Vid Önsjön så simmar, cyklar och springer vi, det är fri fart då som gälle
 Efteråt väntar vi alltid in varandra, så vi ser att alla kommer tillbaks helskinnade.
 Så följ evenemangen här i [kalendern](/kalender) eller på [Facebook](https://www.facebook.com/groups/109864395743968).
 
-## Simträning?
+## Simning?
 
 Vi har i dagsläget inga egna regelbundna simträningar utan hänvisar till Mastersgruppen hos den lokala simklubben [SK Ägir](http://www.skagir.se/).
 
