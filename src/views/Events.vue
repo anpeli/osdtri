@@ -9,47 +9,47 @@
     />
     <div class="page-content" v-html="page.body"></div>
 
-    <section class="calendar" aria-labelledby="calendar-title">
-      <div class="calendar-toolbar">
-        <div>
-          <h2 id="calendar-title">Kommande evenemang</h2>
-          <p>{{ eventCountLabel }}</p>
-        </div>
-        <div class="year-controls" :aria-label="`Valt år ${selectedYear}`">
-          <button
-            class="year-button"
-            type="button"
-            :disabled="selectedYear <= currentYear"
-            aria-label="Föregående år"
-            @click="changeYear(-1)"
-          >
-            <span aria-hidden="true">‹</span>
-          </button>
-          <strong>{{ selectedYear }}</strong>
-          <button class="year-button" type="button" aria-label="Nästa år" @click="changeYear(1)">
-            <span aria-hidden="true">›</span>
-          </button>
-          <button v-if="selectedYear !== currentYear" class="today-button" type="button" @click="goToCurrentYear">
-            I dag
-          </button>
-        </div>
-      </div>
+    <div class="section-heading calendar-heading">
+      <h2 id="calendar-title">Kommande evenemang <span>({{ yearEvents.length }})</span></h2>
+    </div>
 
+    <section class="calendar" aria-labelledby="calendar-title">
       <div class="calendar-content">
-        <div class="calendar-filters" role="group" aria-label="Filtrera evenemang">
-          <span>Visa:</span>
-          <button
-            v-for="filter in filters"
-            :key="filter.value"
-            type="button"
-            class="filter-button"
-            :class="{ 'filter-button--active': selectedType === filter.value }"
-            :aria-pressed="selectedType === filter.value"
-            @click="selectedType = filter.value"
-          >
-            <span v-if="filter.value !== 'all'" class="filter-dot" :class="`filter-dot--${filter.value}`" aria-hidden="true"></span>
-            {{ filter.label }}
-          </button>
+        <div class="calendar-controls-bar">
+          <div class="calendar-filters" role="group" aria-label="Filtrera evenemang">
+            <span>Visa:</span>
+            <button
+              v-for="filter in filters"
+              :key="filter.value"
+              type="button"
+              class="filter-button"
+              :class="{ 'filter-button--active': selectedType === filter.value }"
+              :aria-pressed="selectedType === filter.value"
+              @click="selectedType = filter.value"
+            >
+              <span v-if="filter.value !== 'all'" class="filter-dot" :class="`filter-dot--${filter.value}`" aria-hidden="true"></span>
+              {{ filter.label }}
+            </button>
+          </div>
+
+          <div class="year-controls" :aria-label="`Valt år ${selectedYear}`">
+            <button
+              class="year-button"
+              type="button"
+              :disabled="selectedYear <= currentYear"
+              aria-label="Föregående år"
+              @click="changeYear(-1)"
+            >
+              <span aria-hidden="true">‹</span>
+            </button>
+            <strong>{{ selectedYear }}</strong>
+            <button class="year-button" type="button" aria-label="Nästa år" @click="changeYear(1)">
+              <span aria-hidden="true">›</span>
+            </button>
+            <button v-if="selectedYear !== currentYear" class="today-button" type="button" @click="goToCurrentYear">
+              I dag
+            </button>
+          </div>
         </div>
 
         <div v-if="monthGroups.length" class="year-overview" aria-label="Kommande månader">
@@ -248,6 +248,21 @@ const goToCurrentYear = () => {
   padding: 0 2rem 2rem;
 }
 
+.section-heading {
+  margin: 0 0 2rem;
+}
+
+.section-heading h2 {
+  margin-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  border-left: 5px solid var(--club-lime);
+  color: var(--club-charcoal);
+}
+
+.calendar-heading {
+  margin-top: 2rem;
+}
+
 .calendar {
   overflow: hidden;
   background: white;
@@ -280,36 +295,20 @@ const goToCurrentYear = () => {
   height: 1.1rem;
 }
 
-.calendar-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--club-charcoal);
-  color: white;
-}
-
-.calendar-toolbar h2 {
-  margin: 0;
-  color: white;
-  font-size: 1.2rem;
-}
-
-.calendar-toolbar p {
-  margin: 0.15rem 0 0;
-  color: rgb(255 255 255 / 75%);
-  font-size: 0.82rem;
-}
-
 .year-controls {
   display: flex;
   align-items: center;
   gap: 0.55rem;
+  margin-left: auto;
 }
 
 .year-controls strong {
   min-width: 3rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--club-border);
+  border-radius: 999px;
+  background: #f2f5f0;
+  color: var(--club-charcoal);
   text-align: center;
 }
 
@@ -317,13 +316,13 @@ const goToCurrentYear = () => {
 .today-button {
   display: inline-grid;
   place-items: center;
-  min-width: 2.25rem;
-  height: 2.25rem;
+  min-width: 2rem;
+  height: 2rem;
   padding: 0 0.55rem;
-  border: 1px solid rgb(255 255 255 / 35%);
-  border-radius: 4px;
-  background: transparent;
-  color: white;
+  border: 1px solid var(--club-border);
+  border-radius: 999px;
+  background: white;
+  color: var(--club-ink);
 }
 
 .year-button {
@@ -342,7 +341,8 @@ const goToCurrentYear = () => {
 
 .year-button:not(:disabled):hover,
 .today-button:hover {
-  background: rgb(255 255 255 / 12%);
+  border-color: var(--club-lime);
+  background: #f4faec;
   opacity: 1;
 }
 
@@ -521,13 +521,21 @@ const goToCurrentYear = () => {
   font-size: 0.74rem;
 }
 
+.calendar-controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid var(--club-border);
+}
+
 .calendar-filters {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.85rem 1.5rem;
-  border-bottom: 1px solid var(--club-border);
   color: var(--club-muted);
   font-size: 0.82rem;
 }
@@ -576,18 +584,6 @@ const goToCurrentYear = () => {
     padding: 0.75rem 1rem;
   }
 
-  .calendar-toolbar {
-    padding: 1rem;
-  }
-
-  .calendar-toolbar h2 {
-    font-size: 1.05rem;
-  }
-
-  .calendar-toolbar p {
-    font-size: 0.74rem;
-  }
-
   .year-overview {
     padding: 1rem 1rem 0;
   }
@@ -617,7 +613,7 @@ const goToCurrentYear = () => {
     font-size: 1.05rem;
   }
 
-  .calendar-filters {
+  .calendar-controls-bar {
     padding: 0.75rem 1rem;
   }
 }
@@ -628,18 +624,13 @@ const goToCurrentYear = () => {
     padding-left: 0.75rem;
   }
 
-  .calendar-toolbar {
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
   .year-controls {
     gap: 0.3rem;
   }
 
   .year-button {
-    min-width: 1.9rem;
-    height: 1.9rem;
+    min-width: 1.8rem;
+    height: 1.8rem;
   }
 
   .year-controls strong {
@@ -656,6 +647,5 @@ const goToCurrentYear = () => {
   .year-summary > span {
     font-size: 0.75rem;
   }
-
 }
 </style>
