@@ -1,6 +1,6 @@
 ---
 title: Swedeman Xtreme Triathlon 2027
-date: "2027-07-03"
+date: "2027-07-10"
 eventType: external
 participants: []
 author: ""
