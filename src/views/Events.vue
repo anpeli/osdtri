@@ -8,6 +8,17 @@
 
     <div v-else class="calendar-layout">
       <section class="calendar" aria-labelledby="calendar-title">
+        <p class="calendar-subscription">
+          Lägg till evenemangen i
+          <a class="google-calendar-link" :href="googleCalendarUrl.href" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 2v4m8-4v4M4 9h16M5 4h14a1 1 0 0 1 1 1v15H4V5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M12 12v6m-2.5-2.5L12 18l2.5-2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Google Kalender
+          </a>
+          eller <a href="/events.ics" download>ladda ner kalenderfilen (.ics)</a>.
+        </p>
         <div class="calendar-toolbar">
           <button class="month-button" type="button" aria-label="Föregående månad" @click="changeMonth(-1)">
             <span aria-hidden="true">&lt;</span>
@@ -17,12 +28,6 @@
             <button class="month-button" type="button" aria-label="Nästa månad" @click="changeMonth(1)">
               <span aria-hidden="true">&gt;</span>
             </button>
-            <a class="calendar-feed" href="/events.ics" download aria-label="Ladda ner kalenderfilen" title="Ladda ner kalenderfilen">
-              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 2v4m8-4v4M4 9h16M5 4h14a1 1 0 0 1 1 1v15H4V5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M12 12v6m-2.5-2.5L12 18l2.5-2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
           </div>
         </div>
 
@@ -160,6 +165,8 @@ const weekdays = ['Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör', 'Sön']
 const firstEventDate = events.length ? getLocalDate(events[0].date) : new Date()
 const displayedMonth = ref(new Date(firstEventDate.getFullYear(), firstEventDate.getMonth(), 1))
 const selectedEvent = ref(null)
+const googleCalendarUrl = new URL('https://calendar.google.com/calendar/r')
+googleCalendarUrl.searchParams.set('cid', new URL('/events.ics', window.location.origin).href)
 
 const monthKey = computed(() => `${displayedMonth.value.getFullYear()}-${String(displayedMonth.value.getMonth() + 1).padStart(2, '0')}`)
 const monthLabel = computed(() => displayedMonth.value.toLocaleDateString('sv-SE', { year: 'numeric', month: 'long' }))
@@ -221,6 +228,30 @@ const changeMonth = (offset) => {
 
 .calendar {
   overflow: hidden;
+}
+
+.calendar-subscription {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  background: #f7f9f7;
+  border-bottom: 1px solid var(--club-border);
+  color: var(--club-muted);
+  font-size: 0.9rem;
+}
+
+.google-calendar-link {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  gap: 0.3rem;
+  margin: 0 0.15rem;
+  color: var(--club-ink);
+  font-weight: 700;
+}
+
+.google-calendar-link svg {
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
 .calendar-toolbar {
@@ -401,33 +432,6 @@ const changeMonth = (offset) => {
   padding: 3rem;
   color: var(--club-muted);
   text-align: center;
-}
-
-.calendar-feed {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 1px solid var(--club-border);
-  border-radius: 50%;
-  color: white;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.calendar-feed svg {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.calendar-feed:hover {
-  background: var(--club-lime);
-  color: var(--club-charcoal);
-}
-
-.calendar-feed:focus-visible {
-  outline: 3px solid var(--club-blue);
-  outline-offset: 3px;
 }
 
 .empty-month {
