@@ -246,15 +246,14 @@ const goToCurrentYear = () => {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 2rem 2rem;
-  overflow-x: clip;
 }
 
 .calendar {
   overflow: hidden;
   background: white;
-  border: 1px solid var(--club-border);
+  border-top: 4px solid var(--club-blue);
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgb(32 37 42 / 6%);
+  box-shadow: 0 6px 20px rgb(32 37 42 / 10%);
 }
 
 .calendar-subscription {
