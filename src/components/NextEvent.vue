@@ -53,7 +53,7 @@ const todayKey = getDateKey(now)
 const event = Object.entries(eventFiles)
   .map(([filePath, source]) => parseEvent(source, filePath))
   .filter((entry) => {
-    if (!entry.title || !entry.date) return false
+    if (!entry.title || !entry.date || entry.eventType === 'external') return false
 
     const dateKey = getDateKey(entry.date)
     return dateKey >= todayKey
