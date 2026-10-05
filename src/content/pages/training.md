@@ -12,6 +12,8 @@ Vi har inga regelbundna triathlonträningar, men på våren/sommaren lägger vi 
 
 Vid Önsjön så simmar, cyklar och springer vi, det är fri fart då som gäller, och hur mycket man tar i är upp till en själv.
 
+Banskisserna för [Önsjöns träningstävling](/galleri/onsjons-traningstavlingsbana) finns här.
+
 Efteråt väntar vi alltid in varandra, så vi ser att alla kommer tillbaks helskinnade.
 Så följ evenemangen här i [kalendern](/kalender) eller på [Facebook](https://www.facebook.com/groups/109864395743968).
 
