@@ -7,6 +7,6 @@ author: ""
 time: "16:00"
 duration: ""
 location: ""
-facebookUrl: ""
+URL: ""
 ---
 Dags för årets klubbfest. Vi börjar med träning, sen äter vi tillsammans. Mer information kommer.

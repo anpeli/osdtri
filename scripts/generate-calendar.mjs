@@ -138,8 +138,8 @@ export const generateCalendar = () => {
 
     if (metadata.location) lines.push(`LOCATION:${escapeText(metadata.location)}`)
     if (description) lines.push(`DESCRIPTION:${escapeText(description)}`)
-    if (metadata.facebookUrl) {
-      const url = new URL(metadata.facebookUrl)
+    if (metadata.URL) {
+      const url = new URL(metadata.URL)
       if (url.protocol === 'http:' || url.protocol === 'https:') lines.push(`URL:${url.href}`)
     }
 

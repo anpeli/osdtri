@@ -136,7 +136,7 @@ collections:
       - { name: "time", label: "Time", widget: "string", required: false, pattern: ["^([01]\\d|2[0-3]):[0-5]\\d$", "Enter a time in 24-hour format (HH:MM)"] }
       - { name: "duration", label: "Expected duration", widget: "string", required: false, hint: "Include the unit, e.g. 1 timme or 1,5 timmar." }
       - { name: "location", label: "Location", required: false }
-      - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
+      - { name: "URL", label: "URL", widget: "string", required: false }
       - name: "participants"
         label: "Participants"
         widget: "list"

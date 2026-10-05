@@ -33,8 +33,6 @@ Vill du ha sällskap på rundan?
 
 Den som vill cykla i klunga kan bli medlem i [Östersunds Cykelklubb ÖCK](http://www.ostersundck.se/) och [träna med dem.](https://www.facebook.com/groups/135421656471937/)
 
-Andra alternativ är att köra ihop med [Happy Morning Ride](https://www.facebook.com/groups/576323095864232/about/) som tränar MTB året runt och landsvägscykel så länge föret tillåter. Start varje fredag 05:55 utanför Hotell Östersund.
-
 Tjejer kan också spana in [She Rides Östersund/Åre](https://www.facebook.com/groups/743556659365693/) på facebook där det brukar utannonseras gemensamma träningstillfällen.
 
 ## Löpning?
@@ -43,4 +41,4 @@ I nuläget håller föreningen inga gemensamma träningar, men även här går d
 
 *Glöm inte skriva tid, ungefärligt tempo och startplats.*
 
-Du som önskar regelbunden träning i grupp, hör efter med [Trångsviken IF](https://idrottonline.se/TrangsvikensIF/).
+Du som önskar regelbunden träning i grupp, hör efter med [Trångsviken IF](https://www.svenskalag.se/trangsvikensif).

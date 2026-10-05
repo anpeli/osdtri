@@ -7,6 +7,6 @@ author: ""
 time: "16:00"
 duration: "1-2 timmar"
 location: ""
-facebookUrl: ""
+URL: ""
 ---
 Månadsträning december, mer information kommer närmare inpå.

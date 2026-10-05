@@ -36,7 +36,7 @@
           </li>
         </ul>
       </section>
-      <a v-if="event.facebookUrl" class="event-facebook-link" :href="event.facebookUrl" target="_blank" rel="noopener noreferrer" aria-label="Läs mer (öppnas i en ny flik)">
+      <a v-if="event.URL" class="event-url-link" :href="event.URL" target="_blank" rel="noopener noreferrer" aria-label="Läs mer (öppnas i en ny flik)">
         Läs mer... <span aria-hidden="true">↗</span>
       </a>
     </div>
@@ -226,7 +226,7 @@ const copyEventLink = async () => {
   font-size: 0.9rem;
 }
 
-.event-facebook-link,
+.event-url-link,
 .event-description :deep(a) {
   display: inline-block;
   margin-top: 0.75rem;
