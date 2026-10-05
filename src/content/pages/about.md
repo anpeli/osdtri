@@ -44,3 +44,8 @@ Kontakta styrelsen via formuläret nedan.
 ### Suppleant
 
 * Claes Bång
+
+## Klubbmästare
+
+- **2026:** Åsa Nilsson, Fredrik Marken
+- **2025:** Åsa Nilsson, Andreas Lindström
