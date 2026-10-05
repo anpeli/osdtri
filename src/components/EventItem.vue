@@ -2,6 +2,9 @@
   <article class="event-card">
     <div class="event-content">
       <p class="event-date">{{ formatEventDate(event.date) }}<span v-if="event.time">, {{ event.time }}</span><span v-if="event.duration">, {{ event.duration }}</span><span v-if="event.location">, {{ event.location }}</span></p>
+      <span class="event-type" :class="`event-type--${event.eventType === 'external' ? 'external' : 'internal'}`">
+        {{ event.eventType === 'external' ? 'Externt evenemang' : 'Internt evenemang' }}
+      </span>
       <h3 class="event-title">
         <router-link
           v-if="linkTitle"
@@ -25,6 +28,14 @@
       <p v-if="copyStatus" class="event-copy-status" aria-live="polite">{{ copyStatus }}</p>
       <p v-if="event.author" class="event-author">Av {{ event.author }}</p>
       <div class="event-description" v-html="event.description"></div>
+      <section v-if="event.participants?.length" class="event-participants" aria-labelledby="participants-title">
+        <h4 id="participants-title">Deltagare ({{ event.participants.length }})</h4>
+        <ul>
+          <li v-for="(participant, index) in event.participants" :key="`${participant}-${index}`">
+            {{ participant }}
+          </li>
+        </ul>
+      </section>
       <a v-if="event.facebookUrl" class="event-facebook-link" :href="event.facebookUrl" target="_blank" rel="noopener noreferrer" aria-label="Läs mer (öppnas i en ny flik)">
         Läs mer... <span aria-hidden="true">↗</span>
       </a>
@@ -99,6 +110,25 @@ const copyEventLink = async () => {
   text-transform: uppercase;
 }
 
+.event-type {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.event-type--internal {
+  background: #edf7e7;
+  color: #2c6228;
+}
+
+.event-type--external {
+  background: #f2edf7;
+  color: #68428b;
+}
+
 .event-content h3 {
   margin: 0 0 0.75rem;
   color: var(--club-charcoal);
@@ -170,6 +200,30 @@ const copyEventLink = async () => {
 .event-description {
   color: var(--club-ink);
   line-height: 1.6;
+}
+
+.event-participants {
+  margin-top: 1.5rem;
+}
+
+.event-participants h4 {
+  margin-bottom: 0.5rem;
+  color: var(--club-charcoal);
+}
+
+.event-participants ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.event-participants li {
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: var(--club-surface);
+  color: var(--club-ink);
+  font-size: 0.9rem;
 }
 
 .event-facebook-link,

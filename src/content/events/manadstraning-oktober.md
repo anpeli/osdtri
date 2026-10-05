@@ -1,6 +1,8 @@
 ---
 title: Månadsträning oktober
 date: "2026-10-04"
+eventType: internal
+participants: []
 author: "Ann-Mari Darj"
 time: "16:00"
 duration: "1 timme"

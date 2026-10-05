@@ -125,11 +125,23 @@ collections:
     fields:
       - { name: "title", label: "Title" }
       - { name: "date", label: "Date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - name: "eventType"
+        label: "Event type"
+        widget: "select"
+        options:
+          - { label: "Internal", value: "internal" }
+          - { label: "External", value: "external" }
+        default: "internal"
       - { name: "author", label: "Author", required: false }
       - { name: "time", label: "Time", widget: "string", required: false, pattern: ["^([01]\\d|2[0-3]):[0-5]\\d$", "Enter a time in 24-hour format (HH:MM)"] }
       - { name: "duration", label: "Expected duration", widget: "string", required: false, hint: "Include the unit, e.g. 1 timme or 1,5 timmar." }
       - { name: "location", label: "Location", required: false }
       - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
+      - name: "participants"
+        label: "Participants"
+        widget: "list"
+        required: false
+        field: { name: "participant", label: "Name", widget: "string" }
       - { name: "body", label: "Description", widget: "markdown" }
 
   - name: "posts"

@@ -1,6 +1,8 @@
 ---
 title: Klubbfest
 date: "2026-11-27"
+eventType: internal
+participants: []
 author: ""
 time: "16:00"
 duration: ""
