@@ -40,7 +40,7 @@ const page = {
 .home-page {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 2rem 2rem;
+  padding: 0 2rem;
   font-size: 1.05rem;
 }
 

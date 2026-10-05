@@ -41,9 +41,20 @@ button:hover {
 }
 
 .page-content h2,
-.contact-content h2 {
+.contact-content h2,
+.section-heading h2 {
   margin: 0 0 1rem;
   padding: 0.75rem 1.25rem;
   color: var(--club-charcoal);
   border-left: 5px solid var(--club-lime);
+}
+
+.section-heading h2 {
+  font-size: 1.6rem;
+}
+
+.section-heading p {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
 }

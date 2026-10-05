@@ -90,18 +90,4 @@ const event = Object.entries(eventFiles)
   margin-bottom: 2rem;
 }
 
-.section-heading h2 {
-  margin-bottom: 0.5rem;
-  color: var(--club-charcoal);
-  border-left: 5px solid var(--club-lime);
-  padding-left: 0.75rem;
-}
-
-.section-heading p {
-  max-width: 38rem;
-  margin-left: 0.75rem;
-  color: var(--club-ink);
-  font-size: 1.05rem;
-  line-height: 1.65;
-}
 </style>

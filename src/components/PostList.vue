@@ -126,7 +126,7 @@ onMounted(() => {
 <style scoped>
 .posts {
   max-width: 800px;
-  margin: 4rem auto;
+  margin: 2rem auto 4rem;
   padding: 0 2rem;
 }
 
@@ -134,23 +134,8 @@ onMounted(() => {
   margin-bottom: 2rem;
 }
 
-.section-heading h2 {
-  margin-bottom: 0.5rem;
-  color: var(--club-charcoal);
-  border-left: 5px solid var(--club-lime);
-  padding-left: 0.75rem;
-}
-
 .no-posts {
   color: var(--club-muted);
-}
-
-.section-heading p {
-  max-width: 38rem;
-  margin-left: 0.75rem;
-  color: var(--club-ink);
-  font-size: 1.05rem;
-  line-height: 1.65;
 }
 
 .post-list {

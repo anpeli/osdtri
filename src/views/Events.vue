@@ -10,7 +10,8 @@
     <div class="page-content" v-html="page.body"></div>
 
     <div class="section-heading calendar-heading">
-      <h2 id="calendar-title">Kommande evenemang <span>({{ yearEvents.length }})</span></h2>
+      <h2 id="calendar-title">Kommande evenemang</h2>
+      <p>Här hittar du våra evenemang, tävlingar och träningar.</p>
     </div>
 
     <section class="calendar" aria-labelledby="calendar-title">
@@ -31,84 +32,64 @@
               {{ filter.label }}
             </button>
           </div>
-
-          <div class="year-controls" :aria-label="`Valt år ${selectedYear}`">
-            <button
-              class="year-button"
-              type="button"
-              :disabled="selectedYear <= currentYear"
-              aria-label="Föregående år"
-              @click="changeYear(-1)"
-            >
-              <span aria-hidden="true">‹</span>
-            </button>
-            <strong>{{ selectedYear }}</strong>
-            <button class="year-button" type="button" aria-label="Nästa år" @click="changeYear(1)">
-              <span aria-hidden="true">›</span>
-            </button>
-            <button v-if="selectedYear !== currentYear" class="today-button" type="button" @click="goToCurrentYear">
-              I dag
-            </button>
-          </div>
         </div>
 
         <div v-if="monthGroups.length" class="year-overview" aria-label="Kommande månader">
-          <div class="year-summary">
-            <strong>{{ eventCountLabel }}</strong>
-            <span>{{ yearRangeLabel }} · välj en månad eller händelse</span>
-          </div>
           <nav class="month-shortcuts" aria-label="Hoppa till månad">
             <a v-for="group in monthGroups" :key="group.key" :href="`#${group.key}`">
-              {{ group.shortLabel }} · {{ group.events.length }}
+              {{ group.shortLabel }} {{ group.year }} · {{ group.events.length }}
             </a>
           </nav>
         </div>
 
         <div v-if="monthGroups.length" class="year-agenda">
-          <section
-            v-for="group in monthGroups"
-            :id="group.key"
-            :key="group.key"
-            class="month-group"
-            :aria-labelledby="`${group.key}-title`"
-          >
-            <h3 :id="`${group.key}-title`" class="month-title">
-              {{ group.label }}
-              <span>{{ group.events.length }} evenemang</span>
+          <template v-for="(group, index) in monthGroups" :key="group.key">
+            <h3 v-if="index === 0 || group.year !== monthGroups[index - 1].year" class="agenda-year-title">
+              {{ group.year }}
             </h3>
-            <div class="month-events">
-              <article
-                v-for="event in group.events"
-                :key="event.slug"
-                class="year-event"
-                :class="`year-event--${event.eventType}`"
-              >
-                <time class="event-date" :datetime="getDateKey(event.date)">
-                  <strong>{{ getLocalDate(event.date).getDate() }}</strong>
-                  <span>{{ weekdayLabel(event.date) }}</span>
-                </time>
-                <div class="event-content">
-                  <router-link class="event-title" :to="{ name: 'event', params: { slug: event.slug } }">
-                    {{ event.title }}
-                  </router-link>
-                  <p class="event-meta">
-                    <span v-if="event.time">{{ event.time }}</span>
-                    <span v-if="event.location">{{ event.location }}</span>
-                    <span class="event-type" :class="`event-type--${event.eventType}`">
-                      {{ event.eventType === 'external' ? 'Externt' : 'Internt' }}
-                    </span>
-                  </p>
-                  <p v-if="event.participants.length" class="participant-count">
-                    {{ event.participants.length }} deltagare
-                  </p>
-                </div>
-              </article>
-            </div>
-          </section>
+            <section
+              :id="group.key"
+              class="month-group"
+              :aria-labelledby="`${group.key}-title`"
+            >
+              <h4 :id="`${group.key}-title`" class="month-title">
+                {{ group.label }}
+                <span>{{ group.events.length }} evenemang</span>
+              </h4>
+              <div class="month-events">
+                <article
+                  v-for="event in group.events"
+                  :key="event.slug"
+                  class="year-event"
+                  :class="`year-event--${event.eventType}`"
+                >
+                  <time class="event-date" :datetime="getDateKey(event.date)">
+                    <strong>{{ getLocalDate(event.date).getDate() }}</strong>
+                    <span>{{ weekdayLabel(event.date) }}</span>
+                  </time>
+                  <div class="event-content">
+                    <router-link class="event-title" :to="{ name: 'event', params: { slug: event.slug } }">
+                      {{ event.title }}
+                    </router-link>
+                    <p class="event-meta">
+                      <span v-if="event.time">{{ event.time }}</span>
+                      <span v-if="event.location">{{ event.location }}</span>
+                      <span class="event-type" :class="`event-type--${event.eventType}`">
+                        {{ event.eventType === 'external' ? 'Externt' : 'Internt' }}
+                      </span>
+                    </p>
+                    <p v-if="event.participants.length" class="participant-count">
+                      {{ event.participants.length }} deltagare
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </template>
         </div>
 
         <p v-else class="empty-year">
-          {{ events.length ? 'Inga kommande evenemang matchar filtret för det här året.' : 'Inga evenemang schemalagda just nu.' }}
+          {{ events.length ? 'Inga kommande evenemang matchar filtret för de här åren.' : 'Inga evenemang schemalagda för resten av året eller nästa år.' }}
         </p>
       </div>
 
@@ -186,7 +167,11 @@ const todayKey = getDateKey(new Date())
 const currentYear = new Date().getFullYear()
 const events = Object.entries(eventFiles)
   .map(parseEvent)
-  .filter((event) => event.title && event.date && getDateKey(event.date) >= todayKey)
+  .filter((event) => {
+    if (!event.title || !event.date) return false
+    const year = Number(getDateKey(event.date).slice(0, 4))
+    return getDateKey(event.date) >= todayKey && year <= currentYear + 1
+  })
   .sort((first, second) =>
     getDateKey(first.date).localeCompare(getDateKey(second.date))
     || (first.time || '').localeCompare(second.time || '')
@@ -197,48 +182,33 @@ const filters = [
   { label: 'Internt', value: 'internal' },
   { label: 'Externt', value: 'external' }
 ]
-const selectedYear = ref(currentYear)
 const selectedType = ref('all')
 const googleCalendarUrl = new URL('https://calendar.google.com/calendar/r')
 googleCalendarUrl.searchParams.set('cid', new URL('/events.ics', window.location.origin).href)
 
-const yearEvents = computed(() => events.filter((event) => {
-  const eventYear = Number(getDateKey(event.date).slice(0, 4))
-  return eventYear === selectedYear.value
-    && (selectedType.value === 'all' || event.eventType === selectedType.value)
-}))
+const filteredEvents = computed(() => events.filter((event) =>
+  selectedType.value === 'all' || event.eventType === selectedType.value
+))
 const monthGroups = computed(() => {
   const grouped = new Map()
-  yearEvents.value.forEach((event) => {
+  filteredEvents.value.forEach((event) => {
     const date = getLocalDate(event.date)
+    const year = date.getFullYear()
     const month = date.getMonth()
-    if (!grouped.has(month)) {
-      grouped.set(month, {
-        key: `month-${selectedYear.value}-${String(month + 1).padStart(2, '0')}`,
+    const key = `${year}-${String(month + 1).padStart(2, '0')}`
+    if (!grouped.has(key)) {
+      grouped.set(key, {
+        key: `month-${key}`,
+        year,
         label: date.toLocaleDateString('sv-SE', { month: 'long' }),
         shortLabel: date.toLocaleDateString('sv-SE', { month: 'short' }),
         events: []
       })
     }
-    grouped.get(month).events.push(event)
+    grouped.get(key).events.push(event)
   })
   return [...grouped.values()]
 })
-const eventCountLabel = computed(() => {
-  const count = yearEvents.value.length
-  return `${count} kommande evenemang`
-})
-const yearRangeLabel = computed(() => selectedYear.value === currentYear
-  ? `Resten av ${selectedYear.value}`
-  : `År ${selectedYear.value}`
-)
-
-const changeYear = (offset) => {
-  selectedYear.value = Math.max(currentYear, selectedYear.value + offset)
-}
-const goToCurrentYear = () => {
-  selectedYear.value = currentYear
-}
 </script>
 
 <style scoped>
@@ -250,13 +220,6 @@ const goToCurrentYear = () => {
 
 .section-heading {
   margin: 0 0 2rem;
-}
-
-.section-heading h2 {
-  margin-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  border-left: 5px solid var(--club-lime);
-  color: var(--club-charcoal);
 }
 
 .calendar-heading {
@@ -295,84 +258,15 @@ const goToCurrentYear = () => {
   height: 1.1rem;
 }
 
-.year-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  margin-left: auto;
-}
-
-.year-controls strong {
-  min-width: 3rem;
-  padding: 0.3rem 0.65rem;
-  border: 1px solid var(--club-border);
-  border-radius: 999px;
-  background: #f2f5f0;
-  color: var(--club-charcoal);
-  text-align: center;
-}
-
-.year-button,
-.today-button {
-  display: inline-grid;
-  place-items: center;
-  min-width: 2rem;
-  height: 2rem;
-  padding: 0 0.55rem;
-  border: 1px solid var(--club-border);
-  border-radius: 999px;
-  background: white;
-  color: var(--club-ink);
-}
-
-.year-button {
-  font-size: 1.4rem;
-  line-height: 1;
-}
-
-.year-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.4;
-}
-
-.today-button {
-  font-size: 0.85rem;
-}
-
-.year-button:not(:disabled):hover,
-.today-button:hover {
-  border-color: var(--club-lime);
-  background: #f4faec;
-  opacity: 1;
-}
-
 .year-overview {
-  padding: 1.1rem 1.5rem 0;
-}
-
-.year-summary {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.year-summary strong {
-  color: var(--club-charcoal);
-  font-size: 0.95rem;
-}
-
-.year-summary > span {
-  color: var(--club-muted);
-  font-size: 0.82rem;
+  padding: 0.5rem 1.5rem 0;
 }
 
 .month-shortcuts {
   display: flex;
-  gap: 0.45rem;
+  gap: 0.35rem;
   overflow-x: auto;
-  padding: 0.8rem 0 0.1rem;
+  padding: 0.35rem 0 0.1rem;
 }
 
 .month-shortcuts a {
@@ -392,7 +286,15 @@ const goToCurrentYear = () => {
 }
 
 .year-agenda {
-  padding: 0.4rem 1.5rem 1rem;
+  padding: 0 1.5rem 1rem;
+}
+
+.agenda-year-title {
+  margin: 0.75rem 0 0;
+  padding: 0.65rem 0;
+  border-bottom: 2px solid var(--club-lime);
+  color: var(--club-charcoal);
+  font-size: 1.15rem;
 }
 
 .month-group {
@@ -408,6 +310,7 @@ const goToCurrentYear = () => {
   margin: 0;
   color: var(--club-charcoal);
   font-size: 1rem;
+  font-weight: 700;
   text-transform: capitalize;
 }
 
@@ -585,11 +488,11 @@ const goToCurrentYear = () => {
   }
 
   .year-overview {
-    padding: 1rem 1rem 0;
+    padding: 0.5rem 1rem 0;
   }
 
   .year-agenda {
-    padding: 0.35rem 1rem 0.75rem;
+    padding: 0 1rem 0.75rem;
   }
 
   .month-group {
@@ -616,6 +519,10 @@ const goToCurrentYear = () => {
   .calendar-controls-bar {
     padding: 0.75rem 1rem;
   }
+
+  .month-shortcuts {
+    padding-top: 0.3rem;
+  }
 }
 
 @media (max-width: 420px) {
@@ -624,28 +531,5 @@ const goToCurrentYear = () => {
     padding-left: 0.75rem;
   }
 
-  .year-controls {
-    gap: 0.3rem;
-  }
-
-  .year-button {
-    min-width: 1.8rem;
-    height: 1.8rem;
-  }
-
-  .year-controls strong {
-    min-width: 2.6rem;
-    font-size: 0.9rem;
-  }
-
-  .today-button {
-    height: 1.9rem;
-    padding: 0 0.4rem;
-    font-size: 0.75rem;
-  }
-
-  .year-summary > span {
-    font-size: 0.75rem;
-  }
 }
 </style>
