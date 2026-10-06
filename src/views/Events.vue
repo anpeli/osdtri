@@ -266,7 +266,7 @@ const monthGroups = computed(() => {
   display: flex;
   gap: 0.35rem;
   overflow-x: auto;
-  padding: 0.35rem 0 0.1rem;
+  padding: 0.35rem 0 0.75rem;
 }
 
 .month-shortcuts a {
