@@ -9,4 +9,4 @@ duration: ""
 location: Vansbro, Sverige
 URL: https://vansbrosimningen.se/evenemangsguide/program/
 ---
-Vansbro Triathlon arrangeras med sprintdistans och standard-/olympisk distans.
+Vansbro Triathlon arrangeras med sprintdistans och standard/olympisk distans.
