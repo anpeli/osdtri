@@ -47,5 +47,8 @@ Kontakta styrelsen via formuläret nedan.
 
 ## Klubbmästare
 
-- **2026:** Åsa Nilsson, Fredrik Marken
-- **2025:** Åsa Nilsson, Andreas Lindström
+- **2026:** Åsa, Fredrik M
+- **2025:** Åsa, Andreas
+- **2023:** Åsa, Robie
+- **2022:** Åsa, Bobbo
+- **2021:** Matt
