@@ -41,9 +41,13 @@ Kontakta styrelsen via formuläret nedan.
 
 * Ann-Mari Darj
 
-### Suppleant
+### Ledamot
 
 * Claes Bång
+
+### Suppleant
+
+* Stefan Nilsson
 
 ## Klubbmästare
 
