@@ -3,7 +3,7 @@ title: "Månadsträning november"
 date: "2026-11-01"
 eventType: internal
 participants: []
-author: "Fredrik"
+author: ""
 time: "16:00"
 duration: "1-2 timmar"
 location: "ICA-stigen nedanför ICA Maxi"

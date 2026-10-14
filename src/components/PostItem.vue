@@ -111,13 +111,18 @@ const formatDate = (date) => {
 .post-date,
 .post-author {
   margin: 0 0 0.5rem;
-  font-size: 0.9rem;
 }
 
 .post-date {
+  font-size: 0.9rem;
   color: var(--club-blue);
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.post-author {
+  color: var(--club-muted);
+  font-size: 1rem;
 }
 
 .post-content h3 {
