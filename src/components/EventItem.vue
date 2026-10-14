@@ -36,15 +36,15 @@
           </li>
         </ul>
       </section>
-      <a v-if="event.URL" class="event-url-link" :href="event.URL" target="_blank" rel="noopener noreferrer" aria-label="Läs mer (öppnas i en ny flik)">
-        Läs mer... <span aria-hidden="true">↗</span>
+      <a v-if="event.URL" class="event-url-link" :href="event.URL" target="_blank" rel="noopener noreferrer" :aria-label="`${eventLinkLabel} (öppnas i en ny flik)`">
+        {{ eventLinkLabel }}
       </a>
     </div>
   </article>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { formatEventDate } from '../utils/eventDate.js'
 
@@ -60,6 +60,25 @@ const props = defineProps({
   linkTitle: {
     type: Boolean,
     default: false
+  }
+})
+
+const eventLinkLabel = computed(() => {
+  if (!props.event.URL) return 'Visa mer...'
+
+  try {
+    const url = new URL(props.event.URL)
+    const host = url.hostname.toLowerCase()
+    const isFacebookHost = host === 'fb.me'
+      || host === 'fb.com'
+      || host === 'facebook.com'
+      || host.endsWith('.facebook.com')
+    const isFacebookEvent = (host === 'fb.me' && /^\/e\/[^/]+\/?$/i.test(url.pathname))
+      || (isFacebookHost && /^\/events\/[^/]+\/?$/i.test(url.pathname))
+
+    return isFacebookEvent ? 'Visa Facebook-eventet...' : 'Visa mer...'
+  } catch {
+    return 'Visa mer...'
   }
 })
 
