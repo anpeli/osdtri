@@ -56,3 +56,7 @@ Kontakta styrelsen via formuläret nedan.
 - **2023:** Åsa, Robie
 - **2022:** Åsa, Bobbo
 - **2021:** Matt
+- **2016:** Andreas
+- **2015:** Kerry
+- **2014:** Simon
+- **2013:** André J, Emma
