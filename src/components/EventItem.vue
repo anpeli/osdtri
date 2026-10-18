@@ -83,7 +83,7 @@ const eventLinkLabel = computed(() => {
     const isFacebookEvent = (host === 'fb.me' && /^\/e\/[^/]+\/?$/i.test(url.pathname))
       || (isFacebookHost && /^\/events\/[^/]+\/?$/i.test(url.pathname))
 
-    return isFacebookEvent ? 'Visa Facebook-eventet...' : 'Visa mer...'
+    return isFacebookEvent ? 'Visa på Facebook...' : 'Visa mer...'
   } catch {
     return 'Visa mer...'
   }
