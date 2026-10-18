@@ -14,7 +14,6 @@
       <ul v-else>
         <li v-for="document in documents" :key="document.document">
           <div class="document-details">
-            <span class="document-year">{{ document.year }}</span>
             <span class="document-title">{{ document.title }}</span>
           </div>
           <a
@@ -54,9 +53,8 @@ const page = getPageSettings('dokument')
 const documents = Object.values(documentFiles)
   .map((source) => parseFrontMatter(source).metadata)
   .filter((document) =>
-    document.year && typeof document.title === 'string' && typeof document.document === 'string'
+    typeof document.title === 'string' && typeof document.document === 'string'
   )
-  .sort((a, b) => Number(b.year) - Number(a.year))
 
 const resolveDocumentUrl = (path) => {
   if (/^(https?:)?\/\//i.test(path)) return path
@@ -95,11 +93,6 @@ const getFileExtension = (path) => path.split('.').pop()?.toUpperCase() || 'DOKU
   display: flex;
   align-items: baseline;
   gap: 1rem;
-}
-
-.document-year {
-  color: var(--club-muted);
-  font-weight: 700;
 }
 
 .document-title {
