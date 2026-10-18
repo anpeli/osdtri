@@ -20,9 +20,9 @@
       <div class="footer-section">
         <h4>Kontakt</h4>
         <address>
-          <p v-if="contactSettings.email"><a :href="`mailto:${contactSettings.email}`">Email: {{ contactSettings.email }}</a></p>
-          <p v-if="contactSettings.facebookUrl"><a :href="contactSettings.facebookUrl" target="_blank" rel="noopener noreferrer">Facebook</a></p>
-          <p v-if="contactSettings.instagramUrl"><a :href="contactSettings.instagramUrl" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+          <p v-if="props.contactSettings.email"><a :href="`mailto:${props.contactSettings.email}`">Email: {{ props.contactSettings.email }}</a></p>
+          <p v-if="props.contactSettings.facebookUrl"><a :href="props.contactSettings.facebookUrl" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+          <p v-if="props.contactSettings.instagramUrl"><a :href="props.contactSettings.instagramUrl" target="_blank" rel="noopener noreferrer">Instagram</a></p>
         </address>
       </div>
     </div>
@@ -41,9 +41,13 @@
 
 <script setup>
 import { ref } from 'vue'
-import { getPageSettings } from '../utils/pageSettings'
 
-const contactSettings = getPageSettings('about')
+const props = defineProps({
+  contactSettings: {
+    type: Object,
+    required: true
+  }
+})
 const currentYear = ref(new Date().getFullYear())
 const adminUrl = window.location.hostname === 'localhost'
   ? 'http://localhost:3000/admin/'
