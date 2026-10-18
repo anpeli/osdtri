@@ -9,6 +9,7 @@ import Partners from '../views/Partners.vue'
 import Archive from '../views/Archive.vue'
 import Gallery from '../views/Gallery.vue'
 import Event from '../views/Event.vue'
+import Documents from '../views/Documents.vue'
 
 const pageFiles = import.meta.glob('../content/pages/*.md', {
   eager: true,
@@ -46,6 +47,7 @@ const routes = [
   { path: '/', component: Home, meta: { title: getCmsPageTitle('home'), cmsPage: 'home' } },
   { path: '/kalender', name: 'kalender', component: Events, alias: ['/events'], meta: { title: getCmsPageTitle('events'), cmsPage: 'events' } },
   { path: '/om-oss', component: About, meta: { title: getCmsPageTitle('about'), cmsPage: 'about' } },
+  { path: '/dokument', alias: ['/arsmotesprotokoll'], component: Documents, meta: { title: getCmsPageTitle('dokument'), cmsPage: 'dokument' } },
   { path: '/bli-medlem', component: Membership, meta: { title: getCmsPageTitle('membership'), cmsPage: 'membership' } },
   { path: '/kontakt', redirect: '/om-oss' },
   { path: '/traning', component: Training, meta: { title: getCmsPageTitle('training'), cmsPage: 'training' } },

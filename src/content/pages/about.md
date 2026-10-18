@@ -60,3 +60,7 @@ Kontakta styrelsen via formuläret nedan.
 - **2015:** Kerry
 - **2014:** Simon
 - **2013:** André J, Emma
+
+## Dokument
+
+Läs [Östersund Triathlons årsmötesprotokoll och andra dokument](/dokument).
