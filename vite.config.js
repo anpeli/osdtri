@@ -41,6 +41,17 @@ export default defineConfig({
             source: readFileSync(resolve(imageDirectory, fileName))
           })
         }
+
+        const documentDirectory = resolve(__dirname, 'assets/documents')
+        for (const entry of readdirSync(documentDirectory, { withFileTypes: true })) {
+          if (!entry.isFile()) continue
+
+          this.emitFile({
+            type: 'asset',
+            fileName: `assets/documents/${entry.name}`,
+            source: readFileSync(resolve(documentDirectory, entry.name))
+          })
+        }
       }
     }
   ],

@@ -105,8 +105,8 @@ collections:
     extension: "md"
     identifier_field: "title"
     summary: "{{title}}"
-    media_folder: "src/content/documents"
-    public_folder: "/src/content/documents"
+    media_folder: "assets/documents"
+    public_folder: "/assets/documents"
     fields:
       - { name: "title", label: "Title" }
       - { name: "document", label: "Document", widget: "file", required: true }
