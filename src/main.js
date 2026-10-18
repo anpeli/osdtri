@@ -1,34 +1,13 @@
 import { createApp } from 'vue'
-import { parse } from 'yaml'
 import App from './App.vue'
 import router from './router'
+import { pageSettings } from './utils/pageSettings'
 import './styles/main.css'
 
-const pageFiles = import.meta.glob('./content/pages/*.md', {
-	eager: true,
-	import: 'default',
-	query: '?raw'
-})
-const settingsFiles = import.meta.glob('./content/settings/site.md', {
-	eager: true,
-	import: 'default',
-	query: '?raw'
-})
-
-const getMetadata = (source) => {
-	const match = source?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-	return match ? parse(match[1]) || {} : {}
-}
-
-const settings = getMetadata(Object.values(settingsFiles)[0])
-const defaultBackdrop = settings.backdrop
-const imagePaths = new Set([defaultBackdrop, settings.backdropSmall || defaultBackdrop])
-
-for (const source of Object.values(pageFiles)) {
-	const page = getMetadata(source)
-	const desktopBackdrop = page.backdrop || defaultBackdrop
-	imagePaths.add(desktopBackdrop)
-	imagePaths.add(page.backdropSmall || settings.backdropSmall || desktopBackdrop)
+const imagePaths = new Set()
+for (const settings of Object.values(pageSettings)) {
+	if (settings.backdrop) imagePaths.add(settings.backdrop)
+	if (settings.backdropSmall) imagePaths.add(settings.backdropSmall)
 }
 
 for (const imagePath of imagePaths) {

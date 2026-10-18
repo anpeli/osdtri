@@ -20,9 +20,9 @@
       <div class="footer-section">
         <h4>Kontakt</h4>
         <address>
-          <p><a :href="`mailto:${settings.email}`">Email: {{ settings.email }}</a></p>
-          <p><a :href="settings.facebookUrl" target="_blank" rel="noopener noreferrer">Facebook</a></p>
-          <p><a :href="settings.instagramUrl" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+          <p v-if="contactSettings.email"><a :href="`mailto:${contactSettings.email}`">Email: {{ contactSettings.email }}</a></p>
+          <p v-if="contactSettings.facebookUrl"><a :href="contactSettings.facebookUrl" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+          <p v-if="contactSettings.instagramUrl"><a :href="contactSettings.instagramUrl" target="_blank" rel="noopener noreferrer">Instagram</a></p>
         </address>
       </div>
     </div>
@@ -41,18 +41,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import { parse } from 'yaml'
+import { getPageSettings } from '../utils/pageSettings'
 
-const settingsFiles = import.meta.glob('../content/settings/site.md', {
-  eager: true,
-  import: 'default',
-  query: '?raw'
-})
-
-const settingsSource = settingsFiles['../content/settings/site.md']
-const settingsFrontMatterMatch = settingsSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-const settings = settingsFrontMatterMatch ? parse(settingsFrontMatterMatch[1]) || {} : {}
-
+const contactSettings = getPageSettings('about')
 const currentYear = ref(new Date().getFullYear())
 const adminUrl = window.location.hostname === 'localhost'
   ? 'http://localhost:3000/admin/'

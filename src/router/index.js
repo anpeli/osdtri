@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import { parse } from 'yaml'
+import { getPageSettings } from '../utils/pageSettings'
 import Home from '../views/Home.vue'
 import Events from '../views/Events.vue'
 import About from '../views/About.vue'
@@ -11,11 +12,6 @@ import Gallery from '../views/Gallery.vue'
 import Event from '../views/Event.vue'
 import Documents from '../views/Documents.vue'
 
-const pageFiles = import.meta.glob('../content/pages/*.md', {
-  eager: true,
-  import: 'default',
-  query: '?raw'
-})
 const galleryFiles = import.meta.glob('../content/galleries/*.md', {
   eager: true,
   import: 'default',
@@ -40,8 +36,7 @@ const getTitleFromSource = (source) => {
     : undefined
 }
 
-const getCmsPageTitle = (page) =>
-  getTitleFromSource(pageFiles[`../content/pages/${page}.md`])
+const getCmsPageTitle = (page) => getPageSettings(page).title
 
 const routes = [
   { path: '/', component: Home, meta: { title: getCmsPageTitle('home'), cmsPage: 'home' } },

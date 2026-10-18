@@ -12,136 +12,46 @@ identity:
   service: netlify
 
 collections:
+  - name: "posts"
+    label: "Home"
+    label_singular: "Post"
+    folder: "src/content/posts"
+    create: true
+    identifier_field: "title"
+    summary: "{{date | date('YYYY-MM-DD')}} - {{title}}"
+    fields:
+      - { name: "title", label: "Title" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "author", label: "Author" }
+      - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"] }
 
   - name: "pages"
     label: "Pages"
     files:
-      - file: "src/content/pages/home.md"
-        label: "Home"
-        name: "home"
-        fields:
-          - { name: "title", label: "Title" }
-          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
-      - file: "src/content/pages/events.md"
-        label: "Events"
-        name: "events"
-        fields:
-          - { name: "title", label: "Title" }
-          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
-      - file: "src/content/pages/gallery.md"
-        label: "Gallery"
-        name: "gallery"
-        fields:
-          - { name: "title", label: "Title" }
-          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
       - file: "src/content/pages/about.md"
         label: "About"
         name: "about"
         fields:
-          - { name: "title", label: "Title" }
-          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
-      - file: "src/content/pages/dokument.md"
-        label: "Dokument"
-        name: "dokument"
-        fields:
-          - { name: "title", label: "Title" }
-          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"] }
       - file: "src/content/pages/membership.md"
         label: "Membership"
         name: "membership"
         fields:
-          - { name: "title", label: "Title" }
-          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
-      - file: "src/content/pages/training.md"
-        label: "Training"
-        name: "training"
-        fields:
-          - { name: "title", label: "Title" }
-          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"] }
       - file: "src/content/pages/partners.md"
         label: "Partners"
         name: "partners"
         fields:
-          - { name: "title", label: "Title" }
-          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
-      - file: "src/content/pages/archive.md"
-        label: "Archive"
-        name: "archive"
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"] }
+      - file: "src/content/pages/training.md"
+        label: "Training"
+        name: "training"
         fields:
-          - { name: "title", label: "Title" }
-          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
-      - file: "src/content/pages/post.md"
-        label: "Post"
-        name: "post"
-        fields:
-          - { name: "title", label: "Title" }
-          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/pages/event.md"
-        label: "Event"
-        name: "event"
-        fields:
-          - { name: "title", label: "Title" }
-          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: false }
-          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"], required: false }
-
-  - name: "minutes"
-    label: "Årsmötesprotokoll"
-    folder: "src/content/documents"
-    create: true
-    extension: "md"
-    identifier_field: "title"
-    summary: "{{year}} - {{title}}"
-    media_folder: "src/content/documents"
-    public_folder: "/src/content/documents"
-    fields:
-      - { name: "title", label: "Title" }
-      - { name: "year", label: "Year", widget: "string", pattern: ["^\\d{4}$", "Enter a four-digit year"] }
-      - { name: "document", label: "Document", widget: "file", required: true }
+          - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"] }
 
   - name: "events"
     label: "Events"
+    label_singular: "Event"
     folder: "src/content/events"
     create: true
     identifier_field: "title"
@@ -168,20 +78,9 @@ collections:
         field: { name: "participant", label: "Full name", widget: "string" }
       - { name: "body", label: "Description", widget: "markdown" }
 
-  - name: "posts"
-    label: "Posts"
-    folder: "src/content/posts"
-    create: true
-    identifier_field: "title"
-    summary: "{{date | date('YYYY-MM-DD')}} - {{title}}"
-    fields:
-      - { name: "title", label: "Title" }
-      - { name: "date", label: "Date", widget: "datetime" }
-      - { name: "author", label: "Author" }
-      - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"] }
-
   - name: "galleries"
     label: "Galleries"
+    label_singular: "Gallery"
     folder: "src/content/galleries"
     create: true
     identifier_field: "title"
@@ -197,18 +96,124 @@ collections:
         required: false
         field: { name: "image", label: "Image", widget: "image" }
 
-  - name: "site-settings"
-    label: "Site settings"
+  - name: "documents"
+    label: "Documents"
+    label_singular: "Document"
+    folder: "src/content/documents"
+    create: true
+    extension: "md"
+    identifier_field: "title"
+    summary: "{{year}} - {{title}}"
+    media_folder: "src/content/documents"
+    public_folder: "/src/content/documents"
+    fields:
+      - { name: "title", label: "Title" }
+      - { name: "year", label: "Year", widget: "string", pattern: ["^\\d{4}$", "Enter a four-digit year"] }
+      - { name: "document", label: "Document", widget: "file", required: true }
+
+  - name: "page-settings"
+    label: "Settings"
     files:
-      - file: "src/content/settings/site.md"
-        label: "Site settings"
-        name: "site"
+      - file: "src/content/settings/about.md"
+        label: "About"
+        name: "about"
         fields:
-          - { name: "formSubmitToken", label: "FormSubmit token", widget: "string", hint: "Use the token from FormSubmit, then activate it from the email FormSubmit sends." }
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "formSubmitToken", label: "FormSubmit token", widget: "string", required: false, hint: "Use the token from FormSubmit, then activate it from the email FormSubmit sends." }
           - { name: "email", label: "Email", widget: "string", pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
           - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
           - { name: "instagramUrl", label: "Instagram URL", widget: "string", required: false }
-          - { name: "backdrop", label: "Default desktop page header backdrop", widget: "image" }
-          - { name: "backdropSmall", label: "Default mobile page header backdrop", widget: "image", required: false }
-          - { name: "backdropPosition", label: "Default desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "backdropSmallPosition", label: "Default mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/archive.md"
+        label: "Archive"
+        name: "archive"
+        fields:
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/dokument.md"
+        label: "Dokument"
+        name: "dokument"
+        fields:
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/event.md"
+        label: "Event"
+        name: "event"
+        fields:
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/events.md"
+        label: "Events"
+        name: "events"
+        fields:
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/gallery.md"
+        label: "Gallery"
+        name: "gallery"
+        fields:
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/home.md"
+        label: "Home"
+        name: "home"
+        fields:
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/membership.md"
+        label: "Membership"
+        name: "membership"
+        fields:
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/partners.md"
+        label: "Partners"
+        name: "partners"
+        fields:
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/post.md"
+        label: "Post"
+        name: "post"
+        fields:
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/training.md"
+        label: "Training"
+        name: "training"
+        fields:
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }

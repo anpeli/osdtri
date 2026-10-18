@@ -8,9 +8,9 @@
 
 <script setup>
 import { marked } from 'marked'
-import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
 import ContactForm from '../components/ContactForm.vue'
+import { getPageSettings } from '../utils/pageSettings'
 
 const pageFiles = import.meta.glob('../content/pages/*.md', {
   eager: true,
@@ -18,17 +18,10 @@ const pageFiles = import.meta.glob('../content/pages/*.md', {
   query: '?raw'
 })
 
-const pageSource = pageFiles['../content/pages/about.md']
-const frontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
-
+const pageSource = pageFiles['../content/pages/about.md'] || ''
 const page = {
-  title: pageMetadata.title || 'Om oss',
-  backdrop: pageMetadata.backdrop,
-  backdropSmall: pageMetadata.backdropSmall,
-  backdropPosition: pageMetadata.backdropPosition,
-  backdropSmallPosition: pageMetadata.backdropSmallPosition,
-  body: marked.parse(frontMatterMatch?.[2] || '')
+  ...getPageSettings('about'),
+  body: marked.parse(pageSource)
 }
 </script>
 

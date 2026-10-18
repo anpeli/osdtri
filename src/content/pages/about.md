@@ -1,10 +1,3 @@
----
-title: Om oss
-backdrop: /assets/images/img_2480-medium.jpg
-backdropSmall: /assets/images/img_2480-small.jpg
-backdropPosition: center 18%
-backdropSmallPosition: ""
----
 ## Sveriges skönaste triathlonklubb håller hus kring Östersund, Jämtland
 
 Östersund Triathlon i dess nuvarande form startades den 25:e januari 2013. Tidigare fanns en triathlon-sektion under ÖCK (Östersunds Cykelklubb) men den har varit vilande i många år nu.

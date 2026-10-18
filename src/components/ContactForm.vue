@@ -47,18 +47,10 @@
 
 <script setup>
 import { ref } from 'vue'
-import { parse } from 'yaml'
+import { getPageSettings } from '../utils/pageSettings'
 
-const settingsFiles = import.meta.glob('../content/settings/site.md', {
-  eager: true,
-  import: 'default',
-  query: '?raw'
-})
-
-const settingsSource = settingsFiles['../content/settings/site.md']
-const settingsFrontMatterMatch = settingsSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-const settings = settingsFrontMatterMatch ? parse(settingsFrontMatterMatch[1]) || {} : {}
-const formSubmitEndpoint = settings.formSubmitToken || settings.email || ''
+const contactSettings = getPageSettings('about')
+const formSubmitEndpoint = contactSettings.formSubmitToken || contactSettings.email || ''
 
 const formData = ref({
   name: '',

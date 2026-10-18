@@ -7,8 +7,8 @@
 
 <script setup>
 import { marked } from 'marked'
-import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
+import { getPageSettings } from '../utils/pageSettings'
 
 const pageFiles = import.meta.glob('../content/pages/*.md', {
   eager: true,
@@ -16,17 +16,10 @@ const pageFiles = import.meta.glob('../content/pages/*.md', {
   query: '?raw'
 })
 
-const pageSource = pageFiles['../content/pages/membership.md']
-const frontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-const pageMetadata = frontMatterMatch ? parse(frontMatterMatch[1]) || {} : {}
-
+const pageSource = pageFiles['../content/pages/membership.md'] || ''
 const page = {
-  title: pageMetadata.title || 'Bli medlem',
-  backdrop: pageMetadata.backdrop,
-  backdropSmall: pageMetadata.backdropSmall,
-  backdropPosition: pageMetadata.backdropPosition,
-  backdropSmallPosition: pageMetadata.backdropSmallPosition,
-  body: marked.parse(frontMatterMatch?.[2] || '')
+  ...getPageSettings('membership'),
+  body: marked.parse(pageSource)
 }
 </script>
 

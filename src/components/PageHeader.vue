@@ -6,17 +6,6 @@
 
 <script setup>
 import { computed } from 'vue'
-import { parse } from 'yaml'
-
-const settingsFiles = import.meta.glob('../content/settings/site.md', {
-  eager: true,
-  import: 'default',
-  query: '?raw'
-})
-
-const settingsSource = settingsFiles['../content/settings/site.md']
-const settingsFrontMatterMatch = settingsSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-const settings = settingsFrontMatterMatch ? parse(settingsFrontMatterMatch[1]) || {} : {}
 
 const props = defineProps({
   title: {
@@ -46,15 +35,13 @@ const resolveAssetUrl = (assetPath) => {
 }
 
 const headerStyle = computed(() => {
-  const backdrop = props.backdrop || settings.backdrop
-  const backdropSmall = props.backdropSmall || settings.backdropSmall || backdrop
-  const backdropPositionDesktop = props.backdropPosition || settings.backdropPosition
-  const backdropPositionMobile = props.backdropSmallPosition || settings.backdropSmallPosition || backdropPositionDesktop
+  const backdropSmall = props.backdropSmall || props.backdrop
+  const backdropPositionMobile = props.backdropSmallPosition || props.backdropPosition
 
   return {
-    '--page-header-backdrop': `url("${resolveAssetUrl(backdrop)}")`,
+    '--page-header-backdrop': `url("${resolveAssetUrl(props.backdrop)}")`,
     '--page-header-backdrop-small': `url("${resolveAssetUrl(backdropSmall)}")`,
-    '--page-header-backdrop-position-desktop': backdropPositionDesktop,
+    '--page-header-backdrop-position-desktop': props.backdropPosition,
     '--page-header-backdrop-position-mobile': backdropPositionMobile
   }
 })

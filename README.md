@@ -51,6 +51,10 @@ Vite uses the `GITHUB_REPOSITORY` environment variable, when available, to set t
 
 ## Content
 
+Page header backdrops are managed separately for each route in `src/content/settings/`, including desktop and mobile images and optional backdrop positions. Contact details and the form submission token are managed in the About page settings.
+
+The editable title and body content for About, Membership, Training, and Partners are stored as Markdown files in `src/content/pages/`.
+
 Posts are stored as Markdown files in `src/content/posts/`. Each post has `title`, `date`, and `author` front matter properties:
 
 ```md
@@ -107,6 +111,8 @@ To enable deployment, configure GitHub Pages to use **GitHub Actions** and make 
 ```text
 src/
   components/       Shared header and footer components
+  content/pages/    Editable page bodies
+  content/settings/ Page titles and header backdrops
   content/posts/    Markdown news posts
   content/events/   One Markdown event list per year
   router/           Vue Router configuration

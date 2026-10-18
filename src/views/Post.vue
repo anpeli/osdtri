@@ -26,6 +26,7 @@ import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
 import PostItem from '../components/PostItem.vue'
 import { getPostGroups } from '../utils/postGroups'
+import { getPageSettings } from '../utils/pageSettings'
 
 const route = useRoute()
 const postFiles = import.meta.glob('../content/posts/*.md', {
@@ -51,20 +52,7 @@ const returnLocation = computed(() => ({
   hash: `#post-${route.params.slug}`
 }))
 
-const pageFiles = import.meta.glob('../content/pages/*.md', {
-  eager: true,
-  import: 'default',
-  query: '?raw'
-})
-const pageSource = pageFiles['../content/pages/post.md']
-const pageFrontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
-const pageMetadata = pageFrontMatterMatch ? parse(pageFrontMatterMatch[1]) || {} : {}
-const page = {
-  backdrop: pageMetadata.backdrop,
-  backdropSmall: pageMetadata.backdropSmall,
-  backdropPosition: pageMetadata.backdropPosition,
-  backdropSmallPosition: pageMetadata.backdropSmallPosition
-}
+const page = getPageSettings('post')
 
 const post = computed(() => {
   const source = postFiles[`../content/posts/${route.params.slug}.md`]

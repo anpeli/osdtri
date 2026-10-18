@@ -7,7 +7,6 @@
       :backdrop-position="page.backdropPosition"
       :backdrop-small-position="page.backdropSmallPosition"
     />
-    <div v-if="page.body" class="page-content" v-html="page.body"></div>
     <article class="gallery-card">
       <p v-if="gallery.date" class="gallery-date">{{ formatDate(gallery.date) }}</p>
       <h3 class="gallery-title">{{ gallery.title || page.title }}</h3>
@@ -39,30 +38,16 @@ import { marked } from 'marked'
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
 import ImageDialog from '../components/ImageDialog.vue'
+import { getPageSettings } from '../utils/pageSettings'
 
 const route = useRoute()
-const pageFiles = import.meta.glob('../content/pages/*.md', {
-  eager: true,
-  import: 'default',
-  query: '?raw'
-})
 const galleryFiles = import.meta.glob('../content/galleries/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
 
-const pageSource = pageFiles['../content/pages/gallery.md']
-const pageFrontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-const pageMetadata = pageFrontMatterMatch ? parse(pageFrontMatterMatch[1]) || {} : {}
-const page = {
-  title: pageMetadata.title || 'Galleri',
-  backdrop: pageMetadata.backdrop,
-  backdropSmall: pageMetadata.backdropSmall,
-  backdropPosition: pageMetadata.backdropPosition,
-  backdropSmallPosition: pageMetadata.backdropSmallPosition,
-  body: marked.parse(pageFrontMatterMatch?.[2] || '')
-}
+const page = getPageSettings('gallery')
 
 const gallery = computed(() => {
   const source = galleryFiles[`../content/galleries/${route.params.slug}.md`]

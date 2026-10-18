@@ -7,7 +7,6 @@
       :backdrop-position="page.backdropPosition"
       :backdrop-small-position="page.backdropSmallPosition"
     />
-    <div v-if="page.body" class="page-content" v-html="page.body"></div>
     <EventItem :event="event" />
     <router-link class="back-link" to="/kalender">Tillbaka till kalendern</router-link>
   </div>
@@ -24,6 +23,7 @@ import { marked } from 'marked'
 import { parse } from 'yaml'
 import EventItem from '../components/EventItem.vue'
 import PageHeader from '../components/PageHeader.vue'
+import { getPageSettings } from '../utils/pageSettings'
 
 const route = useRoute()
 const eventFiles = import.meta.glob('../content/events/*.md', {
@@ -31,23 +31,7 @@ const eventFiles = import.meta.glob('../content/events/*.md', {
   import: 'default',
   query: '?raw'
 })
-const pageFiles = import.meta.glob('../content/pages/*.md', {
-  eager: true,
-  import: 'default',
-  query: '?raw'
-})
-
-const pageSource = pageFiles['../content/pages/event.md']
-const pageFrontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-const pageMetadata = pageFrontMatterMatch ? parse(pageFrontMatterMatch[1]) || {} : {}
-const page = {
-  title: pageMetadata.title || 'Händelse',
-  backdrop: pageMetadata.backdrop,
-  backdropSmall: pageMetadata.backdropSmall,
-  backdropPosition: pageMetadata.backdropPosition,
-  backdropSmallPosition: pageMetadata.backdropSmallPosition,
-  body: marked.parse(pageFrontMatterMatch?.[2] || '')
-}
+const page = getPageSettings('event')
 
 const event = computed(() => {
   const source = eventFiles[`../content/events/${route.params.slug}.md`]

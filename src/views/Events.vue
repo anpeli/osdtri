@@ -7,8 +7,6 @@
       :backdrop-position="page.backdropPosition"
       :backdrop-small-position="page.backdropSmallPosition"
     />
-    <div class="page-content" v-html="page.body"></div>
-
     <div class="section-heading calendar-heading">
       <h2 id="calendar-title">Kommande evenemang</h2>
       <p>Här hittar du våra evenemang, tävlingar och träningar.</p>
@@ -110,9 +108,9 @@
 
 <script setup>
 import { computed, ref } from 'vue'
-import { marked } from 'marked'
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
+import { getPageSettings } from '../utils/pageSettings'
 
 const eventFiles = import.meta.glob('../content/events/*.md', {
   eager: true,
@@ -120,23 +118,7 @@ const eventFiles = import.meta.glob('../content/events/*.md', {
   query: '?raw'
 })
 
-const pageFiles = import.meta.glob('../content/pages/*.md', {
-  eager: true,
-  import: 'default',
-  query: '?raw'
-})
-
-const pageSource = pageFiles['../content/pages/events.md']
-const pageFrontMatterMatch = pageSource?.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-const pageMetadata = pageFrontMatterMatch ? parse(pageFrontMatterMatch[1]) || {} : {}
-const page = {
-  title: pageMetadata.title || 'Kalender',
-  backdrop: pageMetadata.backdrop,
-  backdropSmall: pageMetadata.backdropSmall,
-  backdropPosition: pageMetadata.backdropPosition,
-  backdropSmallPosition: pageMetadata.backdropSmallPosition,
-  body: marked.parse(pageFrontMatterMatch?.[2] || '')
-}
+const page = getPageSettings('events')
 
 const parseEvent = ([filePath, source]) => {
   const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)

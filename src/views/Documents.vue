@@ -7,7 +7,6 @@
       :backdrop-position="page.backdropPosition"
       :backdrop-small-position="page.backdropSmallPosition"
     />
-    <div v-if="page.body" class="page-content" v-html="page.body"></div>
     <section class="documents-list" aria-label="Dokument">
       <p v-if="documents.length === 0" class="empty-state">
         Inga dokument har publicerats ännu.
@@ -36,13 +35,7 @@
 <script setup>
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
-import { marked } from 'marked'
-
-const pageFiles = import.meta.glob('../content/pages/*.md', {
-  eager: true,
-  import: 'default',
-  query: '?raw'
-})
+import { getPageSettings } from '../utils/pageSettings'
 const documentFiles = import.meta.glob('../content/documents/*.md', {
   eager: true,
   import: 'default',
@@ -56,18 +49,7 @@ const parseFrontMatter = (source) => {
     : { metadata: {}, body: '' }
 }
 
-const { metadata: pageMetadata, body: pageBody } = parseFrontMatter(
-  pageFiles['../content/pages/dokument.md']
-)
-
-const page = {
-  title: pageMetadata.title || 'Dokument',
-  backdrop: pageMetadata.backdrop,
-  backdropSmall: pageMetadata.backdropSmall,
-  backdropPosition: pageMetadata.backdropPosition,
-  backdropSmallPosition: pageMetadata.backdropSmallPosition,
-  body: marked.parse(pageBody)
-}
+const page = getPageSettings('dokument')
 
 const documents = Object.values(documentFiles)
   .map((source) => parseFrontMatter(source).metadata)
@@ -89,16 +71,10 @@ const getFileExtension = (path) => path.split('.').pop()?.toUpperCase() || 'DOKU
   padding-bottom: 2rem;
 }
 
-.page-content,
 .documents-list {
   max-width: 800px;
   margin: 0 auto 2rem;
   padding: 0 2rem;
-}
-
-.page-content :deep(p) {
-  margin: 0 0 1.25rem;
-  line-height: 1.8;
 }
 
 .documents-list ul {
