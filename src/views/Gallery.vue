@@ -1,15 +1,30 @@
 <template>
-  <div v-if="gallery" class="gallery-page">
+  <div v-if="gallery" class="gallery-page" :class="{ 'gallery-page--share': isShareMode }">
     <PageHeader
       :title="gallery.title || page.title"
       :backdrop="page.backdrop"
       :backdrop-small="page.backdropSmall"
       :backdrop-position="page.backdropPosition"
       :backdrop-small-position="page.backdropSmallPosition"
+      :compact="isShareMode"
     />
     <article class="gallery-card">
       <p v-if="gallery.date" class="gallery-date">{{ formatDate(gallery.date) }}</p>
-      <h3 class="gallery-title">{{ gallery.title || page.title }}</h3>
+      <h3 v-if="!isShareMode" class="gallery-title">
+        {{ gallery.title || page.title }}
+        <button
+          class="gallery-share-button"
+          type="button"
+          aria-label="Kopiera länk till galleriet"
+          title="Kopiera länk till galleriet"
+          @click="copyGalleryLink"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M10 13a5 5 0 0 0 7.07 0l3-3A5 5 0 0 0 13 2.93l-1.72 1.71m2.72 6.36a5 5 0 0 0-7.07 0l-3 3A5 5 0 0 0 11 21.07l1.71-1.71" />
+          </svg>
+        </button>
+      </h3>
+      <p v-if="copyStatus" class="gallery-copy-status" aria-live="polite">{{ copyStatus }}</p>
       <div v-if="gallery.body" class="gallery-description page-content" v-html="gallery.body"></div>
       <div v-if="gallery.images.length" class="gallery-grid" :aria-label="gallery.title">
         <figure v-for="(image, index) in gallery.images" :key="`${image}-${index}`" class="gallery-image">
@@ -31,8 +46,8 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { marked } from 'marked'
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
@@ -40,6 +55,9 @@ import ImageDialog from '../components/ImageDialog.vue'
 import { getPageSettings } from '../utils/pageSettings'
 
 const route = useRoute()
+const router = useRouter()
+const isShareMode = computed(() => route.query.share === '1' || route.query.share === 'true')
+const copyStatus = ref('')
 const galleryFiles = import.meta.glob('../content/galleries/*.md', {
   eager: true,
   import: 'default',
@@ -84,6 +102,27 @@ const galleryImages = computed(() => gallery.value
       alt: `Fotografi ${index + 1} från ${gallery.value.title}`
     }))
   : [])
+
+const copyGalleryLink = async () => {
+  const slug = route.params.slug
+  if (typeof slug !== 'string' || !slug) {
+    copyStatus.value = 'Länken till galleriet kunde inte skapas.'
+    return
+  }
+
+  const galleryUrl = new URL(
+    router.resolve({ name: 'gallery', params: { slug } }).href,
+    window.location.href
+  )
+  galleryUrl.searchParams.set('share', '1')
+
+  try {
+    await navigator.clipboard.writeText(galleryUrl.href)
+    copyStatus.value = 'Länken till galleriet kopierades.'
+  } catch {
+    copyStatus.value = 'Kunde inte kopiera länken till galleriet. Kontrollera webbläsarens behörigheter.'
+  }
+}
 </script>
 
 <style scoped>
@@ -93,6 +132,16 @@ const galleryImages = computed(() => gallery.value
   padding: 0 2rem 2rem;
 }
 
+.gallery-page--share {
+  padding-top: 1.25rem;
+}
+
+.gallery-copy-status {
+  margin: -0.5rem 0 0.75rem;
+  color: var(--club-muted);
+  font-size: 0.9rem;
+}
+
 .gallery-date {
   margin: 0 0 0.5rem;
   color: var(--club-muted);
@@ -100,8 +149,45 @@ const galleryImages = computed(() => gallery.value
 }
 
 .gallery-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin: 0 0 0.75rem;
   color: var(--club-charcoal);
+}
+
+.gallery-share-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.35rem;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--club-blue);
+  cursor: pointer;
+}
+
+.gallery-share-button:hover {
+  background: rgb(40 123 159 / 10%);
+}
+
+.gallery-share-button:focus-visible {
+  outline: 3px solid var(--club-lime);
+  outline-offset: 2px;
+}
+
+.gallery-share-button svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
 }
 
 .gallery-date {
@@ -167,6 +253,10 @@ const galleryImages = computed(() => gallery.value
 
   .gallery-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery-page--share {
+    padding-top: 1rem;
   }
 }
 </style>
