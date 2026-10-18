@@ -11,6 +11,7 @@ import Archive from '../views/Archive.vue'
 import Gallery from '../views/Gallery.vue'
 import Event from '../views/Event.vue'
 import Documents from '../views/Documents.vue'
+import Participation from '../views/Participation.vue'
 
 const galleryFiles = import.meta.glob('../content/galleries/*.md', {
   eager: true,
@@ -42,6 +43,7 @@ const routes = [
   { path: '/', component: Home, meta: { title: getCmsPageTitle('home'), cmsPage: 'home' } },
   { path: '/kalender', name: 'kalender', component: Events, alias: ['/events'], meta: { title: getCmsPageTitle('events'), cmsPage: 'events' } },
   { path: '/om-oss', component: About, meta: { title: getCmsPageTitle('about'), cmsPage: 'about' } },
+  { path: '/deltagande', name: 'participation', component: Participation, meta: { title: 'Deltagarplaner' } },
   { path: '/dokument', alias: ['/arsmotesprotokoll'], component: Documents, meta: { title: getCmsPageTitle('dokument'), cmsPage: 'dokument' } },
   { path: '/bli-medlem', component: Membership, meta: { title: getCmsPageTitle('membership'), cmsPage: 'membership' } },
   { path: '/kontakt', redirect: '/om-oss' },

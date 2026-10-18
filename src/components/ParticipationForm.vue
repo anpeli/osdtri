@@ -1,6 +1,24 @@
 <template>
-  <section class="participation-form-wrapper" aria-labelledby="participation-form-title">
-    <h2 id="participation-form-title">Berätta vilka evenemang du planerar att delta i</h2>
+  <section
+    class="participation-form-wrapper"
+    :aria-labelledby="showTitle ? 'participation-form-title' : undefined"
+    :aria-label="showTitle ? undefined : title"
+  >
+    <h2 v-if="showTitle" id="participation-form-title">
+      {{ title }}
+      <button
+        class="participation-link-button"
+        type="button"
+        aria-label="Kopiera länk till deltagarformuläret"
+        title="Kopiera länk till deltagarformuläret"
+        @click="copyParticipationLink"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M10 13a5 5 0 0 0 7.07 0l3-3A5 5 0 0 0 13 2.93l-1.72 1.71m2.72 6.36a5 5 0 0 0-7.07 0l-3 3A5 5 0 0 0 11 21.07l1.71-1.71" />
+        </svg>
+      </button>
+    </h2>
+    <p v-if="copyStatus" class="participation-copy-status" aria-live="polite">{{ copyStatus }}</p>
     <p class="participation-form-intro">
       Du kan även tipsa oss om evenemang som inte finns med i kalendern. Skriv gärna datum och plats om du vet.
     </p>
@@ -65,11 +83,20 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const title = 'Berätta vilka evenemang du planerar att delta i'
+const router = useRouter()
+const copyStatus = ref('')
 
 const props = defineProps({
   formSubmitEndpoint: {
     type: String,
     required: true
+  },
+  showTitle: {
+    type: Boolean,
+    default: true
   }
 })
 
@@ -82,6 +109,21 @@ const formData = ref({
 const isSubmitting = ref(false)
 const statusMessage = ref('')
 const statusType = ref('')
+
+const copyParticipationLink = async () => {
+  const participationUrl = new URL(
+    router.resolve({ name: 'participation' }).href,
+    window.location.href
+  )
+  participationUrl.searchParams.set('share', '1')
+
+  try {
+    await navigator.clipboard.writeText(participationUrl.href)
+    copyStatus.value = 'Länken kopierades.'
+  } catch {
+    copyStatus.value = 'Kunde inte kopiera länken. Kontrollera webbläsarens behörigheter.'
+  }
+}
 
 const handleSubmit = async () => {
   isSubmitting.value = true
@@ -132,10 +174,53 @@ const handleSubmit = async () => {
 }
 
 .participation-form-wrapper h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin: 0 0 0.75rem;
   padding: 0.75rem 1.25rem;
   color: var(--club-charcoal);
   border-left: 5px solid var(--club-lime);
+}
+
+.participation-link-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.35rem;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--club-blue);
+  cursor: pointer;
+}
+
+.participation-link-button:hover {
+  background: rgb(40 123 159 / 10%);
+}
+
+.participation-link-button:focus-visible {
+  outline: 3px solid var(--club-lime);
+  outline-offset: 2px;
+}
+
+.participation-link-button svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.participation-copy-status {
+  margin: -0.5rem 0 0.75rem;
+  color: var(--club-muted);
+  font-size: 0.9rem;
 }
 
 .participation-form-intro {
