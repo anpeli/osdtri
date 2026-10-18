@@ -10,9 +10,27 @@ Kanske är det just kombinationen av snabb och långsam, erfaren eller nybörjar
 
 Oavsett om du är erfaren triathlet eller nyfiken nybörjare som skulle vilja prova på så är du hjärtligt välkommen med i gänget!
 
-## Styrelse
+## Klubbmästare
 
-Kontakta styrelsen via formuläret nedan.
+- **2026:** Åsa, Fredrik M
+- **2025:** Åsa, Andreas
+- **2023:** Åsa, Robie
+- **2022:** Åsa, Bobbo
+- **2021:** Matt
+- **2016:** Andreas
+- **2015:** Kerry
+- **2014:** Simon
+- **2013:** André J, Emma
+
+## Dokument
+
+Läs Östersund Triathlons dokument [här](/dokument).
+
+## Bilder
+
+Se klubbens bildgallerier [här](/galleri).
+
+## Styrelse
 
 ### Ordförande
 
@@ -42,18 +60,4 @@ Kontakta styrelsen via formuläret nedan.
 
 * Stefan Nilsson
 
-## Klubbmästare
-
-- **2026:** Åsa, Fredrik M
-- **2025:** Åsa, Andreas
-- **2023:** Åsa, Robie
-- **2022:** Åsa, Bobbo
-- **2021:** Matt
-- **2016:** Andreas
-- **2015:** Kerry
-- **2014:** Simon
-- **2013:** André J, Emma
-
-## Dokument
-
-Läs Östersund Triathlons dokument [här](/dokument).
+Kontakta styrelsen via formuläret nedan.

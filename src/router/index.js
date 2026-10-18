@@ -9,6 +9,7 @@ import Training from '../views/Training.vue'
 import Partners from '../views/Partners.vue'
 import Archive from '../views/Archive.vue'
 import Gallery from '../views/Gallery.vue'
+import Galleries from '../views/Galleries.vue'
 import Event from '../views/Event.vue'
 import Documents from '../views/Documents.vue'
 import Participation from '../views/Participation.vue'
@@ -51,6 +52,7 @@ const routes = [
   { path: '/partners', component: Partners, meta: { title: getCmsPageTitle('partners'), cmsPage: 'partners' } },
   { path: '/arkiv', component: Archive, meta: { title: getCmsPageTitle('archive'), cmsPage: 'archive' } },
   { path: '/inlagg/:slug', name: 'post', component: () => import('../views/Post.vue'), meta: { title: getCmsPageTitle('post'), cmsPage: 'post' } },
+  { path: '/galleri', name: 'galleries', component: Galleries, meta: { title: getCmsPageTitle('galleries'), cmsPage: 'galleries' } },
   { path: '/galleri/:slug', name: 'gallery', component: Gallery, meta: { title: getCmsPageTitle('gallery') } },
   { path: '/handelse/:slug', name: 'event', component: Event, meta: { title: getCmsPageTitle('event'), cmsPage: 'event' } }
 ]
