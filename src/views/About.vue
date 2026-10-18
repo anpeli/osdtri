@@ -2,7 +2,7 @@
   <div class="about-page">
     <PageHeader :title="page.title" :backdrop="page.backdrop" :backdrop-small="page.backdropSmall" :backdrop-position="page.backdropPosition" :backdrop-small-position="page.backdropSmallPosition" />
     <div class="page-content" v-html="page.body"></div>
-    <ContactForm :form-submit-endpoint="contactFormSettings.formSubmitToken || footerSettings.email || ''" />
+    <ContactForm />
   </div>
 </template>
 
@@ -18,8 +18,6 @@ const pageFiles = import.meta.glob('../content/pages/*.md', {
   query: '?raw'
 })
 
-const footerSettings = getPageSettings('footer')
-const contactFormSettings = getPageSettings('contact-form')
 const pageSource = pageFiles['../content/pages/about.md'] || ''
 const page = {
   ...getPageSettings('about'),

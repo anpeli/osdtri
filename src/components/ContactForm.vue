@@ -47,13 +47,9 @@
 
 <script setup>
 import { ref } from 'vue'
+import { getPageSettings } from '../utils/pageSettings'
 
-const props = defineProps({
-  formSubmitEndpoint: {
-    type: String,
-    required: true
-  }
-})
+const formSubmitEndpoint = getPageSettings('contact-form').formSubmitToken
 
 const formData = ref({
   name: '',
@@ -69,11 +65,11 @@ const handleSubmit = async () => {
   statusMessage.value = ''
 
   try {
-    if (!props.formSubmitEndpoint) {
-      throw new Error('FormSubmit token or email is not configured')
+    if (!formSubmitEndpoint) {
+      throw new Error('FormSubmit token is not configured')
     }
 
-    const response = await fetch(`https://formsubmit.co/ajax/${props.formSubmitEndpoint}`, {
+    const response = await fetch(`https://formsubmit.co/ajax/${formSubmitEndpoint}`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

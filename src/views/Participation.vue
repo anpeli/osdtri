@@ -9,7 +9,6 @@
       :compact="isShareMode"
     />
     <ParticipationForm
-      :form-submit-endpoint="participationFormSettings.formSubmitToken || footerSettings.email || ''"
       :show-title="!isShareMode"
     />
     <router-link v-if="!isShareMode" class="back-link" to="/om-oss">Tillbaka till Om oss</router-link>
@@ -27,8 +26,6 @@ const route = useRoute()
 const isShareMode = computed(() => route.query.share === '1' || route.query.share === 'true')
 const title = 'Berätta vilka evenemang du planerar att delta i'
 const page = getPageSettings('participation')
-const footerSettings = getPageSettings('footer')
-const participationFormSettings = getPageSettings('participation-form')
 </script>
 
 <style scoped>

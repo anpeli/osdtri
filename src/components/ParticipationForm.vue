@@ -84,16 +84,14 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { getPageSettings } from '../utils/pageSettings'
 
 const title = 'Berätta vilka evenemang du planerar att delta i'
 const router = useRouter()
 const copyStatus = ref('')
+const formSubmitEndpoint = getPageSettings('participation-form').formSubmitToken
 
 const props = defineProps({
-  formSubmitEndpoint: {
-    type: String,
-    required: true
-  },
   showTitle: {
     type: Boolean,
     default: true
@@ -130,11 +128,11 @@ const handleSubmit = async () => {
   statusMessage.value = ''
 
   try {
-    if (!props.formSubmitEndpoint) {
-      throw new Error('FormSubmit token or email is not configured')
+    if (!formSubmitEndpoint) {
+      throw new Error('FormSubmit token is not configured')
     }
 
-    const response = await fetch(`https://formsubmit.co/ajax/${props.formSubmitEndpoint}`, {
+    const response = await fetch(`https://formsubmit.co/ajax/${formSubmitEndpoint}`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
