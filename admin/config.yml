@@ -122,10 +122,6 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-          - { name: "formSubmitToken", label: "FormSubmit token", widget: "string", required: false, hint: "Use the token from FormSubmit, then activate it from the email FormSubmit sends." }
-          - { name: "email", label: "Email", widget: "string", pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
-          - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
-          - { name: "instagramUrl", label: "Instagram URL", widget: "string", required: false }
       - file: "src/content/settings/archive.md"
         label: "Archive"
         name: "archive"
@@ -135,6 +131,11 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/contact-form.md"
+        label: "Contact form"
+        name: "contact-form"
+        fields:
+          - { name: "formSubmitToken", label: "FormSubmit token", widget: "string", required: false, hint: "Use the token from FormSubmit, then activate it from the email FormSubmit sends." }
       - file: "src/content/settings/dokument.md"
         label: "Dokument"
         name: "dokument"
@@ -162,6 +163,13 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/footer.md"
+        label: "Footer"
+        name: "footer"
+        fields:
+          - { name: "email", label: "Email", widget: "string", pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
+          - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
+          - { name: "instagramUrl", label: "Instagram URL", widget: "string", required: false }
       - file: "src/content/settings/gallery.md"
         label: "Gallery"
         name: "gallery"
@@ -189,6 +197,20 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/participation.md"
+        label: "Participation"
+        name: "participation"
+        fields:
+          - { name: "title", label: "Title", required: true }
+          - { name: "backdrop", label: "Desktop page header backdrop", widget: "image", required: true }
+          - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
+          - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+          - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
+      - file: "src/content/settings/participation-form.md"
+        label: "Participation form"
+        name: "participation-form"
+        fields:
+          - { name: "formSubmitToken", label: "FormSubmit token", widget: "string", required: false, hint: "Use the token from FormSubmit, then activate it from the email FormSubmit sends." }
       - file: "src/content/settings/partners.md"
         label: "Partners"
         name: "partners"

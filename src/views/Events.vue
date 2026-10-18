@@ -103,7 +103,7 @@
         eller <a href="/events.ics" download>ladda ner kalenderfilen (.ics)</a>.
       </p>
     </section>
-    <ParticipationForm :form-submit-endpoint="contactSettings.formSubmitToken || contactSettings.email || ''" />
+    <ParticipationForm :form-submit-endpoint="participationFormSettings.formSubmitToken || footerSettings.email || ''" />
   </div>
 </template>
 
@@ -121,7 +121,8 @@ const eventFiles = import.meta.glob('../content/events/*.md', {
 })
 
 const page = getPageSettings('events')
-const contactSettings = getPageSettings('about')
+const footerSettings = getPageSettings('footer')
+const participationFormSettings = getPageSettings('participation-form')
 
 const parseEvent = ([filePath, source]) => {
   const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)

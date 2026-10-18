@@ -15,5 +15,5 @@ import { getPageSettings } from './utils/pageSettings'
 
 const route = useRoute()
 const isSharePage = computed(() => route.query.share === '1' || route.query.share === 'true')
-const contactSettings = getPageSettings('about')
+const contactSettings = getPageSettings('footer')
 </script>
