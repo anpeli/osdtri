@@ -103,12 +103,14 @@
         eller <a href="/events.ics" download>ladda ner kalenderfilen (.ics)</a>.
       </p>
     </section>
+    <ParticipationForm />
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
 import { parse } from 'yaml'
+import ParticipationForm from '../components/ParticipationForm.vue'
 import PageHeader from '../components/PageHeader.vue'
 import { getPageSettings } from '../utils/pageSettings'
 
