@@ -141,7 +141,7 @@ collections:
         label: "Participants"
         widget: "list"
         required: false
-        field: { name: "participant", label: "Name", widget: "string" }
+        field: { name: "participant", label: "Full name", widget: "string" }
       - { name: "body", label: "Description", widget: "markdown" }
 
   - name: "posts"

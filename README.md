@@ -65,7 +65,7 @@ Post content goes here.
 
 The home page and archive discover these Markdown files at build time and render them in date order. Each post title links to its single-post page at `/inlagg/<filename-slug>`.
 
-The calendar is stored as individual event Markdown files in `src/content/events/`. Each file has `title` and `date` properties in the front matter, with the event description in the Markdown body. `eventType` identifies an event as `internal` or `external` (events without this property default to `internal`), and `participants` is a list of participant names managed through the CMS. Optional front matter properties are left empty when unused: `author`, `time`, `duration`, `location`, and `URL`.
+The calendar is stored as individual event Markdown files in `src/content/events/`. Each file has `title` and `date` properties in the front matter, with the event description in the Markdown body. `eventType` identifies an event as `internal` or `external` (events without this property default to `internal`), and optional `participants` is a list of full names managed through the CMS. Participant counts appear in the calendar and home page's next-event card; full names appear on the event detail page. Optional front matter properties are left empty when unused: `author`, `time`, `duration`, `location`, and `URL`.
 
 ```md
 ---

@@ -28,7 +28,10 @@
       <p v-if="copyStatus" class="event-copy-status" aria-live="polite">{{ copyStatus }}</p>
       <p v-if="event.author" class="event-author">Av {{ event.author }}</p>
       <div class="event-description" v-html="event.description"></div>
-      <section v-if="event.participants?.length" class="event-participants" aria-labelledby="participants-title">
+      <p v-if="showParticipantCount && event.participants?.length" class="event-participant-count">
+        {{ event.participants.length }} deltagare
+      </p>
+      <section v-else-if="event.participants?.length" class="event-participants" aria-labelledby="participants-title">
         <h4 id="participants-title">Deltagare ({{ event.participants.length }})</h4>
         <ul>
           <li v-for="(participant, index) in event.participants" :key="`${participant}-${index}`">
@@ -58,6 +61,10 @@ const props = defineProps({
     required: true
   },
   linkTitle: {
+    type: Boolean,
+    default: false
+  },
+  showParticipantCount: {
     type: Boolean,
     default: false
   }
@@ -223,6 +230,12 @@ const copyEventLink = async () => {
 
 .event-participants {
   margin-top: 1.5rem;
+}
+
+.event-participant-count {
+  margin-top: 1rem;
+  color: var(--club-muted);
+  font-size: 0.9rem;
 }
 
 .event-participants h4 {

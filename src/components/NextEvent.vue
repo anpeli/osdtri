@@ -7,7 +7,7 @@
       </p>
     </div>
 
-    <EventItem :event="event" link-title />
+    <EventItem :event="event" link-title show-participant-count />
     <router-link class="upcoming-events-link" to="/kalender">
       Visa alla kommande händelser
     </router-link>
