@@ -132,6 +132,7 @@ const handleSubmit = async () => {
       throw new Error('FormSubmit token is not configured')
     }
 
+    const email = formData.value.email.trim()
     const response = await fetch(`https://formsubmit.co/ajax/${formSubmitEndpoint}`, {
       method: 'POST',
       headers: {
@@ -140,11 +141,10 @@ const handleSubmit = async () => {
       },
       body: JSON.stringify({
         name: formData.value.name,
-        email: formData.value.email,
+        ...(email ? { email, _replyto: email } : {}),
         events: formData.value.events,
         consent: formData.value.consent ? 'Ja' : 'Nej',
         _subject: 'Nya deltagarplaner från osdtri.se',
-        _replyto: formData.value.email,
         _captcha: 'false'
       })
     })
@@ -158,6 +158,7 @@ const handleSubmit = async () => {
     statusType.value = 'success'
     statusMessage.value = 'Tack! Dina evenemangsplaner har skickats.'
   } catch (error) {
+    console.error('Participation form submission failed:', error)
     statusType.value = 'error'
     statusMessage.value = 'Dina evenemangsplaner kunde inte skickas. Försök igen senare.'
   } finally {
