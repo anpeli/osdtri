@@ -7,27 +7,33 @@
       :backdrop-position="page.backdropPosition"
       :backdrop-small-position="page.backdropSmallPosition"
     />
-    <section class="documents-list" aria-label="Dokument">
-      <p v-if="documents.length === 0" class="empty-state">
-        Inga dokument har publicerats ännu.
-      </p>
-      <ul v-else>
-        <li v-for="document in documents" :key="document.document">
-          <div class="document-details">
-            <span class="document-title">{{ document.title }}</span>
-          </div>
-          <a
-            class="download-link"
-            :href="resolveDocumentUrl(document.document)"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visa dokument
-            <span class="document-format">({{ getFileExtension(document.document) }})</span>
-          </a>
-        </li>
-      </ul>
-    </section>
+    <div class="documents-content">
+      <div class="section-heading documents-heading">
+        <h2 id="documents-title">Dokument från klubben</h2>
+        <p>Här hittar du protokoll och andra dokument från Östersund Triathlon.</p>
+      </div>
+      <section class="documents-list" aria-labelledby="documents-title">
+        <p v-if="documents.length === 0" class="empty-state">
+          Inga dokument har publicerats ännu.
+        </p>
+        <ul v-else>
+          <li v-for="document in documents" :key="document.document">
+            <div class="document-details">
+              <span class="document-title">{{ document.title }}</span>
+            </div>
+            <a
+              class="download-link"
+              :href="resolveDocumentUrl(document.document)"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visa dokument
+              <span class="document-format">({{ getFileExtension(document.document) }})</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -69,10 +75,18 @@ const getFileExtension = (path) => path.split('.').pop()?.toUpperCase() || 'DOKU
   padding-bottom: 2rem;
 }
 
-.documents-list {
+.documents-content {
   max-width: 800px;
-  margin: 0 auto 2rem;
+  margin: 2rem auto 0;
   padding: 0 2rem;
+}
+
+.documents-heading {
+  margin-bottom: 2rem;
+}
+
+.documents-list {
+  margin-bottom: 2rem;
 }
 
 .documents-list ul {

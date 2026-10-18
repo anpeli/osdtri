@@ -56,4 +56,4 @@ Kontakta styrelsen via formuläret nedan.
 
 ## Dokument
 
-Läs [Östersund Triathlons årsmötesprotokoll och andra dokument](/dokument).
+Läs Östersund Triathlons dokument [här](/dokument).
