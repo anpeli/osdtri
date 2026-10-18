@@ -137,6 +137,7 @@ collections:
         name: "contact-form"
         fields:
           - { name: "formSubmitToken", label: "FormSubmit token", widget: "string", required: false, hint: "Use the token from FormSubmit, then activate it from the email FormSubmit sends." }
+          - { name: "email", label: "Fallback and contact email", widget: "string", required: true, pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
       - file: "src/content/settings/dokument.md"
         label: "Dokument"
         name: "dokument"
@@ -212,6 +213,7 @@ collections:
         name: "participation-form"
         fields:
           - { name: "formSubmitToken", label: "FormSubmit token", widget: "string", required: false, hint: "Use the token from FormSubmit, then activate it from the email FormSubmit sends." }
+          - { name: "email", label: "Fallback and contact email", widget: "string", required: true, pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
       - file: "src/content/settings/partners.md"
         label: "Partners"
         name: "partners"

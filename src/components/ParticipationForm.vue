@@ -76,6 +76,7 @@
 
       <p v-if="statusMessage" class="form-status" :class="statusType" role="status">
         {{ statusMessage }}
+        <a v-if="statusType === 'error'" :href="`mailto:${formSettings.email}`">{{ formSettings.email }}</a>.
       </p>
     </form>
   </section>
@@ -89,7 +90,8 @@ import { getPageSettings } from '../utils/pageSettings'
 const title = 'Berätta vilka evenemang du planerar att delta i'
 const router = useRouter()
 const copyStatus = ref('')
-const formSubmitEndpoint = getPageSettings('participation-form').formSubmitToken
+const formSettings = getPageSettings('participation-form')
+const formSubmitEndpoint = formSettings.formSubmitToken || formSettings.email
 
 const props = defineProps({
   showTitle: {
@@ -160,7 +162,7 @@ const handleSubmit = async () => {
   } catch (error) {
     console.error('Participation form submission failed:', error)
     statusType.value = 'error'
-    statusMessage.value = 'Dina evenemangsplaner kunde inte skickas. Försök igen senare.'
+    statusMessage.value = 'Dina evenemangsplaner kunde inte skickas. Du kan i stället mejla oss på '
   } finally {
     isSubmitting.value = false
   }

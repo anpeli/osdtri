@@ -40,6 +40,7 @@
 
       <p v-if="statusMessage" class="form-status" :class="statusType" role="status">
         {{ statusMessage }}
+        <a v-if="statusType === 'error'" :href="`mailto:${formSettings.email}`">{{ formSettings.email }}</a>.
       </p>
     </form>
   </div>
@@ -49,7 +50,8 @@
 import { ref } from 'vue'
 import { getPageSettings } from '../utils/pageSettings'
 
-const formSubmitEndpoint = getPageSettings('contact-form').formSubmitToken
+const formSettings = getPageSettings('contact-form')
+const formSubmitEndpoint = formSettings.formSubmitToken || formSettings.email
 
 const formData = ref({
   name: '',
@@ -95,7 +97,7 @@ const handleSubmit = async () => {
     statusMessage.value = 'Tack för ditt meddelande!'
   } catch (error) {
     statusType.value = 'error'
-    statusMessage.value = 'Meddelandet kunde inte skickas. Försök igen senare.'
+    statusMessage.value = 'Meddelandet kunde inte skickas. Du kan i stället mejla oss på '
   } finally {
     isSubmitting.value = false
   }
