@@ -24,11 +24,8 @@ Oavsett om du är erfaren triathlet eller nyfiken nybörjare som skulle vilja pr
 
 ## Dokument
 
-Läs Östersund Triathlons dokument [här](/dokument).
-
-## Bilder
-
-Se klubbens bildgallerier [här](/galleri).
+Läs Östersund Triathlons dokument [här](/dokument),
+och se klubbens bildgallerier [här](/galleri).
 
 ## Styrelse
 
