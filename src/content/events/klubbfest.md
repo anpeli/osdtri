@@ -4,9 +4,11 @@ date: "2026-11-27"
 eventType: internal
 participants: []
 author: ""
-time: "16:00"
+time: "17:30"
 duration: ""
 location: ""
-URL: ""
+URL: "https://fb.me/e/7kzTxUP4i"
 ---
-Dags för årets klubbfest. Vi börjar med träning, sen äter vi tillsammans. Mer information kommer.
+Klubbfest fredag den 27/11.
+
+Vi summerar träningsåret, äter, hänger, umgås. Alla medlemmar är varmt välkomna, ny som gammal. Hoppas att just du vill vara med. Mer info kommer!
