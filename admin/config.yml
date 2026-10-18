@@ -74,6 +74,7 @@ collections:
       - name: "participants"
         label: "Participants"
         widget: "list"
+        label_singular: "Participant"
         required: false
         field: { name: "participant", label: "Full name", widget: "string" }
       - { name: "body", label: "Description", widget: "markdown" }
@@ -88,11 +89,11 @@ collections:
     fields:
       - { name: "title", label: "Title" }
       - { name: "date", label: "Date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { name: "photographer", label: "Photographer" }
       - { name: "body", label: "Body", widget: "markdown", required: false }
       - name: "images"
         label: "Images"
         widget: "list"
+        label_singular: "Image"
         required: false
         field: { name: "image", label: "Image", widget: "image" }
 

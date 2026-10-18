@@ -11,7 +11,6 @@
       <p v-if="gallery.date" class="gallery-date">{{ formatDate(gallery.date) }}</p>
       <h3 class="gallery-title">{{ gallery.title || page.title }}</h3>
       <div v-if="gallery.body" class="gallery-description page-content" v-html="gallery.body"></div>
-      <p v-if="gallery.photographer" class="gallery-photographer">Fotograf: {{ gallery.photographer }}</p>
       <div v-if="gallery.images.length" class="gallery-grid" :aria-label="gallery.title">
         <figure v-for="(image, index) in gallery.images" :key="`${image}-${index}`" class="gallery-image">
           <ImageDialog
@@ -94,8 +93,7 @@ const galleryImages = computed(() => gallery.value
   padding: 0 2rem 2rem;
 }
 
-.gallery-date,
-.gallery-photographer {
+.gallery-date {
   margin: 0 0 0.5rem;
   color: var(--club-muted);
   font-size: 0.95rem;

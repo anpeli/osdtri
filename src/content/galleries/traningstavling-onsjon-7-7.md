@@ -1,7 +1,6 @@
 ---
 title: "Träningstävling i Önsjön 7/7"
 date: "2021-07-07"
-photographer: "Kristoffer Darj"
 images:
   - "/assets/images/IMG_6472.jpg"
   - "/assets/images/IMG_6412.jpg"
@@ -32,3 +31,4 @@ images:
   - "/assets/images/IMG_6410.jpg"
   - "/assets/images/IMG_6408.jpg"
 ---
+Fotograf: Kristoffer Darj
