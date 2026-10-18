@@ -5,7 +5,7 @@
       <span class="event-type" :class="`event-type--${event.eventType === 'external' ? 'external' : 'internal'}`">
         {{ event.eventType === 'external' ? 'Externt evenemang' : 'Internt evenemang' }}
       </span>
-      <h3 class="event-title">
+      <h3 v-if="showTitle" class="event-title">
         <router-link
           v-if="linkTitle"
           :to="{ name: 'event', params: { slug: event.slug } }"
@@ -67,6 +67,10 @@ const props = defineProps({
   showParticipantCount: {
     type: Boolean,
     default: false
+  },
+  showTitle: {
+    type: Boolean,
+    default: true
   }
 })
 
@@ -99,10 +103,11 @@ const copyEventLink = async () => {
   const eventUrl = new URL(
     router.resolve({ name: 'event', params: { slug } }).href,
     window.location.href
-  ).href
+  )
+  eventUrl.searchParams.set('share', '1')
 
   try {
-    await navigator.clipboard.writeText(eventUrl)
+    await navigator.clipboard.writeText(eventUrl.href)
     copyStatus.value = 'Länken kopierades.'
   } catch {
     copyStatus.value = 'Kunde inte kopiera länken. Kontrollera webbläsarens behörigheter.'

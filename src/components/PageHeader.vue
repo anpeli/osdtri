@@ -1,5 +1,5 @@
 <template>
-  <section class="page-header" :style="headerStyle">
+  <section class="page-header" :class="{ 'page-header--compact': compact }" :style="headerStyle">
     <h1>{{ title }}</h1>
   </section>
 </template>
@@ -11,6 +11,10 @@ const props = defineProps({
   title: {
     type: String,
     required: true
+  },
+  compact: {
+    type: Boolean,
+    default: false
   },
   backdrop: {
     type: String
@@ -69,10 +73,31 @@ const headerStyle = computed(() => {
   font-size: clamp(1.6rem, 4vw, 2.5rem);
 }
 
+.page-header--compact {
+  width: auto;
+  height: auto;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  color: var(--club-charcoal);
+  border: 0;
+  text-align: left;
+  justify-content: flex-start;
+  background: none;
+}
+
+.page-header--compact h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.25;
+}
+
 @media (max-width: 640px) {
   .page-header {
     background-image: linear-gradient(rgb(0 0 0 / 42%), rgb(0 0 0 / 42%)), var(--page-header-backdrop-small);
     background-position: var(--page-header-backdrop-position-mobile);
+  }
+
+  .page-header--compact {
+    background-image: none;
   }
 }
 </style>

@@ -1,14 +1,15 @@
 <template>
-  <div v-if="post" class="post-page">
+  <div v-if="post" class="post-page" :class="{ 'post-page--share': isShareMode }">
     <PageHeader
       :title="post.title"
       :backdrop="page.backdrop"
       :backdrop-small="page.backdropSmall"
       :backdrop-position="page.backdropPosition"
       :backdrop-small-position="page.backdropSmallPosition"
+      :compact="isShareMode"
     />
-    <PostItem :post="post" :single="true" />
-    <router-link class="back-link" :to="returnLocation">
+    <PostItem :post="post" :single="true" :show-title="!isShareMode" />
+    <router-link v-if="!isShareMode" class="back-link" :to="returnLocation">
       {{ isFromArchive ? 'Tillbaka till inläggsarkivet' : 'Tillbaka till senaste inläggen' }}
     </router-link>
   </div>
@@ -29,6 +30,7 @@ import { getPostGroups } from '../utils/postGroups'
 import { getPageSettings } from '../utils/pageSettings'
 
 const route = useRoute()
+const isShareMode = computed(() => route.query.share === '1' || route.query.share === 'true')
 const postFiles = import.meta.glob('../content/posts/*.md', {
   eager: true,
   import: 'default',
@@ -81,6 +83,26 @@ const post = computed(() => {
   padding: 0 2rem 3rem;
 }
 
+.post-page--share {
+  padding-top: 1.25rem;
+}
+
+.post-page--share :deep(.post-card) {
+  border: 1px solid var(--club-border);
+  border-top: 4px solid var(--club-blue);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgb(32 37 42 / 8%);
+}
+
+.post-page--share :deep(.post-content) {
+  padding: 1.75rem 2rem;
+}
+
+.post-page--share :deep(.post-date) {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
 .back-link,
 .post-not-found a {
   display: inline-block;
@@ -97,5 +119,15 @@ const post = computed(() => {
 
 .post-not-found h1 {
   color: var(--club-charcoal);
+}
+
+@media (max-width: 480px) {
+  .post-page--share {
+    padding-top: 1rem;
+  }
+
+  .post-page--share :deep(.post-content) {
+    padding: 1.35rem 1.25rem;
+  }
 }
 </style>

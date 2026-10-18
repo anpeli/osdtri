@@ -66,10 +66,11 @@ const copyPostLink = async () => {
   const postUrl = new URL(
     router.resolve({ name: 'post', params: { slug } }).href,
     window.location.href
-  ).href
+  )
+  postUrl.searchParams.set('share', '1')
 
   try {
-    await navigator.clipboard.writeText(postUrl)
+    await navigator.clipboard.writeText(postUrl.href)
     copyStatus.value = 'Länken kopierades.'
   } catch {
     copyStatus.value = 'Kunde inte kopiera länken. Kontrollera webbläsarens behörigheter.'

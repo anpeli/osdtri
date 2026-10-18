@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{ 'header--compact': compact }">
     <nav class="nav">
       <router-link to="/" aria-label="OSD Tri - hem">
         <img class="logo" :src="`${assetBaseUrl}assets/images/osdtri-jamtkraft.png`" alt="OSD Tri" />
@@ -33,6 +33,13 @@ import { ref } from 'vue'
 
 const assetBaseUrl = import.meta.env.BASE_URL
 const menuOpen = ref(false)
+
+defineProps({
+  compact: {
+    type: Boolean,
+    default: false
+  }
+})
 </script>
 
 <style scoped>
@@ -77,6 +84,24 @@ const menuOpen = ref(false)
   border-bottom-color: var(--club-lime);
 }
 
+.header--compact {
+  padding: 0.35rem 1rem;
+  border-bottom-width: 2px;
+}
+
+.header--compact .nav {
+  max-width: 800px;
+}
+
+.header--compact .logo {
+  width: 110px;
+}
+
+.header--compact .nav-links,
+.header--compact .menu-toggle {
+  display: none;
+}
+
 .menu-toggle {
   display: none;
 }
@@ -84,6 +109,10 @@ const menuOpen = ref(false)
 @media (max-width: 768px) {
   .header {
     padding: 0.75rem 1rem;
+  }
+
+  .header--compact {
+    padding: 0.35rem 1rem;
   }
 
   .logo {
