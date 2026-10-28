@@ -112,6 +112,7 @@ To enable deployment, configure GitHub Pages to use **GitHub Actions** and make 
 content/           Editable pages, settings, posts, events, galleries, and documents
 src/
   components/       Shared header and footer components
+  scripts/          Build-time calendar generation
   router/           Vue Router configuration
   styles/           Global styles
   views/            Home, events, about, and contact pages

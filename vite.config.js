@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { readdirSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { generateCalendar } from './scripts/generate-calendar.mjs'
+import { generateCalendar } from './src/scripts/generate-calendar.mjs'
 
 const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1]
 
