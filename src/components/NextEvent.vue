@@ -32,7 +32,7 @@ const parseEvent = (source, filePath) => {
   }
 }
 
-const eventFiles = import.meta.glob('../content/events/*.md', {
+const eventFiles = import.meta.glob('../../content/events/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'

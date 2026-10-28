@@ -31,7 +31,7 @@ import { getPageSettings } from '../utils/pageSettings'
 
 const route = useRoute()
 const isShareMode = computed(() => route.query.share === '1' || route.query.share === 'true')
-const postFiles = import.meta.glob('../content/posts/*.md', {
+const postFiles = import.meta.glob('../../content/posts/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
@@ -47,7 +47,7 @@ const postGroups = getPostGroups(Object.entries(postFiles).map(([id, source]) =>
 }))
 
 const isFromArchive = computed(() =>
-  postGroups.archivePosts.some((item) => item.id === `../content/posts/${route.params.slug}.md`)
+  postGroups.archivePosts.some((item) => item.id === `../../content/posts/${route.params.slug}.md`)
 )
 const returnLocation = computed(() => ({
   path: isFromArchive.value ? '/arkiv' : '/',
@@ -57,7 +57,7 @@ const returnLocation = computed(() => ({
 const page = getPageSettings('post')
 
 const post = computed(() => {
-  const source = postFiles[`../content/posts/${route.params.slug}.md`]
+  const source = postFiles[`../../content/posts/${route.params.slug}.md`]
   if (!source) return null
 
   const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)

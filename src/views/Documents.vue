@@ -41,7 +41,7 @@
 import { parse } from 'yaml'
 import PageHeader from '../components/PageHeader.vue'
 import { getPageSettings } from '../utils/pageSettings'
-const documentFiles = import.meta.glob('../content/documents/*.md', {
+const documentFiles = import.meta.glob('../../content/documents/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'

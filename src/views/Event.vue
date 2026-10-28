@@ -28,7 +28,7 @@ import { getPageSettings } from '../utils/pageSettings'
 
 const route = useRoute()
 const isShareMode = computed(() => route.query.share === '1' || route.query.share === 'true')
-const eventFiles = import.meta.glob('../content/events/*.md', {
+const eventFiles = import.meta.glob('../../content/events/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
@@ -36,7 +36,7 @@ const eventFiles = import.meta.glob('../content/events/*.md', {
 const page = getPageSettings('event')
 
 const event = computed(() => {
-  const source = eventFiles[`../content/events/${route.params.slug}.md`]
+  const source = eventFiles[`../../content/events/${route.params.slug}.md`]
   if (!source) return null
 
   const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)

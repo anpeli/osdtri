@@ -51,11 +51,11 @@ Vite uses the `GITHUB_REPOSITORY` environment variable, when available, to set t
 
 ## Content
 
-Page header backdrops are managed separately for each route in `src/content/settings/`, including desktop and mobile images and optional backdrop positions. Contact details and the form submission token are managed in the About page settings.
+Page header backdrops are managed separately for each route in `content/settings/`, including desktop and mobile images and optional backdrop positions. Contact details and the form submission token are managed in the About page settings.
 
-The editable title and body content for About, Membership, Training, and Partners are stored as Markdown files in `src/content/pages/`.
+The editable title and body content for About, Membership, Training, and Partners are stored as Markdown files in `content/pages/`.
 
-Posts are stored as Markdown files in `src/content/posts/`. Each post has `title`, `date`, and `author` front matter properties:
+Posts are stored as Markdown files in `content/posts/`. Each post has `title`, `date`, and `author` front matter properties:
 
 ```md
 ---
@@ -69,7 +69,7 @@ Post content goes here.
 
 The home page and archive discover these Markdown files at build time and render them in date order. Each post title links to its single-post page at `/inlagg/<filename-slug>`.
 
-The calendar is stored as individual event Markdown files in `src/content/events/`. Each file has `title` and `date` properties in the front matter, with the event description in the Markdown body. `eventType` identifies an event as `internal` or `external` (events without this property default to `internal`), and optional `participants` is a list of full names managed through the CMS. Participant counts appear in the calendar and home page's next-event card; full names appear on the event detail page. Optional front matter properties are left empty when unused: `author`, `time`, `duration`, `location`, and `URL`.
+The calendar is stored as individual event Markdown files in `content/events/`. Each file has `title` and `date` properties in the front matter, with the event description in the Markdown body. `eventType` identifies an event as `internal` or `external` (events without this property default to `internal`), and optional `participants` is a list of full names managed through the CMS. Participant counts appear in the calendar and home page's next-event card; full names appear on the event detail page. Optional front matter properties are left empty when unused: `author`, `time`, `duration`, `location`, and `URL`.
 
 ```md
 ---
@@ -109,12 +109,9 @@ To enable deployment, configure GitHub Pages to use **GitHub Actions** and make 
 ## Project Structure
 
 ```text
+content/           Editable pages, settings, posts, events, galleries, and documents
 src/
   components/       Shared header and footer components
-  content/pages/    Editable page bodies
-  content/settings/ Page titles and header backdrops
-  content/posts/    Markdown news posts
-  content/events/   One Markdown event list per year
   router/           Vue Router configuration
   styles/           Global styles
   views/            Home, events, about, and contact pages

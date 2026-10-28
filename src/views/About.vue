@@ -12,13 +12,13 @@ import PageHeader from '../components/PageHeader.vue'
 import ContactForm from '../components/ContactForm.vue'
 import { getPageSettings } from '../utils/pageSettings'
 
-const pageFiles = import.meta.glob('../content/pages/*.md', {
+const pageFiles = import.meta.glob('../../content/pages/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
 
-const pageSource = pageFiles['../content/pages/about.md'] || ''
+const pageSource = pageFiles['../../content/pages/about.md'] || ''
 const page = {
   ...getPageSettings('about'),
   body: marked.parse(pageSource)

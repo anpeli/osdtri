@@ -15,7 +15,7 @@ collections:
   - name: "posts"
     label: "Home"
     label_singular: "Post"
-    folder: "src/content/posts"
+    folder: "content/posts"
     create: true
     identifier_field: "title"
     summary: "{{date | date('YYYY-MM-DD')}} - {{title}}"
@@ -28,22 +28,22 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "src/content/pages/about.md"
+      - file: "content/pages/about.md"
         label: "About"
         name: "about"
         fields:
           - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"] }
-      - file: "src/content/pages/membership.md"
+      - file: "content/pages/membership.md"
         label: "Membership"
         name: "membership"
         fields:
           - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"] }
-      - file: "src/content/pages/partners.md"
+      - file: "content/pages/partners.md"
         label: "Partners"
         name: "partners"
         fields:
           - { name: "body", label: "Body", widget: "markdown", modes: ["raw", "rich_text"] }
-      - file: "src/content/pages/training.md"
+      - file: "content/pages/training.md"
         label: "Training"
         name: "training"
         fields:
@@ -52,7 +52,7 @@ collections:
   - name: "events"
     label: "Events"
     label_singular: "Event"
-    folder: "src/content/events"
+    folder: "content/events"
     create: true
     identifier_field: "title"
     summary: "{{date | date('YYYY-MM-DD')}} - {{title}}"
@@ -82,7 +82,7 @@ collections:
   - name: "galleries"
     label: "Galleries"
     label_singular: "Gallery"
-    folder: "src/content/galleries"
+    folder: "content/galleries"
     create: true
     identifier_field: "title"
     summary: "{{title}}"
@@ -100,7 +100,7 @@ collections:
   - name: "documents"
     label: "Documents"
     label_singular: "Document"
-    folder: "src/content/documents"
+    folder: "content/documents"
     create: true
     extension: "md"
     identifier_field: "title"
@@ -114,7 +114,7 @@ collections:
   - name: "page-settings"
     label: "Settings"
     files:
-      - file: "src/content/settings/about.md"
+      - file: "content/settings/about.md"
         label: "About"
         name: "about"
         fields:
@@ -123,7 +123,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/archive.md"
+      - file: "content/settings/archive.md"
         label: "Archive"
         name: "archive"
         fields:
@@ -132,13 +132,13 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/contact-form.md"
+      - file: "content/settings/contact-form.md"
         label: "Contact form"
         name: "contact-form"
         fields:
           - { name: "formSubmitToken", label: "FormSubmit token", widget: "string", required: false, hint: "Use the token from FormSubmit, then activate it from the email FormSubmit sends." }
           - { name: "email", label: "Fallback and contact email", widget: "string", required: true, pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
-      - file: "src/content/settings/dokument.md"
+      - file: "content/settings/dokument.md"
         label: "Dokument"
         name: "dokument"
         fields:
@@ -147,7 +147,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/event.md"
+      - file: "content/settings/event.md"
         label: "Event"
         name: "event"
         fields:
@@ -156,7 +156,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/events.md"
+      - file: "content/settings/events.md"
         label: "Events"
         name: "events"
         fields:
@@ -165,14 +165,14 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/footer.md"
+      - file: "content/settings/footer.md"
         label: "Footer"
         name: "footer"
         fields:
           - { name: "email", label: "Email", widget: "string", pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
           - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
           - { name: "instagramUrl", label: "Instagram URL", widget: "string", required: false }
-      - file: "src/content/settings/gallery.md"
+      - file: "content/settings/gallery.md"
         label: "Gallery"
         name: "gallery"
         fields:
@@ -181,7 +181,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/galleries.md"
+      - file: "content/settings/galleries.md"
         label: "Galleries"
         name: "galleries"
         fields:
@@ -190,7 +190,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/home.md"
+      - file: "content/settings/home.md"
         label: "Home"
         name: "home"
         fields:
@@ -199,7 +199,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/membership.md"
+      - file: "content/settings/membership.md"
         label: "Membership"
         name: "membership"
         fields:
@@ -208,7 +208,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/participation.md"
+      - file: "content/settings/participation.md"
         label: "Participation"
         name: "participation"
         fields:
@@ -217,13 +217,13 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/participation-form.md"
+      - file: "content/settings/participation-form.md"
         label: "Participation form"
         name: "participation-form"
         fields:
           - { name: "formSubmitToken", label: "FormSubmit token", widget: "string", required: false, hint: "Use the token from FormSubmit, then activate it from the email FormSubmit sends." }
           - { name: "email", label: "Fallback and contact email", widget: "string", required: true, pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address"] }
-      - file: "src/content/settings/partners.md"
+      - file: "content/settings/partners.md"
         label: "Partners"
         name: "partners"
         fields:
@@ -232,7 +232,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/post.md"
+      - file: "content/settings/post.md"
         label: "Post"
         name: "post"
         fields:
@@ -241,7 +241,7 @@ collections:
           - { name: "backdropSmall", label: "Mobile page header backdrop", widget: "image", required: false }
           - { name: "backdropPosition", label: "Desktop page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
           - { name: "backdropSmallPosition", label: "Mobile page header backdrop position", widget: "string", required: false, hint: "CSS position, for example center 33%" }
-      - file: "src/content/settings/training.md"
+      - file: "content/settings/training.md"
         label: "Training"
         name: "training"
         fields:

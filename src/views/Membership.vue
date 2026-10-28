@@ -10,13 +10,13 @@ import { marked } from 'marked'
 import PageHeader from '../components/PageHeader.vue'
 import { getPageSettings } from '../utils/pageSettings'
 
-const pageFiles = import.meta.glob('../content/pages/*.md', {
+const pageFiles = import.meta.glob('../../content/pages/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
 
-const pageSource = pageFiles['../content/pages/membership.md'] || ''
+const pageSource = pageFiles['../../content/pages/membership.md'] || ''
 const page = {
   ...getPageSettings('membership'),
   body: marked.parse(pageSource)

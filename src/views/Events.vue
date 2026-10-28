@@ -114,7 +114,7 @@ import ParticipationForm from '../components/ParticipationForm.vue'
 import PageHeader from '../components/PageHeader.vue'
 import { getPageSettings } from '../utils/pageSettings'
 
-const eventFiles = import.meta.glob('../content/events/*.md', {
+const eventFiles = import.meta.glob('../../content/events/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'

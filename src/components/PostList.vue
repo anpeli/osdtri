@@ -61,7 +61,7 @@ const parseFrontMatter = (source) => {
   return { metadata, body: frontMatterMatch ? frontMatterMatch[2] : source }
 }
 
-const postFiles = import.meta.glob('../content/posts/*.md', {
+const postFiles = import.meta.glob('../../content/posts/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'

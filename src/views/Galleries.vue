@@ -57,7 +57,7 @@ const router = useRouter()
 const isShareMode = computed(() => route.query.share === '1' || route.query.share === 'true')
 const copyStatuses = ref({})
 
-const galleryFiles = import.meta.glob('../content/galleries/*.md', {
+const galleryFiles = import.meta.glob('../../content/galleries/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'

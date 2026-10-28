@@ -14,17 +14,17 @@ import Event from '../views/Event.vue'
 import Documents from '../views/Documents.vue'
 import Participation from '../views/Participation.vue'
 
-const galleryFiles = import.meta.glob('../content/galleries/*.md', {
+const galleryFiles = import.meta.glob('../../content/galleries/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
-const eventFiles = import.meta.glob('../content/events/*.md', {
+const eventFiles = import.meta.glob('../../content/events/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
 })
-const postFiles = import.meta.glob('../content/posts/*.md', {
+const postFiles = import.meta.glob('../../content/posts/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
@@ -71,15 +71,15 @@ const router = createRouter({
 
 const getCmsTitle = (route) => {
   if (route.name === 'post') {
-    return getTitleFromSource(postFiles[`../content/posts/${route.params.slug}.md`])
+    return getTitleFromSource(postFiles[`../../content/posts/${route.params.slug}.md`])
       || route.meta.title
   }
   if (route.name === 'gallery') {
-    return getTitleFromSource(galleryFiles[`../content/galleries/${route.params.slug}.md`])
+    return getTitleFromSource(galleryFiles[`../../content/galleries/${route.params.slug}.md`])
       || route.meta.title
   }
   if (route.name === 'event') {
-    return getTitleFromSource(eventFiles[`../content/events/${route.params.slug}.md`])
+    return getTitleFromSource(eventFiles[`../../content/events/${route.params.slug}.md`])
       || route.meta.title
   }
   return route.meta.title

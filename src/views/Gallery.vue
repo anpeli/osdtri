@@ -58,7 +58,7 @@ const route = useRoute()
 const router = useRouter()
 const isShareMode = computed(() => route.query.share === '1' || route.query.share === 'true')
 const copyStatus = ref('')
-const galleryFiles = import.meta.glob('../content/galleries/*.md', {
+const galleryFiles = import.meta.glob('../../content/galleries/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
@@ -67,7 +67,7 @@ const galleryFiles = import.meta.glob('../content/galleries/*.md', {
 const page = getPageSettings('gallery')
 
 const gallery = computed(() => {
-  const source = galleryFiles[`../content/galleries/${route.params.slug}.md`]
+  const source = galleryFiles[`../../content/galleries/${route.params.slug}.md`]
   if (!source) return null
 
   const frontMatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)

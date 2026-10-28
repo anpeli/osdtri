@@ -3,7 +3,7 @@ import { basename, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parse } from 'yaml'
 
-const eventsDirectory = resolve('src/content/events')
+const eventsDirectory = resolve('content/events')
 const outputPath = resolve('dist/events.ics')
 
 const escapeText = (value) => String(value)

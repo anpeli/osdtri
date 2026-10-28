@@ -1,6 +1,6 @@
 import { parse } from 'yaml'
 
-const settingsFiles = import.meta.glob('../content/settings/*.md', {
+const settingsFiles = import.meta.glob('../../content/settings/*.md', {
   eager: true,
   import: 'default',
   query: '?raw'
