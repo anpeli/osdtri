@@ -17,6 +17,10 @@ Oavsett om du är erfaren triathlet eller nyfiken nybörjare som skulle vilja pr
 - **2023:** Åsa, Robie
 - **2022:** Åsa, Bobbo
 - **2021:** Matt
+- **2020:** Åsa, Andreas
+- **2019:** Ann-Mari, Tobias Finsson
+- **2018:** Andreas
+- **2017:** Andreas
 - **2016:** Andreas
 - **2015:** Kerry
 - **2014:** Simon
