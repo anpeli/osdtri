@@ -18,5 +18,9 @@
     "@vitejs/plugin-vue": "^6.0.9",
     "decap-server": "^3.11.2",
     "vite": "^8.3.0"
+  },
+  "overrides": {
+    "@hapi/joi": "npm:joi@^17.13.3",
+    "zod": "^4.6.7"
   }
 }
